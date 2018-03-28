@@ -1,0 +1,902 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hash,manacher,二分答案," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="【JSOI2016】扭动的回文串 输入格式第一行包含一个正整数 N。第二行包含一个长度为 N 的由大写字母组成的字符串 A。第三行包含一个长度为 N 的由大写字母组成的字符串 B。 输出格式输出的第一行一个整数，表示最长的扭动回文串。 样例输入 15ABCDEBAECB 样例输出 15 样例输入 230AABABAAAAABBBAAAAAABBAABAABABAAAAAAAABABBAAAAAAB">
+<meta name="keywords" content="Hash,manacher,二分答案">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JSOI2016扭动的回文串">
+<meta property="og:url" content="http://yoursite.com/2018/03/18/【JSOI2016】扭动的回文串/index.html">
+<meta property="og:site_name" content="rgnoH&#39;s Blog">
+<meta property="og:description" content="【JSOI2016】扭动的回文串 输入格式第一行包含一个正整数 N。第二行包含一个长度为 N 的由大写字母组成的字符串 A。第三行包含一个长度为 N 的由大写字母组成的字符串 B。 输出格式输出的第一行一个整数，表示最长的扭动回文串。 样例输入 15ABCDEBAECB 样例输出 15 样例输入 230AABABAAAAABBBAAAAAABBAABAABABAAAAAAAABABBAAAAAAB">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://oi.nks.edu.cn/Content/Uploads/JJJ.jpg">
+<meta property="og:updated_time" content="2018-03-27T23:59:50.736Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JSOI2016扭动的回文串">
+<meta name="twitter:description" content="【JSOI2016】扭动的回文串 输入格式第一行包含一个正整数 N。第二行包含一个长度为 N 的由大写字母组成的字符串 A。第三行包含一个长度为 N 的由大写字母组成的字符串 B。 输出格式输出的第一行一个整数，表示最长的扭动回文串。 样例输入 15ABCDEBAECB 样例输出 15 样例输入 230AABABAAAAABBBAAAAAABBAABAABABAAAAAAAABABBAAAAAAB">
+<meta name="twitter:image" content="http://oi.nks.edu.cn/Content/Uploads/JJJ.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/03/18/【JSOI2016】扭动的回文串/"/>
+
+
+
+
+
+  <title>JSOI2016扭动的回文串 | rgnoH's Blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">rgnoH's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-schedule">
+          <a href="/schedule/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-calendar"></i> <br />
+            
+            日程表
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  
+  <div class="algolia-popup popup search-popup">
+    <div class="algolia-search">
+      <div class="algolia-search-input-icon">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="algolia-search-input" id="algolia-search-input"></div>
+    </div>
+
+    <div class="algolia-results">
+      <div id="algolia-stats"></div>
+      <div id="algolia-hits"></div>
+      <div id="algolia-pagination" class="algolia-pagination"></div>
+    </div>
+
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+  </div>
+
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/18/【JSOI2016】扭动的回文串/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="rgnoH">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="rgnoH's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">JSOI2016扭动的回文串</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-18T16:19:55+08:00">
+                2018-03-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1,010字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  5min
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="【JSOI2016】扭动的回文串"><a href="#【JSOI2016】扭动的回文串" class="headerlink" title="【JSOI2016】扭动的回文串"></a>【JSOI2016】扭动的回文串</h1><p><img src="http://oi.nks.edu.cn/Content/Uploads/JJJ.jpg" alt="img"></p>
+<h6 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h6><p>第一行包含一个正整数 N。<br>第二行包含一个长度为 N 的由大写字母组成的字符串 A。<br>第三行包含一个长度为 N 的由大写字母组成的字符串 B。</p>
+<h6 id="输出格式"><a href="#输出格式" class="headerlink" title="输出格式"></a>输出格式</h6><p>输出的第一行一个整数，表示最长的扭动回文串。</p>
+<h6 id="样例输入-1"><a href="#样例输入-1" class="headerlink" title="样例输入 1"></a>样例输入 1</h6><p>5<br>ABCDE<br>BAECB</p>
+<h6 id="样例输出-1"><a href="#样例输出-1" class="headerlink" title="样例输出 1"></a>样例输出 1</h6><p>5</p>
+<h6 id="样例输入-2"><a href="#样例输入-2" class="headerlink" title="样例输入 2"></a>样例输入 2</h6><p>30<br>AABABAAAAABBBAAAAAABBAABAABABA<br>AAAAAAABABBAAAAAABABAAAABAAAAB</p>
+<h6 id="样例输出-2"><a href="#样例输出-2" class="headerlink" title="样例输出 2"></a>样例输出 2</h6><p>23</p>
+<h6 id="提示"><a href="#提示" class="headerlink" title="提示"></a>提示</h6><p>样例1解释<br>最佳方案中的扭动回文串如下所示（不在回文串中的字符用 <code>.</code> 表示）：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">.BC..</span><br><span class="line">..ECB</span><br></pre></td></tr></table></figure>
+<p>对于所有的数据，1≤N≤10^5</p>
+<hr>
+<p>情况1,2就是裸的Manacher，跑完之后分别得到两个字符串的rad数组备用。</p>
+<p>考虑情况3，怎样的扭动回文串会最长？观察发现，如果在插入特殊字符后枚举扭动回文串的中心，那么它一定会在当前串里左右延伸到最长才进入另一个串。</p>
+<p>至于这个结论的证明，假设没有扩展完而达到了最长扭动回文串，画图可知扩展完之后在进入不会更劣。</p>
+<p>于是枚举中心，对左右伸展的长度二分答案，Hash验证即可。</p>
+<p>Manacher算法插入特殊字符的预处理使得在新串中，长度为偶数的串不可能是回文串，原来的回文串变成了新的长度为奇数的回文串，不会产生新的回文串，保证了算法的正确性。</p>
+<hr>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MAXN 200005</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ll long long</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">const</span> ll mod=<span class="number">998244353</span>;</span><br><span class="line"></span><br><span class="line"><span class="function">ll <span class="title">sub</span><span class="params">(ll a,ll b)</span></span>&#123;a-=b;a+=a&lt;<span class="number">0</span>?mod:<span class="number">0</span>;<span class="keyword">return</span> a;&#125;</span><br><span class="line"><span class="function">ll <span class="title">mul</span><span class="params">(ll a,ll b)</span></span>&#123;a=a*b%mod;<span class="keyword">return</span> a;&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> N,Len,rad[MAXN],ra[MAXN],rb[MAXN],Ans;</span><br><span class="line">ll ha[MAXN],hb[MAXN],inv[MAXN],pw[MAXN];</span><br><span class="line"><span class="keyword">char</span> a[MAXN],b[MAXN],A[MAXN],B[MAXN];</span><br><span class="line"></span><br><span class="line"><span class="function">ll <span class="title">ksm</span><span class="params">(ll a,ll b,ll c)</span></span>&#123;</span><br><span class="line">	ll ans=<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">while</span>(b)&#123;</span><br><span class="line">		<span class="keyword">if</span>(b&amp;<span class="number">1</span>)ans=ans*a%c;</span><br><span class="line">		b&gt;&gt;=<span class="number">1</span>;a=a*a%c;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">manacher</span><span class="params">(<span class="keyword">char</span> s[],<span class="keyword">int</span> r[])</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> i,Max=<span class="number">0</span>,pos=<span class="number">0</span>,ret=<span class="number">0</span>,len=<span class="number">2</span>*N+<span class="number">1</span>;</span><br><span class="line">	<span class="built_in">memset</span>(rad,<span class="number">0</span>,<span class="keyword">sizeof</span>(rad));</span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">1</span>;i&lt;=len;i++)&#123;</span><br><span class="line">		<span class="keyword">if</span>(i&gt;Max)rad[i]=<span class="number">1</span>;</span><br><span class="line">		<span class="keyword">else</span> rad[i]=min(Max-i+<span class="number">1</span>,rad[pos*<span class="number">2</span>-i]);</span><br><span class="line">		<span class="keyword">while</span>(i+rad[i]&lt;=len&amp;&amp;i-rad[i]&gt;<span class="number">0</span>&amp;&amp;s[i+rad[i]]==s[i-rad[i]])rad[i]++;</span><br><span class="line">		<span class="keyword">if</span>(Max&lt;i+rad[i]<span class="number">-1</span>)Max=i+rad[i]<span class="number">-1</span>,pos=i;</span><br><span class="line">		ret=max(ret,rad[i]<span class="number">-1</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	Ans=max(ret,Ans);</span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">1</span>;i&lt;=len;i++)r[i]=rad[i];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">check</span><span class="params">(<span class="keyword">int</span> l1,<span class="keyword">int</span> r1,<span class="keyword">int</span> l2,<span class="keyword">int</span> r2)</span></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(l1&gt;r1||l2&gt;r2)<span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">	ll a,b;</span><br><span class="line">	a=mul(sub(ha[r1],ha[l1<span class="number">-1</span>]),inv[l1]);</span><br><span class="line">	b=mul(sub(hb[l2],hb[r2+<span class="number">1</span>]),inv[Len-r2+<span class="number">1</span>]);</span><br><span class="line">	<span class="keyword">return</span> a==b;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> i,l,r,L,R,mid;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d%s%s"</span>,&amp;N,a+<span class="number">1</span>,b+<span class="number">1</span>);</span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">1</span>,A[<span class="number">1</span>]=B[<span class="number">1</span>]=<span class="string">'@'</span>;i&lt;=N;i++)&#123;</span><br><span class="line">		A[i&lt;&lt;<span class="number">1</span>]=a[i];B[i&lt;&lt;<span class="number">1</span>]=b[i];</span><br><span class="line">		A[i&lt;&lt;<span class="number">1</span>|<span class="number">1</span>]=B[i&lt;&lt;<span class="number">1</span>|<span class="number">1</span>]=<span class="string">'@'</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	Len=N&lt;&lt;<span class="number">1</span>|<span class="number">1</span>;</span><br><span class="line">	manacher(A,ra);</span><br><span class="line">	manacher(B,rb);</span><br><span class="line">	</span><br><span class="line">	inv[<span class="number">0</span>]=<span class="number">1</span>;inv[<span class="number">1</span>]=ksm(<span class="number">131</span>,mod<span class="number">-2</span>,mod);</span><br><span class="line">	pw[<span class="number">0</span>]=<span class="number">1</span>;pw[<span class="number">1</span>]=<span class="number">131</span>;</span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">2</span>;i&lt;=Len;i++)inv[i]=inv[i<span class="number">-1</span>]*inv[<span class="number">1</span>]%mod;</span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">2</span>;i&lt;=Len;i++)pw[i]=pw[i<span class="number">-1</span>]*<span class="number">131</span>%mod;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">1</span>;i&lt;=Len;i++)ha[i]=(ha[i<span class="number">-1</span>]+(ll)A[i]*pw[i]%mod)%mod;</span><br><span class="line">	<span class="keyword">for</span>(i=Len;i;i--)hb[i]=(hb[i+<span class="number">1</span>]+(ll)B[i]*pw[Len-i+<span class="number">1</span>]%mod)%mod;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">1</span>;i&lt;=Len;i++)&#123;</span><br><span class="line">		<span class="keyword">if</span>(i+ra[i]&gt;Len||i-ra[i]&lt;<span class="number">1</span>)<span class="keyword">continue</span>;</span><br><span class="line">		l=<span class="number">0</span>;r=min(i-ra[i],Len-(i+ra[i]<span class="number">-1</span>));</span><br><span class="line">		L=i-ra[i];R=i+ra[i];</span><br><span class="line">		<span class="keyword">while</span>(l&lt;=r)&#123;</span><br><span class="line">			mid=l+r&gt;&gt;<span class="number">1</span>;</span><br><span class="line">			<span class="keyword">if</span>(check(L-mid,L,R<span class="number">-2</span>,R+mid<span class="number">-2</span>))l=mid+<span class="number">1</span>;</span><br><span class="line">			<span class="keyword">else</span> r=mid<span class="number">-1</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		Ans=max(Ans,ra[i]+l<span class="number">-1</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">1</span>;i&lt;=Len;i++)&#123;</span><br><span class="line">		<span class="keyword">if</span>(i+rb[i]&gt;Len||i-rb[i]&lt;<span class="number">1</span>)<span class="keyword">continue</span>;</span><br><span class="line">		l=<span class="number">0</span>;r=min(i-rb[i],Len-(i+rb[i]<span class="number">-1</span>));</span><br><span class="line">		L=i-rb[i];R=i+rb[i];</span><br><span class="line">		<span class="keyword">while</span>(l&lt;=r)&#123;</span><br><span class="line">			mid=l+r&gt;&gt;<span class="number">1</span>;</span><br><span class="line">			<span class="keyword">if</span>(check(L-mid+<span class="number">2</span>,L+<span class="number">2</span>,R,R+mid))l=mid+<span class="number">1</span>;</span><br><span class="line">			<span class="keyword">else</span> r=mid<span class="number">-1</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		Ans=max(Ans,rb[i]+l<span class="number">-1</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"%d\n"</span>,Ans);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Hash/" rel="tag"># Hash</a>
+          
+            <a href="/tags/manacher/" rel="tag"># manacher</a>
+          
+            <a href="/tags/二分答案/" rel="tag"># 二分答案</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/03/18/[HNOI2015]接水果/" rel="next" title="Hnoi2015接水果">
+                <i class="fa fa-chevron-left"></i> Hnoi2015接水果
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/03/18/LOJ6029「雅礼集训2017Day1」市场/" rel="prev" title="LOJ6029「雅礼集训 2017 Day1」市场">
+                LOJ6029「雅礼集训 2017 Day1」市场 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.jpg"
+                alt="rgnoH" />
+            
+              <p class="site-author-name" itemprop="name">rgnoH</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">27</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">25</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/rgnoH" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://starkmal.github.io" title="starkmal" target="_blank">starkmal</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://mogicianevian.github.io" title="OBlack" target="_blank">OBlack</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://jackpoison.github.io" title="Sparrow" target="_blank">Sparrow</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#【JSOI2016】扭动的回文串"><span class="nav-number">1.</span> <span class="nav-text">【JSOI2016】扭动的回文串</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#输入格式"><span class="nav-number">1.0.0.0.0.1.</span> <span class="nav-text">输入格式</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#输出格式"><span class="nav-number">1.0.0.0.0.2.</span> <span class="nav-text">输出格式</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#样例输入-1"><span class="nav-number">1.0.0.0.0.3.</span> <span class="nav-text">样例输入 1</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#样例输出-1"><span class="nav-number">1.0.0.0.0.4.</span> <span class="nav-text">样例输出 1</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#样例输入-2"><span class="nav-number">1.0.0.0.0.5.</span> <span class="nav-text">样例输入 2</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#样例输出-2"><span class="nav-number">1.0.0.0.0.6.</span> <span class="nav-text">样例输出 2</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#提示"><span class="nav-number">1.0.0.0.0.7.</span> <span class="nav-text">提示</span></a></li></ol></li></ol></li></ol></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">rgnoH</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">33.4k</span>
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/canvas_sphere.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
+
+  
+  
+  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
+  
+
+  <script src="/js/src/algolia-search.js?v=5.1.4"></script>
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>

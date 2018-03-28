@@ -1,0 +1,899 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="数学," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="SDOI2015 约数个数和问题描述设d(x)为x的约数个数，给定N、M，求的值。 输入格式输入文件包含多组测试数据。第一行，一个整数T，表示测试数据的组数。接下来的T行，每行两个整数N、M。 输出格式T行，每行一个整数，表示你所求的答案。 样例输入27 45 6 样例输出110121 数据规模  1&amp;lt;=N, M&amp;lt;=50000    1&amp;lt;=T&amp;lt;=50000  首先有一个结论">
+<meta name="keywords" content="数学">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SDOI2015 约数个数和">
+<meta property="og:url" content="http://yoursite.com/2018/03/18/SDOI2015约数个数和/index.html">
+<meta property="og:site_name" content="rgnoH&#39;s Blog">
+<meta property="og:description" content="SDOI2015 约数个数和问题描述设d(x)为x的约数个数，给定N、M，求的值。 输入格式输入文件包含多组测试数据。第一行，一个整数T，表示测试数据的组数。接下来的T行，每行两个整数N、M。 输出格式T行，每行一个整数，表示你所求的答案。 样例输入27 45 6 样例输出110121 数据规模  1&amp;lt;=N, M&amp;lt;=50000    1&amp;lt;=T&amp;lt;=50000  首先有一个结论">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://oi.nks.edu.cn/Content/Uploads/Images/3293-1.bmp">
+<meta property="og:updated_time" content="2018-03-27T23:59:50.720Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="SDOI2015 约数个数和">
+<meta name="twitter:description" content="SDOI2015 约数个数和问题描述设d(x)为x的约数个数，给定N、M，求的值。 输入格式输入文件包含多组测试数据。第一行，一个整数T，表示测试数据的组数。接下来的T行，每行两个整数N、M。 输出格式T行，每行一个整数，表示你所求的答案。 样例输入27 45 6 样例输出110121 数据规模  1&amp;lt;=N, M&amp;lt;=50000    1&amp;lt;=T&amp;lt;=50000  首先有一个结论">
+<meta name="twitter:image" content="http://oi.nks.edu.cn/Content/Uploads/Images/3293-1.bmp">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/03/18/SDOI2015约数个数和/"/>
+
+
+
+
+
+  <title>SDOI2015 约数个数和 | rgnoH's Blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">rgnoH's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-schedule">
+          <a href="/schedule/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-calendar"></i> <br />
+            
+            日程表
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  
+  <div class="algolia-popup popup search-popup">
+    <div class="algolia-search">
+      <div class="algolia-search-input-icon">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="algolia-search-input" id="algolia-search-input"></div>
+    </div>
+
+    <div class="algolia-results">
+      <div id="algolia-stats"></div>
+      <div id="algolia-hits"></div>
+      <div id="algolia-pagination" class="algolia-pagination"></div>
+    </div>
+
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+  </div>
+
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/18/SDOI2015约数个数和/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="rgnoH">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="rgnoH's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">SDOI2015 约数个数和</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-18T16:24:55+08:00">
+                2018-03-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  839字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  4min
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="SDOI2015-约数个数和"><a href="#SDOI2015-约数个数和" class="headerlink" title="SDOI2015 约数个数和"></a>SDOI2015 约数个数和</h1><h6 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h6><p>设d(x)为x的约数个数，给定N、M，求<img src="http://oi.nks.edu.cn/Content/Uploads/Images/3293-1.bmp" alt="img">的值。</p>
+<h6 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h6><p>输入文件包含多组测试数据。<br>第一行，一个整数T，表示测试数据的组数。<br>接下来的T行，每行两个整数N、M。</p>
+<h6 id="输出格式"><a href="#输出格式" class="headerlink" title="输出格式"></a>输出格式</h6><p>T行，每行一个整数，表示你所求的答案。</p>
+<h6 id="样例输入"><a href="#样例输入" class="headerlink" title="样例输入"></a>样例输入</h6><p>2<br>7 4<br>5 6</p>
+<h6 id="样例输出"><a href="#样例输出" class="headerlink" title="样例输出"></a>样例输出</h6><p>110<br>121</p>
+<h6 id="数据规模"><a href="#数据规模" class="headerlink" title="数据规模"></a>数据规模</h6><p>  1&lt;=N, M&lt;=50000    1&lt;=T&lt;=50000</p>
+<hr>
+<p>首先有一个结论：$d(ij)=\sum_{x|i}\sum_{y|j}[(x,y)=1]$，证明：<a href="https://www.cnblogs.com/GXZlegend/p/6999146.html" target="_blank" rel="noopener">https://www.cnblogs.com/GXZlegend/p/6999146.html</a></p>
+<p>接下来就开始暴躁地推式子了：<br>$$<br>Ans=\sum_{i=1}^n\sum_{j=1}^md(ij)=\sum_{i=1}^n\sum_{j=1}^m\sum_{x|i}\sum_{y|j}[(x,y)=1]<br>$$<br>变更枚举的顺序，先枚举$x,y$，再枚举$x,y$的倍数$i,j$。设$i=ax,j=by$，更换枚举的变量，枚举$x,y,a,b$,有：<br>$$<br>Ans=\sum_{x=1}^n\sum_{y=1}^m\sum_{a=1}^{\lfloor\frac{n}{x} \rfloor}\sum_{b=1}^{\lfloor\frac{m}{y} \rfloor}[(x,y)=1]=\sum_{x=1}^n\sum_{y=1}^m\lfloor \frac{n}{x} \rfloor\lfloor \frac{m}{y} \rfloor[(x,y)=1]<br>$$<br>注意到$[(x,y)=1]$就是$e(gcd(x,y))$，根据$I\bigotimes \mu=e$，进一步推式子：<br>$$<br>Ans=\sum_{x=1}^n\sum_{y=1}^m\lfloor \frac{n}{x} \rfloor\lfloor \frac{m}{y} \rfloor\sum_{d|x,d|y}\mu(d)<br>$$<br>再次变更枚举的顺序，先枚举$d$，再枚举$d$的倍数$x,y$。下面设$N=min(n,m)$。<br>$$<br>Ans=\sum_{d=1}^N\mu(d)\sum_{i=1}^{\lfloor \frac{n}{d} \rfloor}\sum_{j=1}^{\lfloor \frac{m}{d} \rfloor}\lfloor \frac{n}{id} \rfloor\lfloor \frac{m}{jd} \rfloor=\sum_{d=1}^N\mu(d)\sum_{i=1}^{\lfloor \frac{n}{d} \rfloor}\lfloor \frac{n}{id} \rfloor\sum_{j=1}^{\lfloor \frac{m}{d} \rfloor}\lfloor \frac{m}{jd} \rfloor<br>$$<br>设$sum(n)=\sum_{i=1}^n\lfloor \frac{n}{i} \rfloor$，那么原式就变成了可以接受的形式：<br>$$<br>Ans=\sum_{d=1}^{N}\mu(d)sum(\lfloor \frac{n}{d} \rfloor)sum(\lfloor \frac{m}{d} \rfloor)<br>$$<br>只要预处理出所有$sum$和$\mu$的前缀和，就可以$O(\sqrt N)$求解单次询问了。</p>
+<p>对于$sum$的预处理有两种：</p>
+<p>一种是对于每个$n$暴力$O(\sqrt n)$求，总时间复杂度是$O(n\sqrt n)$，可以接受，但不够优秀。</p>
+<p>另一种可以做到$O(n)$，这是看出来了$sum(n)=\sum_{i=1}^nd(i)$，下面给出这个的两种证明：</p>
+<p>第一种：<br>$$<br>sum(n)=\lfloor \frac{n}{1} \rfloor+ \lfloor \frac{n}{2} \rfloor+…+\lfloor \frac{n}{n-1} \rfloor+\lfloor \frac{n}{n} \rfloor<br>$$</p>
+<p>$$<br>sum(n-1)=\lfloor \frac{n-1}{1} \rfloor+ \lfloor \frac{n-1}{2} \rfloor+…+\lfloor \frac{n-1}{n-1} \rfloor<br>$$</p>
+<p>可以看到，$sum(n)$对于$sum(n-1)$,除了多了一项$\lfloor\frac{n}{n}\rfloor=1$，其他分母相等的项，上面不是与下面相等，就是比下面多1.容易发现上面比下面对应项多1当且仅当分子是$n$的约数。所以有：<br>$$<br>sum(n)=sum(n-1)+\sum_{d|n,d&lt;n}1+1=sum(n-1)+\sum_{d|n}1=sum(n-1)+d(n)<br>$$<br>所以$sum$就是$d$的前缀和。</p>
+<p>第二种：</p>
+<p>直接猜想$sum$是$d$的前缀和，对$d$的前缀和进行变形。<br>$$<br>\sum_{i=1}^nd(i)=\sum_{i=1}^n\sum_{d|i}1<br>$$<br>这里的$i$一定满足$i=kd,k\in \mathbb{N^*}$，那么采用与杜教筛里类似的方法，枚举这个$k$.<br>$$<br>\sum_{i=1}^nd(i)=\sum_{k=1}^n\sum_{d=1}^{\lfloor \frac{n}{k} \rfloor}1=\sum_{k=1}^n\lfloor\frac{n}{k}\rfloor<br>$$</p>
+<hr>
+<p>代码等试题解封之后再放吧</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/数学/" rel="tag"># 数学</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/03/18/LOJ 6030「雅礼集训2017Day1」矩阵/" rel="next" title="LOJ 6030「雅礼集训 2017 Day1」矩阵">
+                <i class="fa fa-chevron-left"></i> LOJ 6030「雅礼集训 2017 Day1」矩阵
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/03/18/Tjoi2016&Heoi2016 字符串/" rel="prev" title="Tjoi2016&Heoi2016 字符串">
+                Tjoi2016&Heoi2016 字符串 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.jpg"
+                alt="rgnoH" />
+            
+              <p class="site-author-name" itemprop="name">rgnoH</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">27</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">25</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/rgnoH" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://starkmal.github.io" title="starkmal" target="_blank">starkmal</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://mogicianevian.github.io" title="OBlack" target="_blank">OBlack</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://jackpoison.github.io" title="Sparrow" target="_blank">Sparrow</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#SDOI2015-约数个数和"><span class="nav-number">1.</span> <span class="nav-text">SDOI2015 约数个数和</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#问题描述"><span class="nav-number">1.0.0.0.0.1.</span> <span class="nav-text">问题描述</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#输入格式"><span class="nav-number">1.0.0.0.0.2.</span> <span class="nav-text">输入格式</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#输出格式"><span class="nav-number">1.0.0.0.0.3.</span> <span class="nav-text">输出格式</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#样例输入"><span class="nav-number">1.0.0.0.0.4.</span> <span class="nav-text">样例输入</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#样例输出"><span class="nav-number">1.0.0.0.0.5.</span> <span class="nav-text">样例输出</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#数据规模"><span class="nav-number">1.0.0.0.0.6.</span> <span class="nav-text">数据规模</span></a></li></ol></li></ol></li></ol></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">rgnoH</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">33.4k</span>
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/canvas_sphere.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
+
+  
+  
+  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
+  
+
+  <script src="/js/src/algolia-search.js?v=5.1.4"></script>
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>

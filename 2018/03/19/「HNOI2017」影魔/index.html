@@ -1,0 +1,897 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="线段树,扫描线," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="「HNOI2017」影魔题目描述影魔，奈文摩尔，据说有着一个诗人的灵魂。事实上，他吞噬的诗人灵魂早已成千上万。千百年来，他收集了各式各样的灵魂，包括诗人、牧师、帝王、乞丐、奴隶、罪人，当然，还有英雄。 每一个灵魂，都有着自己的战斗力，而影魔，靠这些战斗力提升自己的攻击。 奈文摩尔有 $n$ 个灵魂，他们在影魔宽广的体内可以排成一排，从左至右标号 $1$ 到 $n$。第 $i$ 个灵魂的战斗力为 $">
+<meta name="keywords" content="线段树,扫描线">
+<meta property="og:type" content="article">
+<meta property="og:title" content="「HNOI2017」影魔">
+<meta property="og:url" content="http://yoursite.com/2018/03/19/「HNOI2017」影魔/index.html">
+<meta property="og:site_name" content="rgnoH&#39;s Blog">
+<meta property="og:description" content="「HNOI2017」影魔题目描述影魔，奈文摩尔，据说有着一个诗人的灵魂。事实上，他吞噬的诗人灵魂早已成千上万。千百年来，他收集了各式各样的灵魂，包括诗人、牧师、帝王、乞丐、奴隶、罪人，当然，还有英雄。 每一个灵魂，都有着自己的战斗力，而影魔，靠这些战斗力提升自己的攻击。 奈文摩尔有 $n$ 个灵魂，他们在影魔宽广的体内可以排成一排，从左至右标号 $1$ 到 $n$。第 $i$ 个灵魂的战斗力为 $">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-03-27T23:59:50.736Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="「HNOI2017」影魔">
+<meta name="twitter:description" content="「HNOI2017」影魔题目描述影魔，奈文摩尔，据说有着一个诗人的灵魂。事实上，他吞噬的诗人灵魂早已成千上万。千百年来，他收集了各式各样的灵魂，包括诗人、牧师、帝王、乞丐、奴隶、罪人，当然，还有英雄。 每一个灵魂，都有着自己的战斗力，而影魔，靠这些战斗力提升自己的攻击。 奈文摩尔有 $n$ 个灵魂，他们在影魔宽广的体内可以排成一排，从左至右标号 $1$ 到 $n$。第 $i$ 个灵魂的战斗力为 $">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/03/19/「HNOI2017」影魔/"/>
+
+
+
+
+
+  <title>「HNOI2017」影魔 | rgnoH's Blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">rgnoH's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-schedule">
+          <a href="/schedule/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-calendar"></i> <br />
+            
+            日程表
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  
+  <div class="algolia-popup popup search-popup">
+    <div class="algolia-search">
+      <div class="algolia-search-input-icon">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="algolia-search-input" id="algolia-search-input"></div>
+    </div>
+
+    <div class="algolia-results">
+      <div id="algolia-stats"></div>
+      <div id="algolia-hits"></div>
+      <div id="algolia-pagination" class="algolia-pagination"></div>
+    </div>
+
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+  </div>
+
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/19/「HNOI2017」影魔/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="rgnoH">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="rgnoH's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">「HNOI2017」影魔</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-19T15:09:40+08:00">
+                2018-03-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1,926字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  9min
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="「HNOI2017」影魔"><a href="#「HNOI2017」影魔" class="headerlink" title="「HNOI2017」影魔"></a>「HNOI2017」影魔</h1><h6 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h6><p>影魔，奈文摩尔，据说有着一个诗人的灵魂。事实上，他吞噬的诗人灵魂早已成千上万。千百年来，他收集了各式各样的灵魂，包括诗人、牧师、帝王、乞丐、奴隶、罪人，当然，还有英雄。</p>
+<p>每一个灵魂，都有着自己的战斗力，而影魔，靠这些战斗力提升自己的攻击。</p>
+<p>奈文摩尔有 $n$ 个灵魂，他们在影魔宽广的体内可以排成一排，从左至右标号 $1$ 到 $n$。第 $i$ 个灵魂的战斗力为 $k_i$，灵魂们以点对的形式为影魔提供攻击力，对于灵魂对 $i, j(i&lt;j)$ 来说，若不存在 $k_s(i&lt;s&lt;j)$ 大于 $k_i$ 或者 $k_j$，则会为影魔提供 $p_1$ 的攻击力（可理解为：当 $j = i + 1$ 时，因为不存在满足 $i &lt; s &lt; j$ 的 $s$，从而 $k_s$ 不存在，这时提供 $p_1$ 的攻击力；当 $j &gt; i + 1$ 时，若 $\max{k_s | i &lt; s &lt; j}\le \min(k_i, k_j)$，则提供 $p_1$ 的攻击力）；另一种情况，令 $c$ 为 $k_{i + 1}, k_{i + 2}, \cdots, k_{j -1}$ 的最大值，若 $c$ 满足：$k_i &lt; c &lt; k_j$，或者 $k_j &lt; c &lt; k_i$，则会为影魔提供 $p_2$ 的攻击力，当这样的 $c$ 不存在时，自然不会提供这 $p_2$ 的攻击力；其他情况的点对，均不会为影魔提供攻击力。</p>
+<p>影魔的挚友噬魂鬼在一天造访影魔体内时被这些灵魂吸引住了，他想知道，对于任意一段区间 $[a,b]$，位于这些区间中的灵魂对会为影魔提供多少攻击力，即考虑所有满足 $a\le i&lt;j\le b$ 的灵魂对 $i, j$ 提供的攻击力之和。</p>
+<p>顺带一提，灵魂的战斗力组成一个 $1$ 到 $n$ 的排列：$k_1, k_1, \cdots, k_n$。</p>
+<h6 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h6><p>第一行四个整数 $n,m,p_1,p_2$；<br>第二行 $n$ 个整数数：$k_1, k_2,\cdots, k_n$；<br>接下来 $m$ 行,每行两个数 $a,b$，表示询问区间 $[a,b]$ 中的灵魂对会为影魔提供多少攻击力。</p>
+<h6 id="输出格式"><a href="#输出格式" class="headerlink" title="输出格式"></a>输出格式</h6><p>共输出 $m$ 行，每行一个答案，依次对应 $m$ 个询问。</p>
+<h6 id="数据范围与提示"><a href="#数据范围与提示" class="headerlink" title="数据范围与提示"></a>数据范围与提示</h6><p>对于 $30\%$ 的数据，$1\le n, m\le 500$；<br>另有 $30\%$ 的数据，$p_1 = 2p_2$<br>对于 $100\%$ 的数据，$1\le n,m\le 200000, 1\le p_1, p_2\le 1000$。</p>
+<hr>
+<p>首先简化一下题目：提供$p_1$的攻击力的区间要满足端点一个是区间最大值，另一个是区间次大值；提供$p_2$的攻击力的区间要满足其中一个端点是最大值，而另一个不是次大值。</p>
+<p>对于第一类，考虑每个点作为区间端点且为次大值的情况，那么显然区间的另一个端点是它左边或右边第一个比它大的数。使用单调栈可以$O(n)$预处理出第$i$个数左边的第一个比它的位置$l[i]$，以及右边第一个比它大的位置$r[i]$。那么其中每有一个在$[a,b]$，就有1的贡献。</p>
+<p>进一步转化模型，把每个$i$转为2个点$(i,l[i])$,$(i,r[i])$，那么每次询问的第一类区间个数就是左下角在$[a,a]$，右上角在$[b,b]$的矩形内的点的个数。</p>
+<p>直接考虑第二类好像也可求？但是我是计算”其中一个端点是区间最大，另一个端点不做其他要求”的区间个数，用它来减去第一类的个数从而间接求。考虑每个数作为区间端点且为最大值的情况，那么区间的另一个端点一定落在$[l[i],i-1]\bigcup[i+1,r[i]]$中。</p>
+<p>转换模型，每个点转为若干条横坐标为$i$的竖直线段，每次询问的就是左下角在$[a,a]$，右上角在$[b,b]$的矩形中，线段上的整点的个数。</p>
+<p>两种类型都是扫描线的经典问题。可以考虑将询问离线，将矩形拆成前缀和相减的形式，再用线段树维护一下就好了。</p>
+<hr>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stack&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MAXN 200005</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MAXT 800005</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ll long long</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">char</span> buf[<span class="number">1</span>&lt;&lt;<span class="number">20</span>],*p1,*p2;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> GC (p1==p2&amp;&amp;(p2=(p1=buf)+fread(buf,1,1000000,stdin),p1==p2)?0:*p1++)</span></span><br><span class="line"><span class="keyword">inline</span> <span class="keyword">int</span> _R()&#123;</span><br><span class="line">	<span class="keyword">char</span> s=GC;<span class="keyword">int</span> v=<span class="number">0</span>,sign=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">while</span>((s!=<span class="string">'-'</span>)&amp;&amp;(s&gt;<span class="number">57</span>||s&lt;<span class="number">48</span>))s=GC;</span><br><span class="line">	<span class="keyword">if</span>(s==<span class="string">'-'</span>)sign=<span class="number">1</span>,s=GC;</span><br><span class="line">	<span class="keyword">for</span>(;s&gt;<span class="number">47</span>&amp;&amp;s&lt;<span class="number">58</span>;s=GC)v=v*<span class="number">10</span>+s<span class="number">-48</span>;</span><br><span class="line">	<span class="keyword">return</span> sign?-v:v;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">stack</span>&lt;<span class="keyword">int</span>&gt;S;</span><br><span class="line"><span class="keyword">int</span> N,M,K[MAXN],P1,P2;</span><br><span class="line"><span class="keyword">int</span> l[MAXN],r[MAXN];</span><br><span class="line">ll ans1[MAXN],ans2[MAXN],Ans[MAXN];</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">node</span>&#123;</span><span class="keyword">int</span> l,r;&#125;seg[MAXN];</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">line</span>&#123;</span><span class="keyword">int</span> l,d,u,id,k;&#125;L[MAXN*<span class="number">10</span>];<span class="keyword">int</span> cnt;</span><br><span class="line"><span class="keyword">bool</span> <span class="keyword">operator</span>&lt;(line a,line b)&#123;<span class="keyword">return</span> a.l==b.l?a.id&lt;b.id:a.l&lt;b.l;&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> ls[MAXT],rs[MAXT],a[MAXT],b[MAXT],lazy[MAXT],tot;</span><br><span class="line">ll sum[MAXT];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">update</span><span class="params">(<span class="keyword">int</span> p)</span></span>&#123;sum[p]=sum[ls[p]]+sum[rs[p]];&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">putdown</span><span class="params">(<span class="keyword">int</span> p)</span></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(!ls[p]||!rs[p])<span class="keyword">return</span>;</span><br><span class="line">	sum[ls[p]]+=(ll)(b[ls[p]]-a[ls[p]]+<span class="number">1</span>)*lazy[p];</span><br><span class="line">	sum[rs[p]]+=(ll)(b[rs[p]]-a[rs[p]]+<span class="number">1</span>)*lazy[p];</span><br><span class="line">	lazy[ls[p]]+=lazy[p];</span><br><span class="line">	lazy[rs[p]]+=lazy[p];</span><br><span class="line">	lazy[p]=<span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">Build</span><span class="params">(<span class="keyword">int</span> l,<span class="keyword">int</span> r)</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> p=++tot,mid=l+r&gt;&gt;<span class="number">1</span>;</span><br><span class="line">	a[p]=l;b[p]=r;</span><br><span class="line">	<span class="keyword">if</span>(l==r)<span class="keyword">return</span> p;</span><br><span class="line">	ls[p]=Build(l,mid);</span><br><span class="line">	rs[p]=Build(mid+<span class="number">1</span>,r);</span><br><span class="line">	<span class="keyword">return</span> p;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">modify</span><span class="params">(<span class="keyword">int</span> p,<span class="keyword">int</span> x,<span class="keyword">int</span> y)</span></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(lazy[p])putdown(p);</span><br><span class="line">	<span class="keyword">if</span>(x&lt;=a[p]&amp;&amp;b[p]&lt;=y)&#123;</span><br><span class="line">		lazy[p]++;sum[p]+=b[p]-a[p]+<span class="number">1</span>;</span><br><span class="line">		<span class="keyword">return</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">int</span> mid=a[p]+b[p]&gt;&gt;<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">if</span>(x&lt;=mid)modify(ls[p],x,y);</span><br><span class="line">	<span class="keyword">if</span>(y&gt;mid)modify(rs[p],x,y);</span><br><span class="line">	update(p);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function">ll <span class="title">getsum</span><span class="params">(<span class="keyword">int</span> p,<span class="keyword">int</span> x,<span class="keyword">int</span> y)</span></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(lazy[p])putdown(p);</span><br><span class="line">	<span class="keyword">if</span>(x&lt;=a[p]&amp;&amp;b[p]&lt;=y)<span class="keyword">return</span> sum[p];</span><br><span class="line">	<span class="keyword">int</span> mid=a[p]+b[p]&gt;&gt;<span class="number">1</span>;ll ret=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">if</span>(x&lt;=mid)ret+=getsum(ls[p],x,y);</span><br><span class="line">	<span class="keyword">if</span>(y&gt;mid)ret+=getsum(rs[p],x,y);</span><br><span class="line">	<span class="keyword">return</span> ret;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> i,x,y;</span><br><span class="line">	N=_R();M=_R();P1=_R();P2=_R();</span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">1</span>;i&lt;=N;i++)K[i]=_R();</span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">1</span>;i&lt;=M;i++)seg[i].l=_R(),seg[i].r=_R();</span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">1</span>;i&lt;=N;i++)&#123;</span><br><span class="line">		<span class="keyword">while</span>(S.size()&amp;&amp;K[i]&gt;K[S.top()])r[S.top()]=i,S.pop();</span><br><span class="line">		S.push(i);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">while</span>(S.size())r[S.top()]=N+<span class="number">1</span>,S.pop();</span><br><span class="line">	<span class="keyword">for</span>(i=N;i;i--)&#123;</span><br><span class="line">		<span class="keyword">while</span>(S.size()&amp;&amp;K[i]&gt;K[S.top()])l[S.top()]=i,S.pop();</span><br><span class="line">		S.push(i);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">while</span>(S.size())l[S.top()]=<span class="number">0</span>,S.pop();</span><br><span class="line"></span><br><span class="line">	Build(<span class="number">1</span>,N);</span><br><span class="line">	cnt=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">1</span>;i&lt;=M;i++)&#123;</span><br><span class="line">		L[++cnt]=(line)&#123;seg[i].r,seg[i].l,seg[i].r,i,<span class="number">1</span>&#125;;</span><br><span class="line">		L[++cnt]=(line)&#123;seg[i].l<span class="number">-1</span>,seg[i].l,seg[i].r,i,<span class="number">-1</span>&#125;;<span class="comment">//l,u,d,id,k</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">1</span>;i&lt;=N;i++)&#123;</span><br><span class="line">		<span class="keyword">if</span>(l[i]+<span class="number">1</span>&lt;=i<span class="number">-1</span>)L[++cnt]=(line)&#123;i,l[i]+<span class="number">1</span>,i<span class="number">-1</span>,<span class="number">0</span>,<span class="number">0</span>&#125;;</span><br><span class="line">		<span class="keyword">if</span>(i+<span class="number">1</span>&lt;=r[i]<span class="number">-1</span>)L[++cnt]=(line)&#123;i,i+<span class="number">1</span>,r[i]<span class="number">-1</span>,<span class="number">0</span>,<span class="number">0</span>&#125;;</span><br><span class="line">	&#125;</span><br><span class="line">	sort(L+<span class="number">1</span>,L+cnt+<span class="number">1</span>);</span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">1</span>;i&lt;=cnt;i++)&#123;</span><br><span class="line">		<span class="keyword">if</span>(L[i].id)ans2[L[i].id]+=(ll)L[i].k*getsum(<span class="number">1</span>,L[i].d,L[i].u);</span><br><span class="line">		<span class="keyword">else</span> modify(<span class="number">1</span>,L[i].d,L[i].u);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="built_in">memset</span>(lazy,<span class="number">0</span>,<span class="keyword">sizeof</span>(lazy));</span><br><span class="line">	<span class="built_in">memset</span>(sum,<span class="number">0</span>,<span class="keyword">sizeof</span>(sum));</span><br><span class="line">	cnt=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">1</span>;i&lt;=M;i++)&#123;</span><br><span class="line">		L[++cnt]=(line)&#123;seg[i].r,seg[i].l,seg[i].r,i,<span class="number">1</span>&#125;;</span><br><span class="line">		L[++cnt]=(line)&#123;seg[i].l<span class="number">-1</span>,seg[i].l,seg[i].r,i,<span class="number">-1</span>&#125;;<span class="comment">//l,u,d,id,k</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">1</span>;i&lt;=N;i++)&#123;</span><br><span class="line">		<span class="keyword">if</span>(l[i])L[++cnt]=(line)&#123;i,l[i],l[i],<span class="number">0</span>,<span class="number">0</span>&#125;;</span><br><span class="line">		<span class="keyword">if</span>(r[i]&lt;=N)L[++cnt]=(line)&#123;i,r[i],r[i],<span class="number">0</span>,<span class="number">0</span>&#125;;</span><br><span class="line">	&#125;</span><br><span class="line">	sort(L+<span class="number">1</span>,L+cnt+<span class="number">1</span>);</span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">1</span>;i&lt;=cnt;i++)&#123;</span><br><span class="line">		<span class="keyword">if</span>(L[i].id)ans1[L[i].id]+=(ll)L[i].k*getsum(<span class="number">1</span>,L[i].d,L[i].u);</span><br><span class="line">		<span class="keyword">else</span> modify(<span class="number">1</span>,L[i].d,L[i].u);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">1</span>;i&lt;=M;i++)ans2[i]-=ans1[i];</span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">1</span>;i&lt;=M;i++)Ans[i]=(ll)P1*ans1[i]+(ll)P2*ans2[i];</span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">1</span>;i&lt;=M;i++)<span class="built_in">printf</span>(<span class="string">"%lld\n"</span>,Ans[i]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/线段树/" rel="tag"># 线段树</a>
+          
+            <a href="/tags/扫描线/" rel="tag"># 扫描线</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/03/19/伪语法基础-输入输出练习2/" rel="next" title="伪语法基础 输入输出练习2">
+                <i class="fa fa-chevron-left"></i> 伪语法基础 输入输出练习2
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/03/20/「HEOI2015」公约数数列/" rel="prev" title="「HEOI2015」公约数数列">
+                「HEOI2015」公约数数列 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.jpg"
+                alt="rgnoH" />
+            
+              <p class="site-author-name" itemprop="name">rgnoH</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">27</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">25</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/rgnoH" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://starkmal.github.io" title="starkmal" target="_blank">starkmal</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://mogicianevian.github.io" title="OBlack" target="_blank">OBlack</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://jackpoison.github.io" title="Sparrow" target="_blank">Sparrow</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#「HNOI2017」影魔"><span class="nav-number">1.</span> <span class="nav-text">「HNOI2017」影魔</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#题目描述"><span class="nav-number">1.0.0.0.0.1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#输入格式"><span class="nav-number">1.0.0.0.0.2.</span> <span class="nav-text">输入格式</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#输出格式"><span class="nav-number">1.0.0.0.0.3.</span> <span class="nav-text">输出格式</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#数据范围与提示"><span class="nav-number">1.0.0.0.0.4.</span> <span class="nav-text">数据范围与提示</span></a></li></ol></li></ol></li></ol></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">rgnoH</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">33.4k</span>
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/canvas_sphere.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
+
+  
+  
+  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
+  
+
+  <script src="/js/src/algolia-search.js?v=5.1.4"></script>
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>

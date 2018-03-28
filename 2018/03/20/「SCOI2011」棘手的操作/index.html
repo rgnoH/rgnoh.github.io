@@ -1,0 +1,918 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="可并堆," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="「SCOI2011」棘手的操作题目描述有 $N$ 个节点，标号从 $1$ 到 $N$，这 $N$ 个节点一开始相互不连通。第 $i$ 个节点的初始权值为 $a_i$，接下来有如下一些操作：  U x y 加一条边，连接第 $x$ 个节点和第 $y$ 个节点。   A1 x v 将第 $x$ 个节点的权值增加 $v$。   A2 x v 将第 $x$ 个节点所在的连通块的所有节点的权值都增加 $v$">
+<meta name="keywords" content="可并堆">
+<meta property="og:type" content="article">
+<meta property="og:title" content="「SCOI2011」棘手的操作">
+<meta property="og:url" content="http://yoursite.com/2018/03/20/「SCOI2011」棘手的操作/index.html">
+<meta property="og:site_name" content="rgnoH&#39;s Blog">
+<meta property="og:description" content="「SCOI2011」棘手的操作题目描述有 $N$ 个节点，标号从 $1$ 到 $N$，这 $N$ 个节点一开始相互不连通。第 $i$ 个节点的初始权值为 $a_i$，接下来有如下一些操作：  U x y 加一条边，连接第 $x$ 个节点和第 $y$ 个节点。   A1 x v 将第 $x$ 个节点的权值增加 $v$。   A2 x v 将第 $x$ 个节点所在的连通块的所有节点的权值都增加 $v$">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-03-27T23:59:50.736Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="「SCOI2011」棘手的操作">
+<meta name="twitter:description" content="「SCOI2011」棘手的操作题目描述有 $N$ 个节点，标号从 $1$ 到 $N$，这 $N$ 个节点一开始相互不连通。第 $i$ 个节点的初始权值为 $a_i$，接下来有如下一些操作：  U x y 加一条边，连接第 $x$ 个节点和第 $y$ 个节点。   A1 x v 将第 $x$ 个节点的权值增加 $v$。   A2 x v 将第 $x$ 个节点所在的连通块的所有节点的权值都增加 $v$">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/03/20/「SCOI2011」棘手的操作/"/>
+
+
+
+
+
+  <title>「SCOI2011」棘手的操作 | rgnoH's Blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">rgnoH's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-schedule">
+          <a href="/schedule/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-calendar"></i> <br />
+            
+            日程表
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  
+  <div class="algolia-popup popup search-popup">
+    <div class="algolia-search">
+      <div class="algolia-search-input-icon">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="algolia-search-input" id="algolia-search-input"></div>
+    </div>
+
+    <div class="algolia-results">
+      <div id="algolia-stats"></div>
+      <div id="algolia-hits"></div>
+      <div id="algolia-pagination" class="algolia-pagination"></div>
+    </div>
+
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+  </div>
+
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/20/「SCOI2011」棘手的操作/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="rgnoH">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="rgnoH's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">「SCOI2011」棘手的操作</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-20T19:16:47+08:00">
+                2018-03-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1,319字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  6min
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="「SCOI2011」棘手的操作"><a href="#「SCOI2011」棘手的操作" class="headerlink" title="「SCOI2011」棘手的操作"></a>「SCOI2011」棘手的操作</h1><h6 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h6><p>有 $N$ 个节点，标号从 $1$ 到 $N$，这 $N$ 个节点一开始相互不连通。第 $i$ 个节点的初始权值为 $a_i$，接下来有如下一些操作：</p>
+<blockquote>
+<p><code>U x y</code> 加一条边，连接第 $x$ 个节点和第 $y$ 个节点。</p>
+</blockquote>
+<blockquote>
+<p><code>A1 x v</code> 将第 $x$ 个节点的权值增加 $v$。</p>
+</blockquote>
+<blockquote>
+<p><code>A2 x v</code> 将第 $x$ 个节点所在的连通块的所有节点的权值都增加 $v$。</p>
+</blockquote>
+<blockquote>
+<p><code>A3 v</code> 将所有节点的权值都增加 $v$。</p>
+</blockquote>
+<blockquote>
+<p><code>F1 x</code> 输出第 $x$ 个节点当前的权值。</p>
+</blockquote>
+<blockquote>
+<p><code>F2 x</code> 输出第 $x$ 个节点所在的连通块中，权值最大的节点的权值。</p>
+</blockquote>
+<blockquote>
+<p><code>F3</code> 输出所有节点中，权值最大的节点的权值。</p>
+</blockquote>
+<h6 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h6><p>输入的第一行是一个整数 $N$，代表节点个数。</p>
+<p>接下来一行输入 $N$ 个整数，$a_1,a_2,\ldots ,a_N$，代表 $N$ 个节点的初始权值。</p>
+<p>再下一行输入一个整数 $Q$，代表接下来的操作数。</p>
+<p>最后输入 $Q$ 行，每行的格式如题目描述所示。</p>
+<h6 id="输出格式"><a href="#输出格式" class="headerlink" title="输出格式"></a>输出格式</h6><p>对于操作 <code>F1</code>，<code>F2</code>，<code>F3</code>，输出对应的结果，每个结果占一行。</p>
+<h6 id="数据范围与提示"><a href="#数据范围与提示" class="headerlink" title="数据范围与提示"></a>数据范围与提示</h6><p>对于 $30\%$ 的数据，保证 $N\le 100,Q\le 10000$。</p>
+<p>对于 $80\%$ 的数据，保证 $N\le 100000,Q\le 100000$。</p>
+<p>对于 $100\%$ 的数据，保证 $N\le 300000,Q\le 300000$。</p>
+<p>对于所有的数据，保证输入合法，并且 $-1000\le v,a_1,a_2,\ldots ,a_N\le 1000$。</p>
+<hr>
+<p>看上去还是挺裸的可并堆，除了F3操作，只是要支持单点修改、区间修改、单点查询。</p>
+<p>为了区间修改打标记，就不能用一个并查集处理连通问题，只能老老实实记录可并堆里面父亲节点是谁。查询时使用类似LCT中下放操作的方法，用一个栈依次下放从节点到根路径上每一个点即可。</p>
+<p>事实上，本题单点修改比区间修改更恶心，因为区间修改不会改变堆的性质，而单点修改就必须把该点从堆里先删除出来，再修改，最后合并回去。如果采用的是左偏树，这个操作很可能会破坏左偏性质，而且由于下放操作的存在，并没有维护左偏性质的必要（效率上说不定更慢）。所以采用斜堆会比较容易。</p>
+<p>对于F3操作，发现关注的只是所有堆顶元素的最值。为了快速得到所有堆顶元素的最大值，可以采用两种方式：<br>1.使用multiset，堆顶元素发生变化时做出相应的删除与添加操作即可。<br>2.开两个优先队列，采用“垃圾堆”的思路，将需要添加的元素放进一个堆，需要删除的元素放进另一个堆。如果两个堆顶元素相同，pop掉两个堆的堆顶元素即可。</p>
+<p>下面的代码中采用的是方式2。</p>
+<hr>
+<p>很久之前写的代码了，现在看起来很丑。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;queue&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MAXN 600005</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> N,D;</span><br><span class="line"></span><br><span class="line">priority_queue&lt;<span class="keyword">int</span>&gt;Q,T;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> ls[MAXN],rs[MAXN],fa[MAXN],val[MAXN],lazy[MAXN];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Putdown</span><span class="params">(<span class="keyword">int</span> p)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(p==<span class="number">0</span>||lazy[p]==<span class="number">0</span>)<span class="keyword">return</span>;</span><br><span class="line">	<span class="keyword">if</span>(ls[p])val[ls[p]]+=lazy[p],lazy[ls[p]]+=lazy[p];</span><br><span class="line">	<span class="keyword">if</span>(rs[p])val[rs[p]]+=lazy[p],lazy[rs[p]]+=lazy[p];</span><br><span class="line">	lazy[p]=<span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> s[MAXN],Top;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">gf</span><span class="params">(<span class="keyword">int</span> x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> i;</span><br><span class="line">	s[++Top]=x;</span><br><span class="line">	<span class="keyword">for</span>(i=x;fa[i];i=fa[i])s[++Top]=fa[i];</span><br><span class="line">	<span class="keyword">while</span>(Top)Putdown(s[Top--]);</span><br><span class="line">	<span class="keyword">return</span> i;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">Merge</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	Putdown(x);Putdown(y);</span><br><span class="line">	<span class="keyword">if</span>(x==<span class="number">0</span>||y==<span class="number">0</span>)<span class="keyword">return</span> x|y;</span><br><span class="line">	<span class="keyword">if</span>(val[x]&lt;val[y])swap(x,y);</span><br><span class="line">	rs[x]=Merge(rs[x],y);</span><br><span class="line">	fa[rs[x]]=x;</span><br><span class="line">	swap(ls[x],rs[x]);</span><br><span class="line">	<span class="keyword">return</span> x;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">U</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> x,y;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;x,&amp;y);</span><br><span class="line">	x=gf(x);y=gf(y);</span><br><span class="line">	<span class="keyword">if</span>(x==y)<span class="keyword">return</span>;</span><br><span class="line">	T.push(val[x]);T.push(val[y]);</span><br><span class="line">	Q.push(val[Merge(x,y)]);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">Del</span><span class="params">(<span class="keyword">int</span> x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> f=fa[x],l=ls[x],r=rs[x],rt,y;</span><br><span class="line">	rt=gf(x);</span><br><span class="line">	y=Merge(l,r);</span><br><span class="line">	ls[x]=rs[x]=fa[x]=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">if</span>(ls[f]==x)ls[f]=y;</span><br><span class="line">	<span class="keyword">else</span> rs[f]=y;</span><br><span class="line">	fa[y]=f;</span><br><span class="line">	<span class="keyword">return</span> gf(y);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">A1</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> x,v;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;x,&amp;v);</span><br><span class="line">	<span class="keyword">int</span> f=gf(x);</span><br><span class="line">	T.push(val[f]);</span><br><span class="line">	val[x]+=v;</span><br><span class="line">	Q.push(val[Merge(x,Del(x))]);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">A2</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> x,v;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;x,&amp;v);</span><br><span class="line">	x=gf(x);</span><br><span class="line">	T.push(val[x]);</span><br><span class="line">	val[x]+=v;lazy[x]+=v;</span><br><span class="line">	Q.push(val[x]);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">F1</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> x;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;x);</span><br><span class="line">	gf(x);</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"%d\n"</span>,val[x]+D);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">F2</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> x;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;x);x=gf(x);</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"%d\n"</span>,val[x]+D);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">F3</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">while</span>(Q.size()&amp;&amp;T.size()&amp;&amp;Q.top()==T.top())Q.pop(),T.pop();</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"%d\n"</span>,Q.top()+D);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> i,x,y,v,M;</span><br><span class="line">	<span class="keyword">char</span> op[<span class="number">5</span>];</span><br><span class="line"></span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;N);</span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">1</span>;i&lt;=N;i++)<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;val[i]),Q.push(val[i]);</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;M);</span><br><span class="line"></span><br><span class="line">	<span class="keyword">while</span>(M--)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">"%s"</span>,op);</span><br><span class="line">		<span class="keyword">if</span>(op[<span class="number">0</span>]==<span class="string">'U'</span>)U();</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span>(op[<span class="number">0</span>]==<span class="string">'A'</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">if</span>(op[<span class="number">1</span>]==<span class="string">'1'</span>)A1();</span><br><span class="line">			<span class="keyword">else</span> <span class="keyword">if</span>(op[<span class="number">1</span>]==<span class="string">'2'</span>)A2();</span><br><span class="line">			<span class="keyword">else</span> <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;v),D+=v;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">if</span>(op[<span class="number">1</span>]==<span class="string">'1'</span>)F1();</span><br><span class="line">			<span class="keyword">else</span> <span class="keyword">if</span>(op[<span class="number">1</span>]==<span class="string">'2'</span>)F2();</span><br><span class="line">			<span class="keyword">else</span> F3();</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/可并堆/" rel="tag"># 可并堆</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/03/20/「JLOI2015」城池攻占/" rel="next" title="「JLOI2015」城池攻占">
+                <i class="fa fa-chevron-left"></i> 「JLOI2015」城池攻占
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/03/22/线性代数-删边计数/" rel="prev" title="线性代数 删边计数">
+                线性代数 删边计数 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.jpg"
+                alt="rgnoH" />
+            
+              <p class="site-author-name" itemprop="name">rgnoH</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">27</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">25</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/rgnoH" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://starkmal.github.io" title="starkmal" target="_blank">starkmal</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://mogicianevian.github.io" title="OBlack" target="_blank">OBlack</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://jackpoison.github.io" title="Sparrow" target="_blank">Sparrow</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#「SCOI2011」棘手的操作"><span class="nav-number">1.</span> <span class="nav-text">「SCOI2011」棘手的操作</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#题目描述"><span class="nav-number">1.0.0.0.0.1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#输入格式"><span class="nav-number">1.0.0.0.0.2.</span> <span class="nav-text">输入格式</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#输出格式"><span class="nav-number">1.0.0.0.0.3.</span> <span class="nav-text">输出格式</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#数据范围与提示"><span class="nav-number">1.0.0.0.0.4.</span> <span class="nav-text">数据范围与提示</span></a></li></ol></li></ol></li></ol></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">rgnoH</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">33.4k</span>
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/canvas_sphere.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
+
+  
+  
+  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
+  
+
+  <script src="/js/src/algolia-search.js?v=5.1.4"></script>
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>

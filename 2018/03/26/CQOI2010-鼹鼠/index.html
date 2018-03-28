@@ -1,0 +1,912 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="思维," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="CQOI2010 鼹鼠问题描述Hilbert鼹鼠住在Hilbert地洞里——地洞的边界是一条n阶Hilbert曲线Hn。Hilbert曲线的定义如下：H1是一个上端缺口的单位正方形；Hn由四份Hn-1组成，其中左下和右下两份没有任何变化，而左上的那一份逆时针旋转了90度，而右上的那一份顺时针旋转了90度。这四份Hn-1用三条单位长度的线段连接起来构成了Hn。H1~H4如下图所示：  　你想捉一只H">
+<meta name="keywords" content="思维">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CQOI2010 鼹鼠">
+<meta property="og:url" content="http://yoursite.com/2018/03/26/CQOI2010-鼹鼠/index.html">
+<meta property="og:site_name" content="rgnoH&#39;s Blog">
+<meta property="og:description" content="CQOI2010 鼹鼠问题描述Hilbert鼹鼠住在Hilbert地洞里——地洞的边界是一条n阶Hilbert曲线Hn。Hilbert曲线的定义如下：H1是一个上端缺口的单位正方形；Hn由四份Hn-1组成，其中左下和右下两份没有任何变化，而左上的那一份逆时针旋转了90度，而右上的那一份顺时针旋转了90度。这四份Hn-1用三条单位长度的线段连接起来构成了Hn。H1~H4如下图所示：  　你想捉一只H">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://oi.nks.edu.cn/Content/Uploads/Images/2032_1.jpg">
+<meta property="og:image" content="http://oi.nks.edu.cn/Content/Uploads/Images/2032_2.jpg">
+<meta property="og:image" content="http://oi.nks.edu.cn/Content/Uploads/Images/2032_3.jpg">
+<meta property="og:image" content="http://yoursite.com/images/2032_1.jpg">
+<meta property="og:image" content="http://yoursite.com/images/base.png">
+<meta property="og:image" content="http://yoursite.com/images/base%20-%20副本.png">
+<meta property="og:updated_time" content="2018-03-27T23:59:50.720Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="CQOI2010 鼹鼠">
+<meta name="twitter:description" content="CQOI2010 鼹鼠问题描述Hilbert鼹鼠住在Hilbert地洞里——地洞的边界是一条n阶Hilbert曲线Hn。Hilbert曲线的定义如下：H1是一个上端缺口的单位正方形；Hn由四份Hn-1组成，其中左下和右下两份没有任何变化，而左上的那一份逆时针旋转了90度，而右上的那一份顺时针旋转了90度。这四份Hn-1用三条单位长度的线段连接起来构成了Hn。H1~H4如下图所示：  　你想捉一只H">
+<meta name="twitter:image" content="http://oi.nks.edu.cn/Content/Uploads/Images/2032_1.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/03/26/CQOI2010-鼹鼠/"/>
+
+
+
+
+
+  <title>CQOI2010 鼹鼠 | rgnoH's Blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">rgnoH's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-schedule">
+          <a href="/schedule/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-calendar"></i> <br />
+            
+            日程表
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  
+  <div class="algolia-popup popup search-popup">
+    <div class="algolia-search">
+      <div class="algolia-search-input-icon">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="algolia-search-input" id="algolia-search-input"></div>
+    </div>
+
+    <div class="algolia-results">
+      <div id="algolia-stats"></div>
+      <div id="algolia-hits"></div>
+      <div id="algolia-pagination" class="algolia-pagination"></div>
+    </div>
+
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+  </div>
+
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/26/CQOI2010-鼹鼠/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="rgnoH">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="rgnoH's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">CQOI2010 鼹鼠</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-26T16:04:47+08:00">
+                2018-03-26
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1,370字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  6min
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="CQOI2010-鼹鼠"><a href="#CQOI2010-鼹鼠" class="headerlink" title="CQOI2010 鼹鼠"></a>CQOI2010 鼹鼠</h1><h6 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h6><p>Hilbert鼹鼠住在Hilbert地洞里——地洞的边界是一条n阶Hilbert曲线Hn。Hilbert曲线的定义如下：H1是一个上端缺口的单位正方形；Hn由四份Hn-1组成，其中左下和右下两份没有任何变化，而左上的那一份逆时针旋转了90度，而右上的那一份顺时针旋转了90度。这四份Hn-1用三条单位长度的线段连接起来构成了Hn。H1~H4如下图所示：</p>
+<p><img src="http://oi.nks.edu.cn/Content/Uploads/Images/2032_1.jpg" alt="img"></p>
+<p>　你想捉一只Hilbert鼹鼠来玩，所以往地洞里使劲倒水想把它们赶出来。不过，由于地洞里有空气，无论你怎么倒水，有些地方总是淹不到的（假设水和空气都不可压缩）。输入Hilbert曲线的阶数n和地面的倾斜角α，你的任务是计算能淹没到的面积。</p>
+<p><img src="http://oi.nks.edu.cn/Content/Uploads/Images/2032_2.jpg" alt="img"></p>
+<p>注意，只有当水位<strong>严格高于</strong>一个障碍物时，水才能越过它往下流。更多细节可以参考下面的例子</p>
+<p><img src="http://oi.nks.edu.cn/Content/Uploads/Images/2032_3.jpg" alt="img"></p>
+<h6 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h6><p>输入仅包含两个整数n，α。</p>
+<h6 id="输出格式"><a href="#输出格式" class="headerlink" title="输出格式"></a>输出格式</h6><p>输出仅一行，即被淹没的面积，输出保留小数点后6位。</p>
+<h6 id="样例输入"><a href="#样例输入" class="headerlink" title="样例输入"></a>样例输入</h6><p>样例输入1：<br>5 30<br>样例输入2：<br>3 45<br>样例输入3：<br>4 10<br>样例输入4：<br>3 0</p>
+<h6 id="样例输出"><a href="#样例输出" class="headerlink" title="样例输出"></a>样例输出</h6><p>样例输出1：<br>190.803848<br>样例输出2：<br>15.500000<br>样例输出3：<br>91.573592<br>样例输出4：<br>26.000000</p>
+<h6 id="数据范围"><a href="#数据范围" class="headerlink" title="数据范围"></a>数据范围</h6><p>$n\leq 12,α \in [0,90)$</p>
+<hr>
+<p>第一眼看上去是一道不可做题：分形十分复杂，灌水也似乎很困难，而且还要计算面积。仔细分析之后发现就是一道初中数学题。</p>
+<p>首先解决分形。不难推导出$n$阶的边长是$2^n-1$，那么本题中最长为$2^{12}-1=4095$，可以用数组直接存下分形图。</p>
+<p>然后考虑分形的规律，按照题目所述模拟即可。接下来关注从$n$到$n+1$阶具体的变化，即变化后哪些格子是地洞。下面以$2$阶转$3$阶为例：</p>
+<p><img src="/images/2032_1.jpg" alt="032_"></p>
+<p>不难发现新的图里，地洞就是<strong>左上角、右上角原来不是地洞的部分；左下角、右下角原来就是地洞的部分、最中央的一行和最中央靠上的半列</strong>。这样就解决了分形的问题。</p>
+<p>再考虑灌水的问题。如何知道一个格子的灌水情况呢？下面使用水面的“基准高度”来描述，“基准高度”指正方形的最下端点到水面的高度，如下图：</p>
+<p><img src="/images/base.png" alt="as"></p>
+<p>容易看出一个格子的水面基准高度与与之四连通的地洞格子有关。再结合题目条件可知，顶部的一行地洞格子的基准高度一定为$cos\alpha$。</p>
+<p>接下来考虑通过顶部的格子推导其他格子的基准高度。首先容易发现最后有水的格子形成了森林，可以把顶部的格子当作根做一次DFS。DFS过程中，考虑四个方向：左上、左下、右上、右下的转移分别会对基准高度产生什么影响，下面以右下转移为例：</p>
+<p><img src="/images/base - 副本.png" alt="ase - 副"></p>
+<p>稍微画图就可知右下的基准高度为$h+cos\alpha$。同理可以推出其他转移：右上为$h-sin\alpha$，左上为$h-cos\alpha$，左下为$h+sin\alpha$。同时要注意基准高度的取值范围是$[0,sin\alpha+cos\alpha]$，而且根据题意“只有当水位<strong>严格高于</strong>一个障碍物时，水才能越过它往下流”，搜到某个位置的基准高度为0就不搜了。</p>
+<p>确定了基准高度就可以算面积了，这里就是经典的初中几何问题了= =。根据$h$分成三段讨论计算面积，这里还需要看$\alpha$与$45°$的大小关系，即$cos\alpha$和$\sin\alpha$的大小关系。具体推导就不写了。</p>
+<p>注意为了保证精度，将除法部分提到最后。</p>
+<hr>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> db double</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">const</span> db Pi=<span class="built_in">atan</span>(<span class="number">1.0</span>)*<span class="number">4.0</span>,eps=<span class="number">1e-10</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> N,alpha,len=<span class="number">1</span>;</span><br><span class="line"><span class="keyword">bool</span> Map[<span class="number">4100</span>][<span class="number">4100</span>],Tmp[<span class="number">4100</span>][<span class="number">4100</span>],vis[<span class="number">4100</span>][<span class="number">4100</span>];</span><br><span class="line">db Ans,C,S,maxh,ang;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y,db h)</span></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(x&lt;<span class="number">1</span>||y&lt;<span class="number">1</span>||x&gt;len||y&gt;len||h&lt;eps||!Map[x][y]||vis[x][y])<span class="keyword">return</span>;</span><br><span class="line">	vis[x][y]=<span class="literal">true</span>;</span><br><span class="line">	<span class="keyword">if</span>(h&gt;maxh)h=maxh;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span>(alpha==<span class="number">0</span>)Ans+=<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">else</span> &#123;</span><br><span class="line">		db s=S,c=C;</span><br><span class="line">		<span class="keyword">if</span>(alpha&gt;<span class="number">45</span>)swap(s,c);</span><br><span class="line">		<span class="keyword">if</span>(h&lt;=s)Ans+=h*h;</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span>(h&lt;=c)Ans+=(<span class="number">2.0</span>*h-s)*s;</span><br><span class="line">		<span class="keyword">else</span> Ans+=<span class="number">2.0</span>*s*c-(s+c-h)*(s+c-h);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	dfs(x+<span class="number">1</span>,y,h+C);dfs(x,y+<span class="number">1</span>,h+S);</span><br><span class="line">	dfs(x<span class="number">-1</span>,y,h-C);dfs(x,y<span class="number">-1</span>,h-S);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> i,j,k,x,y;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;N,&amp;alpha);</span><br><span class="line">	Map[<span class="number">1</span>][<span class="number">1</span>]=<span class="literal">true</span>;</span><br><span class="line">	<span class="keyword">for</span>(k=<span class="number">1</span>;k&lt;N;k++)&#123;</span><br><span class="line">		<span class="keyword">for</span>(x=<span class="number">1</span>;x&lt;=len;x++)</span><br><span class="line">		<span class="keyword">for</span>(y=<span class="number">1</span>;y&lt;=len;y++)&#123;</span><br><span class="line">			Tmp[len-y+<span class="number">1</span>][x]=Tmp[y][len+<span class="number">1</span>+ len-x+<span class="number">1</span>]=!Map[x][y];</span><br><span class="line">			Tmp[len+<span class="number">1</span>+x][y]=Tmp[len+<span class="number">1</span>+x][len+<span class="number">1</span>+y]=Map[x][y];</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">for</span>(i=<span class="number">1</span>;i&lt;=<span class="number">2</span>*len+<span class="number">1</span>;i++)Tmp[len+<span class="number">1</span>][i]=<span class="literal">true</span>;</span><br><span class="line">		<span class="keyword">for</span>(i=<span class="number">1</span>;i&lt;=len;i++)Tmp[i][len+<span class="number">1</span>]=<span class="literal">true</span>;</span><br><span class="line">		len=len*<span class="number">2</span>+<span class="number">1</span>;</span><br><span class="line">		<span class="keyword">for</span>(i=<span class="number">1</span>;i&lt;=len;i++)</span><br><span class="line">		<span class="keyword">for</span>(j=<span class="number">1</span>;j&lt;=len;j++)Map[i][j]=Tmp[i][j];</span><br><span class="line">	&#125;</span><br><span class="line">	ang=<span class="number">1.0</span>*Pi*alpha/<span class="number">180</span>;</span><br><span class="line">	C=<span class="built_in">cos</span>(ang);S=<span class="built_in">sin</span>(ang);</span><br><span class="line">	maxh=C+S;</span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">1</span>;i&lt;=len;i++)dfs(<span class="number">1</span>,i,C);</span><br><span class="line">	<span class="keyword">if</span>(alpha!=<span class="number">0</span>)Ans=Ans/<span class="number">2.0</span>/S/C;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"%.6lf\n"</span>,Ans);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/思维/" rel="tag"># 思维</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/03/23/洛谷4245-【模板】MTT/" rel="next" title="洛谷P4245 【模板】MTT">
+                <i class="fa fa-chevron-left"></i> 洛谷P4245 【模板】MTT
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/03/26/翻卡片/" rel="prev" title="翻卡片">
+                翻卡片 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.jpg"
+                alt="rgnoH" />
+            
+              <p class="site-author-name" itemprop="name">rgnoH</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">27</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">25</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/rgnoH" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://starkmal.github.io" title="starkmal" target="_blank">starkmal</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://mogicianevian.github.io" title="OBlack" target="_blank">OBlack</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://jackpoison.github.io" title="Sparrow" target="_blank">Sparrow</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#CQOI2010-鼹鼠"><span class="nav-number">1.</span> <span class="nav-text">CQOI2010 鼹鼠</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#问题描述"><span class="nav-number">1.0.0.0.0.1.</span> <span class="nav-text">问题描述</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#输入格式"><span class="nav-number">1.0.0.0.0.2.</span> <span class="nav-text">输入格式</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#输出格式"><span class="nav-number">1.0.0.0.0.3.</span> <span class="nav-text">输出格式</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#样例输入"><span class="nav-number">1.0.0.0.0.4.</span> <span class="nav-text">样例输入</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#样例输出"><span class="nav-number">1.0.0.0.0.5.</span> <span class="nav-text">样例输出</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#数据范围"><span class="nav-number">1.0.0.0.0.6.</span> <span class="nav-text">数据范围</span></a></li></ol></li></ol></li></ol></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">rgnoH</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">33.4k</span>
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/canvas_sphere.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
+
+  
+  
+  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
+  
+
+  <script src="/js/src/algolia-search.js?v=5.1.4"></script>
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>

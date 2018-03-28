@@ -1,0 +1,902 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="数学,矩阵乘法," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="「JLOI2015」有意义的字符串题目描述B 君有两个好朋友，他们叫宁宁和冉冉。有一天，冉冉遇到了一个有趣的题目：输入 $b, d, n$，求 $$\bigg [ \Big ( \frac{b+ \sqrt{d}}{2} \Big )^n \bigg ]\mod 7528443412579576937$$ 输入格式一行三个整数 $b,d,n$ 输出格式一行一个数表示模 $7528443412579">
+<meta name="keywords" content="数学,矩阵乘法">
+<meta property="og:type" content="article">
+<meta property="og:title" content="「JLOI2015」有意义的字符串">
+<meta property="og:url" content="http://yoursite.com/2018/03/20/「JLOI2015」有意义的字符串/index.html">
+<meta property="og:site_name" content="rgnoH&#39;s Blog">
+<meta property="og:description" content="「JLOI2015」有意义的字符串题目描述B 君有两个好朋友，他们叫宁宁和冉冉。有一天，冉冉遇到了一个有趣的题目：输入 $b, d, n$，求 $$\bigg [ \Big ( \frac{b+ \sqrt{d}}{2} \Big )^n \bigg ]\mod 7528443412579576937$$ 输入格式一行三个整数 $b,d,n$ 输出格式一行一个数表示模 $7528443412579">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-03-27T23:59:50.736Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="「JLOI2015」有意义的字符串">
+<meta name="twitter:description" content="「JLOI2015」有意义的字符串题目描述B 君有两个好朋友，他们叫宁宁和冉冉。有一天，冉冉遇到了一个有趣的题目：输入 $b, d, n$，求 $$\bigg [ \Big ( \frac{b+ \sqrt{d}}{2} \Big )^n \bigg ]\mod 7528443412579576937$$ 输入格式一行三个整数 $b,d,n$ 输出格式一行一个数表示模 $7528443412579">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/03/20/「JLOI2015」有意义的字符串/"/>
+
+
+
+
+
+  <title>「JLOI2015」有意义的字符串 | rgnoH's Blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">rgnoH's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-schedule">
+          <a href="/schedule/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-calendar"></i> <br />
+            
+            日程表
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  
+  <div class="algolia-popup popup search-popup">
+    <div class="algolia-search">
+      <div class="algolia-search-input-icon">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="algolia-search-input" id="algolia-search-input"></div>
+    </div>
+
+    <div class="algolia-results">
+      <div id="algolia-stats"></div>
+      <div id="algolia-hits"></div>
+      <div id="algolia-pagination" class="algolia-pagination"></div>
+    </div>
+
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+  </div>
+
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/20/「JLOI2015」有意义的字符串/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="rgnoH">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="rgnoH's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">「JLOI2015」有意义的字符串</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-20T18:17:02+08:00">
+                2018-03-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1,230字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  6min
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="「JLOI2015」有意义的字符串"><a href="#「JLOI2015」有意义的字符串" class="headerlink" title="「JLOI2015」有意义的字符串"></a>「JLOI2015」有意义的字符串</h1><h6 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h6><p>B 君有两个好朋友，他们叫宁宁和冉冉。有一天，冉冉遇到了一个有趣的题目：输入 $b, d, n$，求</p>
+<p>$$\bigg [ \Big ( \frac{b+ \sqrt{d}}{2} \Big )^n \bigg ]\mod 7528443412579576937$$</p>
+<h6 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h6><p>一行三个整数 $b,d,n$</p>
+<h6 id="输出格式"><a href="#输出格式" class="headerlink" title="输出格式"></a>输出格式</h6><p>一行一个数表示模 $7528443412579576937$ 之后的结果。</p>
+<h6 id="数据范围与提示"><a href="#数据范围与提示" class="headerlink" title="数据范围与提示"></a>数据范围与提示</h6><p>其中 $0&lt;b^2 \leq d &lt;(b+1)^2 \leq 10^{18}, \ n \leq 10^{18}$，并且 $b \mod 2=1, \ d \mod 4=1$</p>
+<hr>
+<p>UPD：下面关于$\Big( \frac{b+ \sqrt{d}}{2}\Big )^n + \Big( \frac{b- \sqrt{d}}{2}\Big )^n $是整数的证明稍有问题，但是由于其中关于杨辉三角的运用很不错所以还是保留吧。</p>
+<p>考虑与$\Big( \frac{b+ \sqrt{d}}{2}\Big )^n $形式相似的式子 $\Big( \frac{b- \sqrt{d}}{2}\Big )^n $。先不考虑分母上的$2^n$，那么两式相加之后结果一定是整数，因为$\sqrt d$次数为偶数的项自然是整数，而次数为奇数的项，前后正负相抵为0。</p>
+<p>因此，$(b+\sqrt d)^n$和$(b-\sqrt d)^n$相加之后整数部分的值就是两倍 $(b+\sqrt d)^n$或$(b-\sqrt d)^n$整数部分的值。这个可以利用矩阵乘法加速计算。</p>
+<p>///以下是有问题的证明</p>
+<p>那么$\Big( \frac{b+ \sqrt{d}}{2}\Big )^n + \Big( \frac{b- \sqrt{d}}{2}\Big )^n $是否也是整数呢？由刚才的分析，分子部分是$2\sum_{i=0,i\ is \ even}^n\Big( ^n_i \Big) (\sqrt d)^i b^{n-i}$。现在考虑题目中对$b,d$的限制，在模2意义下考虑，则上述和式中组合数前的系数都是1。容易发现$\sum_{i=0,i\ is \ even}^n\Big( ^n_i \Big)$就是$2^{n-1}$，这个可以把杨辉三角画出来验证。此时再乘上和式前的系数2,恰好能将分子上的$2^n$约去。因此这个式子的结果是个整数，要得到它只需要用刚才矩阵乘法求出的值乘上2的逆元的n-1次方即可。(2的逆元就是把题目中的那个数加1之后除以2)</p>
+<p>///以下是正确的证明：</p>
+<p>先注意没有这样的事，这是上面证明的问题所在：<br>$$<br>a\equiv1(mod\  4),b\equiv1(mod\  4) \rightarrow ab\equiv 1(mod\ 16)<br>$$<br>比如$a=b=5$就不满足上面的关系。但是有特例：<br>$$<br>a\equiv1(mod\  2) \rightarrow a^2\equiv 1(mod \ 4)<br>$$<br>将$a$设为$2k+1$的形式后不难证明。</p>
+<p>下面考虑使用数学归纳法证明$\Big( \frac{b+ \sqrt{d}}{2}\Big )^n + \Big( \frac{b- \sqrt{d}}{2}\Big )^n (n\in \mathbb N^*,b \mod 2=1, \ d \mod 4=1)$是整数。</p>
+<p>首先当$n=1,2$时显然成立。</p>
+<p>假设结论对$1$~$n(n&gt;2)$都成立，下面证明它对$n+1$也成立：</p>
+<p>设$\alpha=\frac{b+ \sqrt{d}}{2}$,$\beta=\frac{b- \sqrt{d}}{2}$。由归纳假设得$(\alpha^n+\beta^n)(\alpha+\beta)$是整数。展开整理得$(\alpha^n+\beta^n)(\alpha+\beta)=\alpha^{n+1}+\beta^{n+1}+\alpha\beta(\alpha^{n-1}+\beta^{n-1})$。</p>
+<p>由于$\alpha\beta=\frac{b^2-d}{4}$,由条件$b \mod 2=1, \ d \mod 4=1$得$\alpha\beta$是整数。由归纳假设得$\alpha^{n-1}+\beta^{n-1}$也是整数，所以$\alpha^{n+1}+\beta^{n+1}$是整数。</p>
+<p>综上，$\Big( \frac{b+ \sqrt{d}}{2}\Big )^n + \Big( \frac{b- \sqrt{d}}{2}\Big )^n (n\in \mathbb N^*,b \mod 2=1, \ d \mod 4=1)$是整数。</p>
+<p>之前都没有考虑原式，原式=$\Big[\Big( \frac{b+ \sqrt{d}}{2}\Big )^n + \Big( \frac{b- \sqrt{d}}{2}\Big )^n \Big]- \Big( \frac{b- \sqrt{d}}{2}\Big )^n$。由于$0&lt;b^2 \leq d &lt;(b+1)^2$,得到$b\leq \sqrt d&lt; b+1$，所以$ \frac{b- \sqrt{d}}{2}  \in (-1,0]$。仅当$n$为偶数且$b^2 \ne d$时，才需要把之前算得的结果减去1.</p>
+<hr>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ull unsigned long long</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">const</span> ull mod=<span class="number">7528443412579576937u</span>ll,inv=<span class="number">3764221706289788469u</span>ll;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">add</span><span class="params">(ull &amp;x,ull y)</span></span>&#123;</span><br><span class="line">	x+=y;</span><br><span class="line">	x-=x&lt;mod?<span class="number">0</span>:mod;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">ull B,D,N,Ans[<span class="number">10</span>][<span class="number">10</span>],f[<span class="number">10</span>][<span class="number">10</span>],ret;</span><br><span class="line"></span><br><span class="line"><span class="function">ull <span class="title">ksc</span><span class="params">(ull a,ull b)</span></span>&#123;</span><br><span class="line">	ull ans=<span class="number">0</span>;a%=mod;</span><br><span class="line">	<span class="keyword">while</span>(b)&#123;</span><br><span class="line">		<span class="keyword">if</span>(b&amp;<span class="number">1</span>)add(ans,a);</span><br><span class="line">		b&gt;&gt;=<span class="number">1</span>;add(a,a);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function">ull <span class="title">ksm</span><span class="params">(ull a,ull b)</span></span>&#123;</span><br><span class="line">	ull ans=<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">while</span>(b)&#123;</span><br><span class="line">		<span class="keyword">if</span>(b&amp;<span class="number">1</span>)ans=ksc(ans,a);</span><br><span class="line">		b&gt;&gt;=<span class="number">1</span>;a=ksc(a,a);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">mul</span><span class="params">(ull a[<span class="number">10</span>][<span class="number">10</span>],ull b[<span class="number">10</span>][<span class="number">10</span>])</span></span>&#123;</span><br><span class="line">	ull c[<span class="number">10</span>][<span class="number">10</span>]=&#123;<span class="number">0</span>&#125;;<span class="keyword">int</span> i,j,k;</span><br><span class="line">	<span class="keyword">for</span>(k=<span class="number">1</span>;k&lt;=<span class="number">2</span>;k++)</span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">1</span>;i&lt;=<span class="number">2</span>;i++)</span><br><span class="line">	<span class="keyword">for</span>(j=<span class="number">1</span>;j&lt;=<span class="number">2</span>;j++)</span><br><span class="line">	add(c[i][j],ksc(a[i][k],b[k][j]));</span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">1</span>;i&lt;=<span class="number">2</span>;i++)</span><br><span class="line">	<span class="keyword">for</span>(j=<span class="number">1</span>;j&lt;=<span class="number">2</span>;j++)a[i][j]=c[i][j];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">KSM</span><span class="params">(ull b)</span></span>&#123;</span><br><span class="line">	f[<span class="number">1</span>][<span class="number">1</span>]=f[<span class="number">2</span>][<span class="number">2</span>]=B;f[<span class="number">1</span>][<span class="number">2</span>]=<span class="number">1</span>;f[<span class="number">2</span>][<span class="number">1</span>]=D;</span><br><span class="line">	Ans[<span class="number">1</span>][<span class="number">1</span>]=<span class="number">1</span>;Ans[<span class="number">1</span>][<span class="number">2</span>]=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">while</span>(b)&#123;</span><br><span class="line">		<span class="keyword">if</span>(b&amp;<span class="number">1</span>)mul(Ans,f);</span><br><span class="line">		b&gt;&gt;=<span class="number">1</span>;mul(f,f);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="built_in">cin</span>&gt;&gt;B&gt;&gt;D&gt;&gt;N;</span><br><span class="line">	<span class="keyword">if</span>(N==<span class="number">0</span>)<span class="keyword">return</span> <span class="built_in">puts</span>(<span class="string">"1"</span>),<span class="number">0</span>;</span><br><span class="line">	KSM(N);</span><br><span class="line">	ret=ksc(Ans[<span class="number">1</span>][<span class="number">1</span>],ksm(inv,N<span class="number">-1</span>));</span><br><span class="line">	<span class="keyword">if</span>((~N&amp;<span class="number">1</span>)&amp;&amp;B*B!=D)ret--;</span><br><span class="line">	<span class="built_in">cout</span>&lt;&lt;ret&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/数学/" rel="tag"># 数学</a>
+          
+            <a href="/tags/矩阵乘法/" rel="tag"># 矩阵乘法</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/03/20/「HEOI2015」公约数数列/" rel="next" title="「HEOI2015」公约数数列">
+                <i class="fa fa-chevron-left"></i> 「HEOI2015」公约数数列
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/03/20/「JLOI2015」城池攻占/" rel="prev" title="「JLOI2015」城池攻占">
+                「JLOI2015」城池攻占 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.jpg"
+                alt="rgnoH" />
+            
+              <p class="site-author-name" itemprop="name">rgnoH</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">27</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">25</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/rgnoH" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://starkmal.github.io" title="starkmal" target="_blank">starkmal</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://mogicianevian.github.io" title="OBlack" target="_blank">OBlack</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://jackpoison.github.io" title="Sparrow" target="_blank">Sparrow</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#「JLOI2015」有意义的字符串"><span class="nav-number">1.</span> <span class="nav-text">「JLOI2015」有意义的字符串</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#题目描述"><span class="nav-number">1.0.0.0.0.1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#输入格式"><span class="nav-number">1.0.0.0.0.2.</span> <span class="nav-text">输入格式</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#输出格式"><span class="nav-number">1.0.0.0.0.3.</span> <span class="nav-text">输出格式</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#数据范围与提示"><span class="nav-number">1.0.0.0.0.4.</span> <span class="nav-text">数据范围与提示</span></a></li></ol></li></ol></li></ol></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">rgnoH</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">33.4k</span>
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/canvas_sphere.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
+
+  
+  
+  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
+  
+
+  <script src="/js/src/algolia-search.js?v=5.1.4"></script>
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>

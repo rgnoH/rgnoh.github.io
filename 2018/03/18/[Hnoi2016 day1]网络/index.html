@@ -1,0 +1,897 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="线段树,树链剖分,堆," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="#[Hnoi2016 day1]网络  问题描述一个简单的网络系统可以被描述成一棵无根树。每个节点为一个服务器。连接服务器与服务器的数据线则看做一条树边。两个服务器进行数据的交互时，数据会经过连接这两个服务器的路径上的所有服务器（包括这两个服务器自身）。由于这条路径是唯一的，当路径上的某个服务器出现故障，无法正常运行时，数据便无法交互。此外，每个数据交互请求都有一个重要度，越重要的请求显然需要得到">
+<meta name="keywords" content="线段树,树链剖分,堆">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hnoi2016day1网络">
+<meta property="og:url" content="http://yoursite.com/2018/03/18/[Hnoi2016 day1]网络/index.html">
+<meta property="og:site_name" content="rgnoH&#39;s Blog">
+<meta property="og:description" content="#[Hnoi2016 day1]网络  问题描述一个简单的网络系统可以被描述成一棵无根树。每个节点为一个服务器。连接服务器与服务器的数据线则看做一条树边。两个服务器进行数据的交互时，数据会经过连接这两个服务器的路径上的所有服务器（包括这两个服务器自身）。由于这条路径是唯一的，当路径上的某个服务器出现故障，无法正常运行时，数据便无法交互。此外，每个数据交互请求都有一个重要度，越重要的请求显然需要得到">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-03-27T23:59:50.720Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Hnoi2016day1网络">
+<meta name="twitter:description" content="#[Hnoi2016 day1]网络  问题描述一个简单的网络系统可以被描述成一棵无根树。每个节点为一个服务器。连接服务器与服务器的数据线则看做一条树边。两个服务器进行数据的交互时，数据会经过连接这两个服务器的路径上的所有服务器（包括这两个服务器自身）。由于这条路径是唯一的，当路径上的某个服务器出现故障，无法正常运行时，数据便无法交互。此外，每个数据交互请求都有一个重要度，越重要的请求显然需要得到">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/03/18/[Hnoi2016 day1]网络/"/>
+
+
+
+
+
+  <title>Hnoi2016day1网络 | rgnoH's Blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">rgnoH's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-schedule">
+          <a href="/schedule/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-calendar"></i> <br />
+            
+            日程表
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  
+  <div class="algolia-popup popup search-popup">
+    <div class="algolia-search">
+      <div class="algolia-search-input-icon">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="algolia-search-input" id="algolia-search-input"></div>
+    </div>
+
+    <div class="algolia-results">
+      <div id="algolia-stats"></div>
+      <div id="algolia-hits"></div>
+      <div id="algolia-pagination" class="algolia-pagination"></div>
+    </div>
+
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+  </div>
+
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/18/[Hnoi2016 day1]网络/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="rgnoH">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="rgnoH's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Hnoi2016day1网络</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-18T16:51:55+08:00">
+                2018-03-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  2,183字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  10min
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>#[Hnoi2016 day1]网络 </p>
+<h6 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h6><p>一个简单的网络系统可以被描述成一棵无根树。每个节点为一个服务器。连接服务器与服务器的数据线则看做<br>一条树边。两个服务器进行数据的交互时，数据会经过连接这两个服务器的路径上的所有服务器（包括这两个服务<br>器自身）。由于这条路径是唯一的，当路径上的某个服务器出现故障，无法正常运行时，数据便无法交互。此外，<br>每个数据交互请求都有一个重要度，越重要的请求显然需要得到越高的优先处理权。现在，你作为一个网络系统的<br>管理员，要监控整个系统的运行状态。系统的运行也是很简单的，在每一个时刻，只有可能出现下列三种事件中的<br>一种：1.  在某两个服务器之间出现一条新的数据交互请求；2.  某个数据交互结束请求；3.  某个服务器出现故<br>障。系统会在任何故障发生后立即修复。也就是在出现故障的时刻之后，这个服务器依然是正常的。但在服务器产<br>生故障时依然会对需要经过该服务器的数据交互请求造成影响。你的任务是在每次出现故障时，维护未被影响的请<br>求中重要度的最大值。注意，如果一个数据交互请求已经结束，则不将其纳入未被影响的请求范围。</p>
+<h6 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h6><p>第一行两个正整数n,m，分别描述服务器和事件个数。服务器编号是从1开始的，因此n个服务器的编号依次是1<br>,2,3,…,n。接下来n-1行，每行两个正整数u,v，描述一条树边。u和v是服务器的编号。接下来m行，按发生时刻依<br>次描述每一个事件；即第i行（i=1,2,3,…,m）描述时刻i发生的事件。每行的第一个数type描述事件类型，共3种<br>类型：（1）若type=0，之后有三个正整数a,b,v，表示服务器a,b之间出现一条重要度为v的数据交互请求；（2）<br>若type=1，之后有一个正整数t，表示时刻t（也就是第t个发生的事件）出现的数据交互请求结束；（3）若type=2<br>，之后有一个正整数x，表示服务器x在这一时刻出现了故障。对于每个type为2的事件，就是一次询问，即询问“<br>当服务器x发生故障时，未被影响的请求中重要度的最大值是多少？”注意可能有某个服务器自身与自身进行数据<br>交互的情况。</p>
+<h6 id="输出格式"><a href="#输出格式" class="headerlink" title="输出格式"></a>输出格式</h6><p>对于每个type=2的事件，即服务器出现故障的事件，输出一行一个整数，描述未被影响的请求中重要度的最大<br>值。如果此时没有任何请求，或者所有请求均被影响，则输出-1。</p>
+<h6 id="数据规模"><a href="#数据规模" class="headerlink" title="数据规模"></a>数据规模</h6><p>2 ≤ n ≤ 10^5, 1 ≤ m ≤ 2×10^5，其他的所有输入值不超过 10^9</p>
+<hr>
+<p>路径问题，容易想到树分治，这道题容易想到树链剖分。</p>
+<p>题目中要求维护<strong>未被影响</strong>的请求中重要度的最大值。看似不好做，实际上直接维护即可：利用重链剖分，树上的一条路径被分成了$O(logn)$段连续的区间。这条交互请求不受路径外的点的影响，而路径外的点就是这条路径被分成的区间以外的点。容易发现：<strong>这些点同样形成了若干段区间，而且个数也是$O(logn)$的</strong>，这样就可以用线段树维护了。只需要取出路径对应区间，暴力排序后取出想要的区间即可。</p>
+<p>由于要维护最大值，容易想到给每个线段树的节点开一个堆。利用标记永久化思想，每次只修改$O(logn)$个节点上的堆，由于是单点查询，查询时只要一直跳到树根，取路径上堆顶元素的最大值就好。单点查询，区间修改，使用zkw线段树非常好。</p>
+<p>时间复杂度：</p>
+<p>每一次询问，找到对应区间；$O(logn)$对这些区间排序$O(lognlog(logn))$，可以视为$O(logn)$；修改完所有区间的时间复杂度上界理论上是$O(log^3n)$的，但是由于$zkw$线段树和二叉堆往往跑不满$logn$，所以官方数据是可过的。</p>
+<p>正解貌似是整体二分？复杂度和常数都优于这种做法，于是有人加了一组数据把这种做法卡到复杂度上界直接TLE。<strong>卡前向星存图</strong>的还是第一次= =。由于前向星存边是逆序的，用vector顺序存边的话，这组数据就卡不掉了……或者是像下面的代码一样，把树链剖分里找重儿子的判断条件取个等就好（达到与顺序存边相同的效果）。</p>
+<hr>
+<p>学习了支持删除操作的堆的优秀写法。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;queue&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MAXN 200005</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MAXM 400005</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MAXT 800005</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> pr pair</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> fi first</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> se second</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> mp make_pair</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">char</span> buf[<span class="number">1</span>&lt;&lt;<span class="number">20</span>],*p1,*p2;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> GC (p1==p2&amp;&amp;(p2=(p1=buf)+fread(buf,1,1000000,stdin),p1==p2)?0:*p1++)</span></span><br><span class="line"><span class="keyword">inline</span> <span class="keyword">int</span> _R()&#123;</span><br><span class="line">	<span class="keyword">int</span> v=<span class="number">0</span>,sign=<span class="number">0</span>;<span class="keyword">char</span> s=GC;</span><br><span class="line">	<span class="keyword">while</span>((s!=<span class="string">'-'</span>)&amp;&amp;(s&gt;<span class="number">57</span>||s&lt;<span class="number">48</span>))s=GC;</span><br><span class="line">	<span class="keyword">if</span>(s==<span class="string">'-'</span>)s=GC,sign=<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">for</span>(;s&gt;<span class="number">47</span>&amp;&amp;s&lt;<span class="number">58</span>;s=GC)v=v*<span class="number">10</span>+s<span class="number">-48</span>;</span><br><span class="line">	<span class="keyword">return</span> sign?-v:v;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Heap</span>&#123;</span></span><br><span class="line">	priority_queue&lt;<span class="keyword">int</span>&gt;q,h;</span><br><span class="line">	<span class="function"><span class="keyword">int</span> <span class="title">top</span><span class="params">()</span></span>&#123;</span><br><span class="line">		<span class="keyword">while</span>(q.size()&amp;&amp;h.size()&amp;&amp;q.top()==h.top())q.pop(),h.pop();</span><br><span class="line">		<span class="keyword">return</span> q.size()?q.top():<span class="number">-1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">ins</span><span class="params">(<span class="keyword">int</span> v)</span></span>&#123;</span><br><span class="line">		q.push(v);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">del</span><span class="params">(<span class="keyword">int</span> v)</span></span>&#123;</span><br><span class="line">		h.push(v);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">node</span>&#123;</span></span><br><span class="line">	<span class="keyword">int</span> a,b,v;</span><br><span class="line">&#125;A[MAXN];</span><br><span class="line"></span><br><span class="line">pr&lt;<span class="keyword">int</span>,<span class="keyword">int</span>&gt;s[<span class="number">105</span>];<span class="keyword">int</span> cnt;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> N,M;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> en[MAXM],nex[MAXM],las[MAXN],tot;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Add</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y)</span></span>&#123;</span><br><span class="line">	en[++tot]=y;</span><br><span class="line">	nex[tot]=las[x];</span><br><span class="line">	las[x]=tot;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> sz[MAXN],hson[MAXN],fa[MAXN],anc[MAXN],id[MAXN],dep[MAXN],lab;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">GetSon</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> f)</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> i,y;</span><br><span class="line">	sz[x]=<span class="number">1</span>;fa[x]=f;dep[x]=dep[f]+<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">for</span>(i=las[x];i;i=nex[i])&#123;</span><br><span class="line">		y=en[i];<span class="keyword">if</span>(y==f)<span class="keyword">continue</span>;</span><br><span class="line">		GetSon(y,x);</span><br><span class="line">		sz[x]+=sz[y];</span><br><span class="line">		<span class="keyword">if</span>(sz[y]&gt;=sz[hson[x]])hson[x]=y;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Connect</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> f,<span class="keyword">int</span> aa)</span></span>&#123;</span><br><span class="line">	anc[x]=aa;id[x]=++lab;</span><br><span class="line">	<span class="keyword">if</span>(hson[x])Connect(hson[x],x,aa);</span><br><span class="line">	<span class="keyword">int</span> i,y;</span><br><span class="line">	<span class="keyword">for</span>(i=las[x];i;i=nex[i])&#123;</span><br><span class="line">		y=en[i];<span class="keyword">if</span>(y==f||y==hson[x])<span class="keyword">continue</span>;</span><br><span class="line">		Connect(y,x,y);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> m=<span class="number">1</span>;</span><br><span class="line">Heap Q[MAXT];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Modify</span><span class="params">(<span class="keyword">int</span> l,<span class="keyword">int</span> r,<span class="keyword">int</span> v,<span class="keyword">int</span> op)</span></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(op==<span class="number">1</span>)&#123;</span><br><span class="line">		<span class="keyword">for</span>(l+=m<span class="number">-1</span>,r+=m+<span class="number">1</span>;l^r^<span class="number">1</span>;l&gt;&gt;=<span class="number">1</span>,r&gt;&gt;=<span class="number">1</span>)&#123;</span><br><span class="line">			<span class="keyword">if</span>(~l&amp;<span class="number">1</span>)Q[l^<span class="number">1</span>].ins(v);</span><br><span class="line">			<span class="keyword">if</span>(r&amp;<span class="number">1</span>)Q[r^<span class="number">1</span>].ins(v);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span>&#123;</span><br><span class="line">		<span class="keyword">for</span>(l+=m<span class="number">-1</span>,r+=m+<span class="number">1</span>;l^r^<span class="number">1</span>;l&gt;&gt;=<span class="number">1</span>,r&gt;&gt;=<span class="number">1</span>)&#123;</span><br><span class="line">			<span class="keyword">if</span>(~l&amp;<span class="number">1</span>)Q[l^<span class="number">1</span>].del(v);</span><br><span class="line">			<span class="keyword">if</span>(r&amp;<span class="number">1</span>)Q[r^<span class="number">1</span>].del(v);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">GetAns</span><span class="params">(<span class="keyword">int</span> p)</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> ret=<span class="number">-1</span>;</span><br><span class="line">	p+=m;</span><br><span class="line">	<span class="keyword">while</span>(p)ret=max(ret,Q[p].top()),p&gt;&gt;=<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">return</span> ret;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Build</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">while</span>(m&lt;=N)m&lt;&lt;=<span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">GetSeg</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y)</span></span>&#123;</span><br><span class="line">	cnt=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">while</span>(anc[x]!=anc[y])&#123;</span><br><span class="line">		<span class="keyword">if</span>(dep[anc[x]]&lt;dep[anc[y]])swap(x,y);</span><br><span class="line">		s[++cnt]=mp(id[anc[x]],id[x]);</span><br><span class="line">		x=fa[anc[x]];</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span>(dep[x]&lt;dep[y])swap(x,y);</span><br><span class="line">	s[++cnt]=mp(id[y],id[x]);</span><br><span class="line">	sort(s+<span class="number">1</span>,s+cnt+<span class="number">1</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Insert</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y,<span class="keyword">int</span> v)</span></span>&#123;</span><br><span class="line">	GetSeg(x,y);</span><br><span class="line">	<span class="keyword">int</span> i;</span><br><span class="line">	<span class="keyword">if</span>(s[<span class="number">1</span>].fi!=<span class="number">1</span>)Modify(<span class="number">1</span>,s[<span class="number">1</span>].fi<span class="number">-1</span>,v,<span class="number">1</span>);</span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">1</span>;i&lt;cnt;i++)<span class="keyword">if</span>(s[i].se+<span class="number">1</span>&lt;=s[i+<span class="number">1</span>].fi<span class="number">-1</span>)Modify(s[i].se+<span class="number">1</span>,s[i+<span class="number">1</span>].fi<span class="number">-1</span>,v,<span class="number">1</span>);</span><br><span class="line">	<span class="keyword">if</span>(s[cnt].se!=N)Modify(s[cnt].se+<span class="number">1</span>,N,v,<span class="number">1</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Delete</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y,<span class="keyword">int</span> v)</span></span>&#123;</span><br><span class="line">	GetSeg(x,y);</span><br><span class="line">	<span class="keyword">int</span> i;</span><br><span class="line">	<span class="keyword">if</span>(s[<span class="number">1</span>].fi!=<span class="number">1</span>)Modify(<span class="number">1</span>,s[<span class="number">1</span>].fi<span class="number">-1</span>,v,<span class="number">-1</span>);</span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">1</span>;i&lt;cnt;i++)<span class="keyword">if</span>(s[i].se+<span class="number">1</span>&lt;=s[i+<span class="number">1</span>].fi<span class="number">-1</span>)Modify(s[i].se+<span class="number">1</span>,s[i+<span class="number">1</span>].fi<span class="number">-1</span>,v,<span class="number">-1</span>);</span><br><span class="line">	<span class="keyword">if</span>(s[cnt].se!=N)Modify(s[cnt].se+<span class="number">1</span>,N,v,<span class="number">-1</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Init</span><span class="params">()</span></span>&#123;</span><br><span class="line">	GetSon(<span class="number">1</span>,<span class="number">0</span>);</span><br><span class="line">	Connect(<span class="number">1</span>,<span class="number">0</span>,<span class="number">1</span>);</span><br><span class="line">	Build();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> i,x,y,v,ty;</span><br><span class="line">	N=_R();M=_R();</span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">1</span>;i&lt;N;i++)&#123;</span><br><span class="line">		x=_R();y=_R();</span><br><span class="line">		Add(x,y);Add(y,x);</span><br><span class="line">	&#125;</span><br><span class="line">	Init();</span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">1</span>;i&lt;=M;i++)&#123;</span><br><span class="line">		ty=_R();</span><br><span class="line">		<span class="keyword">if</span>(ty==<span class="number">0</span>)&#123;</span><br><span class="line">			x=_R();y=_R();v=_R();</span><br><span class="line">			Insert(x,y,v);</span><br><span class="line">			A[i]=(node)&#123;x,y,v&#125;;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span>(ty==<span class="number">1</span>)&#123;</span><br><span class="line">			x=_R();</span><br><span class="line">			Delete(A[x].a,A[x].b,A[x].v);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span>&#123;</span><br><span class="line">			x=_R();</span><br><span class="line">			<span class="built_in">printf</span>(<span class="string">"%d\n"</span>,GetAns(id[x]));</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/线段树/" rel="tag"># 线段树</a>
+          
+            <a href="/tags/树链剖分/" rel="tag"># 树链剖分</a>
+          
+            <a href="/tags/堆/" rel="tag"># 堆</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/03/18/[SCOI2016]美味/" rel="next" title="SCOI2016美味">
+                <i class="fa fa-chevron-left"></i> SCOI2016美味
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/03/18/【CQOI2014】通配符匹配/" rel="prev" title="CQOI2014 通配符匹配">
+                CQOI2014 通配符匹配 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.jpg"
+                alt="rgnoH" />
+            
+              <p class="site-author-name" itemprop="name">rgnoH</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">27</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">25</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/rgnoH" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://starkmal.github.io" title="starkmal" target="_blank">starkmal</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://mogicianevian.github.io" title="OBlack" target="_blank">OBlack</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://jackpoison.github.io" title="Sparrow" target="_blank">Sparrow</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-6"><a class="nav-link" href="#问题描述"><span class="nav-number">1.</span> <span class="nav-text">问题描述</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#输入格式"><span class="nav-number">2.</span> <span class="nav-text">输入格式</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#输出格式"><span class="nav-number">3.</span> <span class="nav-text">输出格式</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#数据规模"><span class="nav-number">4.</span> <span class="nav-text">数据规模</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">rgnoH</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">33.4k</span>
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/canvas_sphere.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
+
+  
+  
+  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
+  
+
+  <script src="/js/src/algolia-search.js?v=5.1.4"></script>
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>

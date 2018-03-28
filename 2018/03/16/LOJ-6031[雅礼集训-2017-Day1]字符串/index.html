@@ -1,0 +1,911 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="SAM," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="LOJ 6031「雅礼集训 2017 Day1」字符串题目描述 令 $ s$ 与 $w$ 为两字符串，定义：  $w[l,r]$ 表示字符串 $w$ 在区间$[l,r]$ 中的子串； $w $ 在 $s$ 中出现的频率定义为$w$ 在$s$ 中出现的次数； $f(s,w,l,r)$表示 $w[l,r]$在$s$中出现的频率。  比如$ f(ababa,aba,1,3)=2$。 现在给定串 $s$，">
+<meta name="keywords" content="SAM">
+<meta property="og:type" content="article">
+<meta property="og:title" content="LOJ 6031「雅礼集训 2017 Day1」字符串">
+<meta property="og:url" content="http://yoursite.com/2018/03/16/LOJ-6031[雅礼集训-2017-Day1]字符串/index.html">
+<meta property="og:site_name" content="rgnoH&#39;s Blog">
+<meta property="og:description" content="LOJ 6031「雅礼集训 2017 Day1」字符串题目描述 令 $ s$ 与 $w$ 为两字符串，定义：  $w[l,r]$ 表示字符串 $w$ 在区间$[l,r]$ 中的子串； $w $ 在 $s$ 中出现的频率定义为$w$ 在$s$ 中出现的次数； $f(s,w,l,r)$表示 $w[l,r]$在$s$中出现的频率。  比如$ f(ababa,aba,1,3)=2$。 现在给定串 $s$，">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-03-27T23:59:50.720Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="LOJ 6031「雅礼集训 2017 Day1」字符串">
+<meta name="twitter:description" content="LOJ 6031「雅礼集训 2017 Day1」字符串题目描述 令 $ s$ 与 $w$ 为两字符串，定义：  $w[l,r]$ 表示字符串 $w$ 在区间$[l,r]$ 中的子串； $w $ 在 $s$ 中出现的频率定义为$w$ 在$s$ 中出现的次数； $f(s,w,l,r)$表示 $w[l,r]$在$s$中出现的频率。  比如$ f(ababa,aba,1,3)=2$。 现在给定串 $s$，">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/03/16/LOJ-6031[雅礼集训-2017-Day1]字符串/"/>
+
+
+
+
+
+  <title>LOJ 6031「雅礼集训 2017 Day1」字符串 | rgnoH's Blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">rgnoH's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-schedule">
+          <a href="/schedule/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-calendar"></i> <br />
+            
+            日程表
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  
+  <div class="algolia-popup popup search-popup">
+    <div class="algolia-search">
+      <div class="algolia-search-input-icon">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="algolia-search-input" id="algolia-search-input"></div>
+    </div>
+
+    <div class="algolia-results">
+      <div id="algolia-stats"></div>
+      <div id="algolia-hits"></div>
+      <div id="algolia-pagination" class="algolia-pagination"></div>
+    </div>
+
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+  </div>
+
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/16/LOJ-6031[雅礼集训-2017-Day1]字符串/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="rgnoH">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="rgnoH's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">LOJ 6031「雅礼集训 2017 Day1」字符串</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-16T09:37:33+08:00">
+                2018-03-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1,587字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  8min
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="LOJ-6031「雅礼集训-2017-Day1」字符串"><a href="#LOJ-6031「雅礼集训-2017-Day1」字符串" class="headerlink" title="LOJ 6031「雅礼集训 2017 Day1」字符串"></a>LOJ 6031「雅礼集训 2017 Day1」字符串</h1><p><strong>题目描述</strong></p>
+<p>令 $ s$ 与 $w$ 为两字符串，定义：</p>
+<ol>
+<li>$w[l,r]$ 表示字符串 $w$ 在区间$[l,r]$ 中的子串；</li>
+<li>$w $ 在 $s$ 中出现的频率定义为$w$ 在$s$ 中出现的次数；</li>
+<li>$f(s,w,l,r)$表示 $w[l,r]$在$s$中出现的频率。</li>
+</ol>
+<p>比如$ f(ababa,aba,1,3)=2$。</p>
+<p>现在给定串 $s$，$m$个区间$[l,r]$ 和长度 $k$，你要回答 $q$个询问，每个询问给你一个长度为 $k$ 的字符串 $w$和两个整数 $a,b $,求：<br>$$<br>\sum_{i=1}^bf(s,w,l_i,r_i)<br>$$<br><strong>输入格式</strong></p>
+<p>第一行四个整数 $n,m,q,k$, $n$ 表示 $ s $ 的长度。<br>接下来一行一个长为$ n $ 的字符串$ s $。<br>接下来$ m $行，每行两个整数表示 $l_i, r_i$。<br>接下来$ q $行，每行一个字符串 $w$ ，两个整数 $a,b$ 。</p>
+<p><strong>输出格式</strong></p>
+<p>对于每个询问一行，输出答案。</p>
+<p><strong>样例</strong></p>
+<p><strong>样例输入</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">8 5 3 3</span><br><span class="line">abacdaba</span><br><span class="line">0 2</span><br><span class="line">1 2</span><br><span class="line">0 0</span><br><span class="line">2 2</span><br><span class="line">1 2</span><br><span class="line">dab 1 4</span><br><span class="line">bac 2 3</span><br><span class="line">eeb 1 3</span><br></pre></td></tr></table></figure>
+<p><strong>样例输出</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">7</span><br><span class="line">3</span><br><span class="line">2</span><br></pre></td></tr></table></figure>
+<p><strong>数据范围与提示</strong></p>
+<p>对于$ 10\%  $的数据，$n,m,k,q≤10$ ；<br>对于$ 30\% $ 的数据，满足 $n,m,k,q≤10^2$；<br>对于$ 50\%$ 的数据，满足 $n,m,k,q≤10^4$；<br>对于$100\% $的数据，满足 $n, m, k, q \leq 10 ^ 5, \sum w \leq 10 ^ 5$，字符串由小写英文字母构成。</p>
+<hr>
+<p>询问一个串在另一个串中的出现次数，显然考虑后缀自动机。</p>
+<p>设$S=\sum w\leq10^5$。这个条件提示我们考虑时间复杂度时应该重视所有询问串的长度总和，按照之前的套路应该就是把这些询问串全部拼在一起之类的，然而这道题并不行……</p>
+<p>正解是，由于$kq=S \leq 10^5$考虑设置阈值，针对不同数据范围设计不同算法。</p>
+<p>大体上有两种情况：单个询问串长度很短，但询问串个数很多；单个询问串长度很长，但询问串个数很短。</p>
+<p>询问串个数很多但长度很小时，可以对每个串用$O(k^2)$的时间复杂度处理出每个区间在$s$中的出现次数。具体来讲就是枚举区间起点，在区间终点指针移动的同时在自动机上转移状态。之后采用二分查找或者是莫队算法得出每个询问串的答案。</p>
+<p>二分查找的时间复杂度是$O(qk^2logm=Sklogm)$的。对于$k$较小的数据可以胜任，然而当$k$较大的时候就不行了。</p>
+<p>当$k$很大时，询问串个数很少，那么$qm$就不会很大，就可以对于每一个串依次处理每一个询问区间。怎样快速得到某个串的子串在另一个串中的出现次数呢？利用字符串经典的“子串=后缀的前缀”的思想，用$O(k)$的时间复杂度处理出询问串的每一个前缀在自动机上匹配到的状态和长度，倍增找到后缀自动机上对应的节点即可。</p>
+<p>这样做的时间复杂度是$O(q(k+mlogm)=S+qmlogm)$的，可以看到当$q$较小的时候可以胜任，而$q$较大时就不行了。</p>
+<p>综上所述，只需要对$k$设置一个阈值，根据数据范围选择使用哪一种算法即可。</p>
+<p>所以这是一道暴躁的二合一题目，然而由于SAM的优越性，代码并不如某些数据结构长。</p>
+<hr>
+<p>写完之后发现namespace是没必要的，懒得改了……</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ll long long</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MAXN 400005</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> Y 333</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> N,M,Q,K,L[MAXN],R[MAXN];</span><br><span class="line">ll Ans=<span class="number">0</span>;</span><br><span class="line"><span class="keyword">char</span> s[MAXN],w[MAXN];</span><br><span class="line"></span><br><span class="line"><span class="keyword">namespace</span> SAM&#123;</span><br><span class="line">	<span class="keyword">int</span> tot,rt,las,par[MAXN][<span class="number">20</span>],mx[MAXN],son[MAXN][<span class="number">26</span>],sz[MAXN];</span><br><span class="line">	<span class="keyword">bool</span> vis[MAXN];</span><br><span class="line">	<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;G[MAXN];</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">int</span> <span class="title">push</span><span class="params">(<span class="keyword">int</span> val)</span></span>&#123;mx[++tot]=val;<span class="keyword">return</span> tot;&#125;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">init</span><span class="params">()</span></span>&#123;tot=<span class="number">0</span>;las=rt=push(<span class="number">0</span>);&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">ins</span><span class="params">(<span class="keyword">int</span> t)</span></span>&#123;</span><br><span class="line">		<span class="keyword">int</span> p,q,np,nq;</span><br><span class="line">		np=push(mx[las]+<span class="number">1</span>);sz[np]=<span class="number">1</span>;</span><br><span class="line">		<span class="keyword">for</span>(p=las;p&amp;&amp;(!son[p][t]);p=par[p][<span class="number">0</span>])son[p][t]=np;</span><br><span class="line">		<span class="keyword">if</span>(!p)par[np][<span class="number">0</span>]=rt;</span><br><span class="line">		<span class="keyword">else</span>&#123;</span><br><span class="line">			q=son[p][t];</span><br><span class="line">			<span class="keyword">if</span>(mx[q]==mx[p]+<span class="number">1</span>)par[np][<span class="number">0</span>]=q;</span><br><span class="line">			<span class="keyword">else</span>&#123;</span><br><span class="line">				nq=push(mx[p]+<span class="number">1</span>);</span><br><span class="line">				<span class="built_in">memcpy</span>(son[nq],son[q],<span class="keyword">sizeof</span>(son[q]));</span><br><span class="line">				par[nq][<span class="number">0</span>]=par[q][<span class="number">0</span>];</span><br><span class="line">				par[q][<span class="number">0</span>]=par[np][<span class="number">0</span>]=nq;</span><br><span class="line">				<span class="keyword">for</span>(;p&amp;&amp;son[p][t]==q;p=par[p][<span class="number">0</span>])son[p][t]=nq;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		las=np;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">build</span><span class="params">()</span></span>&#123;<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">2</span>;i&lt;=tot;i++)G[par[i][<span class="number">0</span>]].push_back(i);&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;<span class="number">20</span>;i++)par[x][i]=par[par[x][i<span class="number">-1</span>]][i<span class="number">-1</span>];</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;G[x].size();i++)&#123;</span><br><span class="line">			<span class="keyword">int</span> y=G[x][i];dfs(y);</span><br><span class="line">			sz[x]+=sz[y];</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">match</span><span class="params">(<span class="keyword">int</span> &amp;p,<span class="keyword">int</span> t,<span class="keyword">int</span> &amp;len)</span></span>&#123;</span><br><span class="line">		<span class="keyword">while</span>(p&amp;&amp;(!son[p][t]))p=par[p][<span class="number">0</span>],len=mx[p];</span><br><span class="line">		<span class="keyword">if</span>(p)p=son[p][t],len++;</span><br><span class="line">		<span class="keyword">else</span> p=rt,len=<span class="number">0</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">int</span> <span class="title">jump</span><span class="params">(<span class="keyword">int</span> p,<span class="keyword">int</span> l)</span></span>&#123;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">19</span>;i&gt;=<span class="number">0</span>;i--)<span class="keyword">if</span>(mx[par[p][i]]&gt;=l)p=par[p][i];</span><br><span class="line">		<span class="keyword">return</span> p;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">solve1</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;q[Y][Y];</span><br><span class="line">	<span class="keyword">int</span> i,j,a,b,p,l,r,cnt=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;M;i++)q[L[i]][R[i]].push_back(i);</span><br><span class="line">	<span class="keyword">while</span>(Q--)&#123;</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">"%s%d%d"</span>,w,&amp;a,&amp;b);</span><br><span class="line">		Ans=<span class="number">0</span>;</span><br><span class="line">		<span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;K;i++)&#123;</span><br><span class="line">			p=SAM::rt;</span><br><span class="line">			<span class="keyword">for</span>(j=i;j&lt;K;j++)&#123;</span><br><span class="line">				p=SAM::son[p][w[j]-<span class="string">'a'</span>];</span><br><span class="line">				<span class="keyword">if</span>(p==<span class="number">0</span>)<span class="keyword">break</span>;</span><br><span class="line">				cnt=SAM::sz[p];</span><br><span class="line">				l=lower_bound(q[i][j].begin(),q[i][j].end(),a)-q[i][j].begin();</span><br><span class="line">				r=upper_bound(q[i][j].begin(),q[i][j].end(),b)-q[i][j].begin();</span><br><span class="line">				Ans+=(ll)cnt*(r-l);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"%lld\n"</span>,Ans);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">solve2</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> i,l,r,a,b,p,len[MAXN]=&#123;<span class="number">0</span>&#125;,pos[MAXN]=&#123;<span class="number">0</span>&#125;,tmp;</span><br><span class="line">	<span class="keyword">while</span>(Q--)&#123;</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">"%s%d%d"</span>,w,&amp;a,&amp;b);</span><br><span class="line">		Ans=<span class="number">0</span>;</span><br><span class="line">		p=SAM::rt;tmp=<span class="number">0</span>;</span><br><span class="line">		<span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;K;i++)&#123;</span><br><span class="line">			SAM::match(p,w[i]-<span class="string">'a'</span>,tmp);</span><br><span class="line">			pos[i]=p;len[i]=tmp;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">for</span>(i=a;i&lt;=b;i++)&#123;</span><br><span class="line">			<span class="keyword">if</span>(R[i]-L[i]+<span class="number">1</span>&gt;len[R[i]])<span class="keyword">continue</span>;</span><br><span class="line">			p=SAM::jump(pos[R[i]],R[i]-L[i]+<span class="number">1</span>);</span><br><span class="line">			Ans+=SAM::sz[p];</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"%lld\n"</span>,Ans);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> i;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d%d%d%d%s"</span>,&amp;N,&amp;M,&amp;Q,&amp;K,s);</span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;M;i++)<span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;L[i],&amp;R[i]);</span><br><span class="line"></span><br><span class="line">	SAM::init();</span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;N;i++)SAM::ins(s[i]-<span class="string">'a'</span>);</span><br><span class="line">	SAM::build();</span><br><span class="line">	SAM::dfs(SAM::rt);</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">if</span>(K&lt;Y)solve1();</span><br><span class="line">	<span class="keyword">else</span> solve2();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/SAM/" rel="tag"># SAM</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/03/16/HAOI-2016-找相同字符/" rel="next" title="HAOI 2016 找相同字符">
+                <i class="fa fa-chevron-left"></i> HAOI 2016 找相同字符
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/03/16/BJOI2017-魔法咒语/" rel="prev" title="BJOI2017魔法咒语">
+                BJOI2017魔法咒语 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.jpg"
+                alt="rgnoH" />
+            
+              <p class="site-author-name" itemprop="name">rgnoH</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">27</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">25</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/rgnoH" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://starkmal.github.io" title="starkmal" target="_blank">starkmal</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://mogicianevian.github.io" title="OBlack" target="_blank">OBlack</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://jackpoison.github.io" title="Sparrow" target="_blank">Sparrow</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#LOJ-6031「雅礼集训-2017-Day1」字符串"><span class="nav-number">1.</span> <span class="nav-text">LOJ 6031「雅礼集训 2017 Day1」字符串</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">rgnoH</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">33.4k</span>
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/canvas_sphere.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
+
+  
+  
+  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
+  
+
+  <script src="/js/src/algolia-search.js?v=5.1.4"></script>
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>
