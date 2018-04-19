@@ -1,0 +1,914 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hash," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="「NOI2017」蚯蚓排队题目描述蚯蚓幼儿园有$n$只蚯蚓。幼儿园园长神刀手为了管理方便，时常让这些蚯蚓们列队表演。 所有蚯蚓用从 $1$ 到 $n$ 的连续正整数编号。每只蚯蚓的长度可以用一个正整数表示，根据入园要求，所有蚯蚓的长度都不超过 $6$ 。神刀手希望这些蚯蚓排成若干个队伍，初始时，每只蚯蚓各自排成一个仅有一只蚯蚓的队伍，该蚯蚓既在队首，也在队尾。 神刀手将会依次进行 $m$ 次操作，">
+<meta name="keywords" content="Hash">
+<meta property="og:type" content="article">
+<meta property="og:title" content="「NOI2017」蚯蚓排队">
+<meta property="og:url" content="http://yoursite.com/2018/04/19/「NOI2017」蚯蚓排队/index.html">
+<meta property="og:site_name" content="rgnoH&#39;s Blog">
+<meta property="og:description" content="「NOI2017」蚯蚓排队题目描述蚯蚓幼儿园有$n$只蚯蚓。幼儿园园长神刀手为了管理方便，时常让这些蚯蚓们列队表演。 所有蚯蚓用从 $1$ 到 $n$ 的连续正整数编号。每只蚯蚓的长度可以用一个正整数表示，根据入园要求，所有蚯蚓的长度都不超过 $6$ 。神刀手希望这些蚯蚓排成若干个队伍，初始时，每只蚯蚓各自排成一个仅有一只蚯蚓的队伍，该蚯蚓既在队首，也在队尾。 神刀手将会依次进行 $m$ 次操作，">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-04-19T10:48:18.086Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="「NOI2017」蚯蚓排队">
+<meta name="twitter:description" content="「NOI2017」蚯蚓排队题目描述蚯蚓幼儿园有$n$只蚯蚓。幼儿园园长神刀手为了管理方便，时常让这些蚯蚓们列队表演。 所有蚯蚓用从 $1$ 到 $n$ 的连续正整数编号。每只蚯蚓的长度可以用一个正整数表示，根据入园要求，所有蚯蚓的长度都不超过 $6$ 。神刀手希望这些蚯蚓排成若干个队伍，初始时，每只蚯蚓各自排成一个仅有一只蚯蚓的队伍，该蚯蚓既在队首，也在队尾。 神刀手将会依次进行 $m$ 次操作，">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/04/19/「NOI2017」蚯蚓排队/"/>
+
+
+
+
+
+  <title>「NOI2017」蚯蚓排队 | rgnoH's Blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">rgnoH's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-schedule">
+          <a href="/schedule/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-calendar"></i> <br />
+            
+            日程表
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  
+  <div class="algolia-popup popup search-popup">
+    <div class="algolia-search">
+      <div class="algolia-search-input-icon">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="algolia-search-input" id="algolia-search-input"></div>
+    </div>
+
+    <div class="algolia-results">
+      <div id="algolia-stats"></div>
+      <div id="algolia-hits"></div>
+      <div id="algolia-pagination" class="algolia-pagination"></div>
+    </div>
+
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+  </div>
+
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/19/「NOI2017」蚯蚓排队/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="rgnoH">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="rgnoH's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">「NOI2017」蚯蚓排队</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-19T16:09:31+08:00">
+                2018-04-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  2,111字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  10min
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="「NOI2017」蚯蚓排队"><a href="#「NOI2017」蚯蚓排队" class="headerlink" title="「NOI2017」蚯蚓排队"></a>「NOI2017」蚯蚓排队</h1><h6 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h6><p>蚯蚓幼儿园有$n$只蚯蚓。幼儿园园长神刀手为了管理方便，时常让这些蚯蚓们列队表演。</p>
+<p>所有蚯蚓用从 $1$ 到 $n$ 的连续正整数编号。每只蚯蚓的长度可以用一个正整数表示，根据入园要求，所有蚯蚓的长度都不超过 $6$ 。神刀手希望这些蚯蚓排成若干个队伍，初始时，每只蚯蚓各自排成一个仅有一只蚯蚓的队伍，该蚯蚓既在队首，也在队尾。</p>
+<p>神刀手将会依次进行 $m$ 次操作，每个操作都是以下三种操作中的一种：</p>
+<ol>
+<li><p>给出 $i$ 和 $j$ ，令 $i$ 号蚯蚓与 $j$ 号蚯蚓所在的两个队伍合并为一个队伍，具体来说，令 $j$ 号蚯蚓紧挨在 $i$ 号蚯蚓之后，其余蚯蚓保持队伍的前后关系不变。</p>
+</li>
+<li><p>给出 $i$ ，令 $i$ 号蚯蚓与紧挨其后的一只蚯蚓分离为两个队伍，具体来说，在分离之后， $i$ 号蚯蚓在其中一个队伍的队尾，原本紧挨其后的那一只蚯蚓在另一个队伍的队首，其余蚯蚓保持队伍的前后关系不变。</p>
+</li>
+<li><p>给出一个正整数 $k$ 和一个长度至少为 $k$ 的数字串 $s$ ，对于 $s$ 的每个长度为 $k$ 的连续子串 $t$ （这样的子串共有 $|s|-k+1$ 个，其中 $|s|$ 为 $s$ 的长度），定义函数 $f(t)$ ，询问所有这些$f(t)$的<strong>乘积</strong>对 $998244353$ 取模后的结果。其中$f(t)$的定义如下：</p>
+</li>
+</ol>
+<p>对于当前的蚯蚓队伍，定义某个蚯蚓的<strong>向后 $k$ 数字串</strong>为：从该蚯蚓出发，沿队伍的向后方向，寻找最近的 $k$ 只蚯蚓（包括其自身），将这些蚯蚓的长度视作字符连接而成的数字串；如果这样找到的蚯蚓不足 $k$ 只，则其没有<strong>向后$k$数字串</strong>。例如蚯蚓的队伍为 $10$ 号蚯蚓在队首，其后是 $22$ 号蚯蚓，其后是 $3$ 号蚯蚓（为队尾），这些蚯蚓的长度分别为 $4$ 、 $5$ 、 $6$ ，则 $10$ 号蚯蚓的<strong>向后 $3$ 数字串</strong>为<code>456</code>， $22$ 号蚯蚓没有<strong>向后 $3$ 数字串</strong>，但其<strong>向后 $2$ 数字串</strong>为<code>56</code>，其<strong>向后 $1$ 数字串</strong>为<code>5</code>。</p>
+<p>而 $f(t)$ 表示所有蚯蚓中，<strong>向后 $k$ 数字串</strong>恰好为 $t$ 的蚯蚓只数。</p>
+<h6 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h6><p>从标准输入读入数据。</p>
+<p>输入文件的第一行有两个正整数 $n,m$ ，分别表示蚯蚓的只数与操作次数。</p>
+<p>第二行包含 $n$ 个不超过 $6$ 的正整数，依次表示编号为 $1,2,\dots,n$ 的蚯蚓的长度。</p>
+<p>接下来 $m$ 行，每行表示一个操作。每个操作的格式可以为：</p>
+<ul>
+<li><p><code>1</code> $i$ $j$（$1 \leq i, j \leq n$）表示：令 $i$ 号与 $j$ 号蚯蚓<strong>所在</strong>的两个队伍合并为一个队伍，新队伍中， $j$ 号蚯蚓紧挨在 $i$ 号蚯蚓之后。保证在此操作之前， $i$ 号蚯蚓在某个队伍的队尾， $j$ 号蚯蚓在某个队伍的队首，且两只蚯蚓不在同一个队伍中。</p>
+</li>
+<li><p><code>2</code> $i$（$1 \leq i \leq n$）表示：令 $i$ 号蚯蚓与紧挨其后一个蚯蚓分离为两个队伍。保证在此操作之前， $i$ 号蚯蚓不是某个队伍的队尾。</p>
+</li>
+<li><p><code>3</code> $s$ $k$（$k$为正整数，$s$为一个长度至少为$k$的数字串）表示：询问 $s$ 的每个长度为 $k$ 的子串 $t$ 的 $f(t)$ 的乘积，对998244353取模的结果。 $f(t)$ 的定义见题目描述。</p>
+</li>
+</ul>
+<p>同一行输入的相邻两个元素之间，用恰好一个空格隔开。</p>
+<p>输入文件可能较大，请不要使用过于缓慢的读入方式。</p>
+<h6 id="输出格式"><a href="#输出格式" class="headerlink" title="输出格式"></a>输出格式</h6><p>输出到标准输出。</p>
+<p>依次对于每个形如<code>3</code> $s$ $k$的操作，输出一行，仅包含一个整数，表示询问的结果。</p>
+<h6 id="数据范围与提示"><a href="#数据范围与提示" class="headerlink" title="数据范围与提示"></a>数据范围与提示</h6><p>保证 $n \leq 2 \times 10^{5}$，$m \leq 5 \times 10^{5}$，$k \leq 50$ 。</p>
+<p>设 $\sum |s|$ 为某个输入文件中所有询问的 $s$ 的长度总和，则 $\sum |s| \leq 10^{7}$  。</p>
+<p>设 $c$ 为某个输入文件中形如<code>2</code> $i$的操作的次数，则 $c \leq 10^{3}$ 。</p>
+<p>每个测试点的详细信息见下表：</p>
+<p>  <table class="ui celled center aligned table">  <thead>  <tr>  <th rowspan="1"> 测试点编号 </th>  <th rowspan="1"> $n$ </th>  <th rowspan="1"> $m$ </th>  <th rowspan="1"> $k$ </th>  <th rowspan="1"> $\sum |s|$ </th>  <th rowspan="1"> $c$ </th>  <th rowspan="1"> 全为$\texttt{1}$ </th>  </tr>  </thead>  <tbody>  <tr>  <td rowspan="1"> 1 </td>  <td rowspan="1"> $=1$ </td>  <td rowspan="1"> $\leq 10^{3}$ </td>  <td rowspan="1"> $=1$ </td>  <td rowspan="5"> $\leq 10^{3}$ </td>  <td rowspan="2"> $=0$ </td>  <td rowspan="6"> No </td>  </tr>  <tr>  <td rowspan="1"> 2 </td>  <td rowspan="1"> $\leq 20$ </td>  <td rowspan="1"> $\leq 40$ </td>  <td rowspan="1"> $\leq 10$ </td>  </tr>  <tr>  <td rowspan="1"> 3 </td>  <td rowspan="1"> $\leq 150$ </td>  <td rowspan="1"> $\leq 2,000$ </td>  <td rowspan="3"> $\leq 50$ </td>  <td rowspan="1"> $\leq 10^{3}$ </td>  </tr>  <tr>  <td rowspan="1"> 4 </td>  <td rowspan="1"> $\leq 500$ </td>  <td rowspan="1"> $\leq 600$ </td>  <td rowspan="1"> $=0$ </td>  </tr>  <tr>  <td rowspan="1"> 5 </td>  <td rowspan="1"> $\leq 10^{3}$ </td>  <td rowspan="1"> $\leq 2,000$ </td>  <td rowspan="2"> $\leq 10^{3}$ </td>  </tr>  <tr>  <td rowspan="1"> 6 </td>  <td rowspan="6"> $\leq 5 \times 10^{4}$ </td>  <td rowspan="4"> $\leq 6 \times 10^{4}$ </td>  <td rowspan="1"> $\leq 5$ </td>  <td rowspan="4"> $\leq 5 \times 10^{4}$ </td>  </tr>  <tr>  <td rowspan="1"> 7 </td>  <td rowspan="5"> $\leq 50$ </td>  <td rowspan="2"> $=0$ </td>  <td rowspan="1"> Yes </td>  </tr>  <tr>  <td rowspan="1"> 8 </td>  <td rowspan="5"> No </td>  </tr>  <tr>  <td rowspan="1"> 9 </td>  <td rowspan="1"> $\leq 10^{3}$ </td>  </tr>  <tr>  <td rowspan="1"> 10 </td>  <td rowspan="2"> $\leq 8 \times 10^{4}$ </td>  <td rowspan="2"> $\leq 2.5 \times 10^{6}$ </td>  <td rowspan="1"> $=0$ </td>  </tr>  <tr>  <td rowspan="1"> 11 </td>  <td rowspan="2"> $\leq 10^{3}$ </td>  </tr>  <tr>  <td rowspan="1"> 12 </td>  <td rowspan="6"> $\leq 10^{5}$ </td>  <td rowspan="4"> $\leq 1.1 \times 10^{5}$ </td>  <td rowspan="1"> $\leq 6$ </td>  <td rowspan="4"> $\leq 10^{5}$ </td>  </tr>  <tr>  <td rowspan="1"> 13 </td>  <td rowspan="5"> $\leq 50$ </td>  <td rowspan="2"> $=0$ </td>  <td rowspan="1"> Yes </td>  </tr>  <tr>  <td rowspan="1"> 14 </td>  <td rowspan="7"> No </td>  </tr>  <tr>  <td rowspan="1"> 15 </td>  <td rowspan="1"> $\leq 10^{3}$ </td>  </tr>  <tr>  <td rowspan="1"> 16 </td>  <td rowspan="2"> $\leq 1.5 \times 10^{5}$ </td>  <td rowspan="2"> $\leq 5 \times 10^{6}$ </td>  <td rowspan="1"> $=0$ </td>  </tr>  <tr>  <td rowspan="1"> 17 </td>  <td rowspan="1"> $\leq 10^{3}$ </td>  </tr>  <tr>  <td rowspan="1"> 18 </td>  <td rowspan="8"> $\leq 2 \times 10^{5}$ </td>  <td rowspan="2"> $\leq 5 \times 10^{5}$ </td>  <td rowspan="2"> $=1$ </td>  <td rowspan="2"> $\leq 10^{7}$ </td>  <td rowspan="1"> $=0$ </td>  </tr>  <tr>  <td rowspan="1"> 19 </td>  <td rowspan="2"> $\leq 10^{3}$ </td>  </tr>  <tr>  <td rowspan="1"> 20 </td>  <td rowspan="4"> $\leq 2.5 \times 10^{5}$ </td>  <td rowspan="1"> $\leq 7$ </td>  <td rowspan="4"> $\leq 2 \times 10^{5}$ </td>  </tr>  <tr>  <td rowspan="1"> 21 </td>  <td rowspan="5"> $\leq 50$ </td>  <td rowspan="2"> $=0$ </td>  <td rowspan="1"> Yes </td>  </tr>  <tr>  <td rowspan="1"> 22 </td>  <td rowspan="4"> No </td>  </tr>  <tr>  <td rowspan="1"> 23 </td>  <td rowspan="1"> $\leq 10^{3}$ </td>  </tr>  <tr>  <td rowspan="1"> 24 </td>  <td rowspan="2"> $\leq 3 \times 10^{5}$ </td>  <td rowspan="2"> $\leq 10^{7}$ </td>  <td rowspan="1"> $=0$ </td>  </tr>  <tr>  <td rowspan="1"> 25 </td>  <td rowspan="1"> $\leq 10^{3}$ </td>  </tr>  </tbody>  </table><br>如果一个测试点的“全为<code>1</code>”的一列为“Yes”，表示该测试点的所有蚯蚓的长度均为1，并且所有询问串$s$的每一位也均为<code>1</code>。</p>
+<hr>
+<p>一开始竟然没有注意到所有的$K\leq50$所以卡了好久……</p>
+<p>题目显然要求与$\sum|s|$相关的算法，而每次询问似乎无法避免地要讨论所有的子串$t$。每次想要知道某个字符串出现的次数，要求$O(1)$处理字符串的变化。那么考虑Hash，将以每个位置作为结尾的长度为$1,2,3,…,K$的子串的Hash值都记录下来。为了知道出现次数采用Hash表以实现近似$O(1)$的复杂度。由于本题的空间给得很大，Hash表也可以开得很大。</p>
+<p>对于拆分和合并操作暴力更新，看起来好像每次最坏是$O(K^2)$的，但是好像有势能分析证明达不到这么多？反正能过就是了。</p>
+<hr>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MAXN 200005</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ull unsigned long long</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> LL long long</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">const</span> ull sd=<span class="number">1234321237</span>;</span><br><span class="line"><span class="keyword">const</span> LL mod=<span class="number">998244353</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Hash_Table</span>&#123;</span></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">static</span> <span class="keyword">int</span> MOD=<span class="number">10000007</span>;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> TOT 20000000</span></span><br><span class="line">ull state[TOT];<span class="keyword">int</span> val[TOT];</span><br><span class="line"><span class="keyword">int</span> las[MOD],nex[TOT],tot;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span>&amp; <span class="keyword">operator</span>[](ull st)&#123;</span><br><span class="line">	ull p=st%MOD;<span class="keyword">int</span> i;</span><br><span class="line">	<span class="keyword">for</span>(i=las[p];i;i=nex[i])<span class="keyword">if</span>(state[i]==st)<span class="keyword">return</span> val[i];</span><br><span class="line">	nex[++tot]=las[p];</span><br><span class="line">	las[p]=tot;</span><br><span class="line">	state[tot]=st;</span><br><span class="line">	<span class="keyword">return</span> val[tot];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#125;M;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> N,Q,A[MAXN],nexp[MAXN],lasp[MAXN];</span><br><span class="line"><span class="keyword">char</span> s[MAXN];<span class="keyword">int</span> K,len;</span><br><span class="line">ull pw[<span class="number">55</span>];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Merge</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y)</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> i,j,k,l;ull hs;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">for</span>(i=y,k=<span class="number">1</span>;i&amp;&amp;k&lt;=<span class="number">50</span>;i=nexp[i],k++)&#123;</span><br><span class="line">		hs=<span class="number">0</span>;</span><br><span class="line">		<span class="keyword">for</span>(j=i,l=<span class="number">1</span>;j&amp;&amp;l&lt;=<span class="number">50</span>;j=lasp[j],l++)&#123;</span><br><span class="line">			hs=hs+A[j]*pw[l<span class="number">-1</span>];</span><br><span class="line">			M[hs]--;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	nexp[x]=y;lasp[y]=x;</span><br><span class="line">	<span class="keyword">for</span>(i=y,k=<span class="number">1</span>;i&amp;&amp;k&lt;=<span class="number">50</span>;i=nexp[i],k++)&#123;</span><br><span class="line">		hs=<span class="number">0</span>;</span><br><span class="line">		<span class="keyword">for</span>(j=i,l=<span class="number">1</span>;j&amp;&amp;l&lt;=<span class="number">50</span>;j=lasp[j],l++)&#123;</span><br><span class="line">			hs=hs+A[j]*pw[l<span class="number">-1</span>];</span><br><span class="line">			M[hs]++;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Split</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> i,j,k,l,y=nexp[x];ull hs;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">for</span>(i=y,k=<span class="number">1</span>;i&amp;&amp;k&lt;=<span class="number">50</span>;i=nexp[i],k++)&#123;</span><br><span class="line">		hs=<span class="number">0</span>;</span><br><span class="line">		<span class="keyword">for</span>(j=i,l=<span class="number">1</span>;j&amp;&amp;l&lt;=<span class="number">50</span>;j=lasp[j],l++)&#123;</span><br><span class="line">			hs=hs+A[j]*pw[l<span class="number">-1</span>];</span><br><span class="line">			M[hs]--;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	nexp[x]=<span class="number">0</span>;lasp[y]=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(i=y,k=<span class="number">1</span>;i&amp;&amp;k&lt;=<span class="number">50</span>;i=nexp[i],k++)&#123;</span><br><span class="line">		hs=<span class="number">0</span>;</span><br><span class="line">		<span class="keyword">for</span>(j=i,l=<span class="number">1</span>;j&amp;&amp;l&lt;=<span class="number">50</span>;j=lasp[j],l++)&#123;</span><br><span class="line">			hs=hs+A[j]*pw[l<span class="number">-1</span>];</span><br><span class="line">			M[hs]++;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">GetAns</span><span class="params">()</span></span>&#123;</span><br><span class="line">	LL ret=<span class="number">1</span>;ull hs=<span class="number">0</span>;<span class="keyword">int</span> i;</span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">1</span>;i&lt;=K;i++)hs+=pw[K-i]*(s[i]-<span class="string">'0'</span>);</span><br><span class="line">	ret=(LL)ret*M[hs]%mod;</span><br><span class="line">	<span class="keyword">for</span>(;i&lt;=len;i++)&#123;</span><br><span class="line">		hs=(hs-pw[K<span class="number">-1</span>]*(s[i-K]-<span class="string">'0'</span>))*sd+s[i]-<span class="string">'0'</span>;</span><br><span class="line">		ret=(LL)ret*M[hs]%mod;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"%lld\n"</span>,ret);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> i,x,y,ty;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;N,&amp;Q);</span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">1</span>;i&lt;=N;i++)<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;A[i]),M[A[i]]++;<span class="comment">//nexp[i]=lasp[i]=i;</span></span><br><span class="line">	<span class="keyword">for</span>(pw[<span class="number">0</span>]=<span class="number">1</span>,i=<span class="number">1</span>;i&lt;=<span class="number">50</span>;i++)pw[i]=pw[i<span class="number">-1</span>]*sd;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">1</span>;i&lt;=Q;i++)&#123;</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;ty);</span><br><span class="line">		<span class="keyword">if</span>(ty==<span class="number">1</span>)&#123;</span><br><span class="line">			<span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;x,&amp;y);</span><br><span class="line">			Merge(x,y);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span>(ty==<span class="number">2</span>)&#123;</span><br><span class="line">			<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;x);</span><br><span class="line">			Split(x);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span>&#123;</span><br><span class="line">			<span class="built_in">scanf</span>(<span class="string">"%s%d"</span>,s+<span class="number">1</span>,&amp;K);</span><br><span class="line">			len=<span class="built_in">strlen</span>(s+<span class="number">1</span>);</span><br><span class="line">			GetAns();</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Hash/" rel="tag"># Hash</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/04/15/CQOI2018-流水账/" rel="next" title="CQOI2018 流水账">
+                <i class="fa fa-chevron-left"></i> CQOI2018 流水账
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.jpg"
+                alt="rgnoH" />
+            
+              <p class="site-author-name" itemprop="name">rgnoH</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">29</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">26</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/rgnoH" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://starkmal.github.io" title="starkmal" target="_blank">starkmal</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://mogicianevian.github.io" title="OBlack" target="_blank">OBlack</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://jackpoison.github.io" title="Sparrow" target="_blank">Sparrow</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#「NOI2017」蚯蚓排队"><span class="nav-number">1.</span> <span class="nav-text">「NOI2017」蚯蚓排队</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#题目描述"><span class="nav-number">1.0.0.0.0.1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#输入格式"><span class="nav-number">1.0.0.0.0.2.</span> <span class="nav-text">输入格式</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#输出格式"><span class="nav-number">1.0.0.0.0.3.</span> <span class="nav-text">输出格式</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#数据范围与提示"><span class="nav-number">1.0.0.0.0.4.</span> <span class="nav-text">数据范围与提示</span></a></li></ol></li></ol></li></ol></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">rgnoH</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">37.5k</span>
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/canvas_sphere.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
+
+  
+  
+  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
+  
+
+  <script src="/js/src/algolia-search.js?v=5.1.4"></script>
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>
