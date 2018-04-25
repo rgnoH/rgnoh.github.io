@@ -1,0 +1,910 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="分块,并查集," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="#「清华集训 2017」Hello world! 题目描述不远的一年前，小V还是一名清华集训的选手，坐在机房里为他已如风中残烛的OI生涯做最后的挣扎。而如今，他已成为了一名光荣的出题人。他感到非常激动，不禁感叹道：“Hello world!”。 小V有$n$道题，他的题都非常毒瘤，所以关爱选手的ufozgg打算削弱这些题。为了逃避削弱，小V把他的毒瘤题都藏到了一棵$n$个节点的树里（节点编号从$1">
+<meta name="keywords" content="分块,并查集">
+<meta property="og:type" content="article">
+<meta property="og:title" content="「清华集训 2017」Hello world!">
+<meta property="og:url" content="http://yoursite.com/2018/04/24/「清华集训-2017」Hello-world/index.html">
+<meta property="og:site_name" content="rgnoH&#39;s Blog">
+<meta property="og:description" content="#「清华集训 2017」Hello world! 题目描述不远的一年前，小V还是一名清华集训的选手，坐在机房里为他已如风中残烛的OI生涯做最后的挣扎。而如今，他已成为了一名光荣的出题人。他感到非常激动，不禁感叹道：“Hello world!”。 小V有$n$道题，他的题都非常毒瘤，所以关爱选手的ufozgg打算削弱这些题。为了逃避削弱，小V把他的毒瘤题都藏到了一棵$n$个节点的树里（节点编号从$1">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-04-25T03:16:38.723Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="「清华集训 2017」Hello world!">
+<meta name="twitter:description" content="#「清华集训 2017」Hello world! 题目描述不远的一年前，小V还是一名清华集训的选手，坐在机房里为他已如风中残烛的OI生涯做最后的挣扎。而如今，他已成为了一名光荣的出题人。他感到非常激动，不禁感叹道：“Hello world!”。 小V有$n$道题，他的题都非常毒瘤，所以关爱选手的ufozgg打算削弱这些题。为了逃避削弱，小V把他的毒瘤题都藏到了一棵$n$个节点的树里（节点编号从$1">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/04/24/「清华集训-2017」Hello-world/"/>
+
+
+
+
+
+  <title>「清华集训 2017」Hello world! | rgnoH's Blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">rgnoH's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-schedule">
+          <a href="/schedule/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-calendar"></i> <br />
+            
+            日程表
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  
+  <div class="algolia-popup popup search-popup">
+    <div class="algolia-search">
+      <div class="algolia-search-input-icon">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="algolia-search-input" id="algolia-search-input"></div>
+    </div>
+
+    <div class="algolia-results">
+      <div id="algolia-stats"></div>
+      <div id="algolia-hits"></div>
+      <div id="algolia-pagination" class="algolia-pagination"></div>
+    </div>
+
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+  </div>
+
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/24/「清华集训-2017」Hello-world/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="rgnoH">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="rgnoH's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">「清华集训 2017」Hello world!</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-24T20:44:08+08:00">
+                2018-04-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  2,471字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  12min
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>#「清华集训 2017」Hello world!</p>
+<h6 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h6><p>不远的一年前，小V还是一名清华集训的选手，坐在机房里为他已如风中残烛的OI生涯做最后的挣扎。而如今，他已成为了一名光荣的出题人。他感到非常激动，不禁感叹道：“Hello world!”。</p>
+<p>小V有$n$道题，他的题都非常毒瘤，所以关爱选手的ufozgg打算削弱这些题。为了逃避削弱，小V把他的毒瘤题都藏到了一棵$n$个节点的树里（节点编号从$1$至$n$），这棵树上的所有节点与小V的所有题一一对应。小V的每一道题都有一个毒瘤值，节点 $i$ （表示标号为 $i$ 的树上节点，下同）对应的题的毒瘤值为 $a_i$ 。</p>
+<p>魔法师小V为了保护他的题目，对这棵树施了魔法，这样一来，任何人想要一探这棵树的究竟，都必须在上面做跳跃操作。每一次跳跃操作包含一个起点 $s$ 、一个终点 $t$ 和一个步频 $k$ ，这表示跳跃者会从 $s$ 出发，在树上沿着简单路径多次跳跃到达 $t$ ，每次跳跃，如果从当前点到 $t$ 的最短路长度不超过 $k$ ，那么跳跃者就会直接跳到 $t$ ，否则跳跃者就会沿着最短路跳过恰好 $k$ 条边。</p>
+<p>既然小V把题藏在了树里，ufozgg就不能直接削弱题目了。他就必须在树上跳跃，边跳跃边削弱题目。ufozgg每次跳跃经过一个节点（包括起点 $s$ ，当 $s=t$ 的时候也是如此），就会把该节点上的题目的毒瘤值开根并向下取整：即如果他经过了节点$i$，他就会使$a_i=\lfloor{\sqrt{a_i}}\rfloor$。这种操作我们称为<code>削弱操作</code>。</p>
+<p>ufozgg还会不时地希望知道他对题目的削弱程度。因此，他在一些跳跃操作中会放弃对题目的削弱，转而统计该次跳跃经过节点的题目毒瘤值总和。这种操作我们称为<code>统计操作</code>。</p>
+<p>吃瓜群众绿绿对小V的毒瘤题和ufozgg的削弱计划常感兴趣。他现在想知道ufozgg每次做统计操作时得到的结果。你能帮帮他吗？</p>
+<h6 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h6><p>输入的第一行一个正整数 $n$ ，表示树的节点数。</p>
+<p>接下来一行 $n$ 个用空格隔开的正整数 $a_1,a_2,\dots,a_n$ ，依次描述每个节点上题目的毒瘤值。</p>
+<p>接下来 $n-1$ 行，描述这棵树。每行 $2$ 个正整数 $u,v$ ，描述一条树上的边 $\left( u,v\right)$ 。（保证 $1\leq u,v\leq n$ ，保证这 $n-1$ 条边构成了一棵树）</p>
+<p>接下来一行一个正整数 $Q$ ，表示ufozgg的操作总数。</p>
+<p>接下来 $Q$ 行按ufozgg执行操作的先后顺序依次描述每个操作，每行 $4$ 个用空格隔开的整数 $op,s,t,k$ ，表示ufozgg此次跳跃的起点为 $s$ ，终点为 $t$ ，步频为 $k$ 。如果 $op=0$ ，表示这是一次<code>削弱操作</code>；如果 $op=1$ ，表示这是一次<code>统计操作</code>。</p>
+<h6 id="输出格式"><a href="#输出格式" class="headerlink" title="输出格式"></a>输出格式</h6><p>对于每个<code>统计操作</code>，输出一行一个整数，表示此次<code>统计操作</code>统计到的所有题的毒瘤值总和。</p>
+<h6 id="数据范围与提示"><a href="#数据范围与提示" class="headerlink" title="数据范围与提示"></a>数据范围与提示</h6><p>对于$100\%$的数据，保证$n\leq 50000$，$Q\leq 400000$，$1\leq a_i\leq {10}^{13}$，对于所有的操作保证$0\leq op\leq 1$，$1\leq s,t,k\leq n$。</p>
+<hr>
+<p>这题真是劲啊。<del>数据结构蒟蒻通过抄代码学到了好多新姿势</del></p>
+<p>首先容易发现：</p>
+<p>1.一个位置上有用的开根号操作只有$O(logloga)$次。</p>
+<p>2.跳$k$步不好直接上数据结构维护，结合数据范围应该考虑分块。</p>
+<p>事实上这两点都是优化的突破口。</p>
+<p>考虑暴力怎么做：如果本次操作每次跳$k$步，那么至多将进行约$\frac{n}{k}$次运算。很自然地想到以某个数$s$为界限，大于它就暴力搞，否则就采用一些技巧优化。</p>
+<p>下面考虑$k$不超过$s$时怎么搞：</p>
+<p>对于每一个$k\leq s$建一棵树。第$k$棵树上$i$的父亲给为原树上它的第$k$个祖先。询问某个$k$时就找到第$k$棵树。</p>
+<p>首先想要优化肯定只能靠“一个位置上有用的开根号操作只有$O(logloga)$次”的性质。因为没有什么好办法，在新树上还是只有暴力上跳，考虑利用这个性质让暴力跳的次数受到控制。</p>
+<p>由于当某个节点的值变成1之后，再对它进行开根操作就失去了意义，所以当某个节点的权值为1时，在新树上就可以“缩掉”这个点，这个可以用并查集实现。</p>
+<p>解决了修改操作，考虑如何高效地求和，显然考虑数据结构。直接的想法是在新树上树链剖分套树状数组，支持单点修改和区间求和。这样做会使一次复杂度为$O(log^2n)$。然后就发现学傻了：每个点维护一下它到根节点路径上的权值之和，求一条路径的权值之和的时候用两端的值加起来减去2倍$lca$的值就好了，这个用$dfs$序+树状数组可以做到$O(logn)$。</p>
+<p>剩下的就是细节了。注意这里的$a$很大，直接调用sqrt有可能出现精度不够的情况。</p>
+<p>块的大小好像给小一点比较好？</p>
+<hr>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MAXN 50055</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MAXS 25</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ll long long</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">char</span> *p1,*p2,buf[<span class="number">1</span>&lt;&lt;<span class="number">20</span>];</span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> GC (p1==p2&amp;&amp;(p2=(p1=buf)+fread(buf,1,1000000,stdin),p1==p2)?0:*p1++)</span></span><br><span class="line"><span class="keyword">inline</span> ll _LLR()&#123;</span><br><span class="line">	<span class="keyword">char</span> s=GC;ll v=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">while</span>(s&gt;<span class="number">57</span>||s&lt;<span class="number">48</span>)s=GC;</span><br><span class="line">	<span class="keyword">for</span>(;s&gt;<span class="number">47</span>&amp;&amp;s&lt;<span class="number">58</span>;s=GC)v=v*<span class="number">10</span>+s<span class="number">-48</span>;</span><br><span class="line">	<span class="keyword">return</span> v;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">inline</span> <span class="keyword">int</span> _R()&#123;</span><br><span class="line">	<span class="keyword">char</span> s=GC;<span class="keyword">int</span> v=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">while</span>(s&gt;<span class="number">57</span>||s&lt;<span class="number">48</span>)s=GC;</span><br><span class="line">	<span class="keyword">for</span>(;s&gt;<span class="number">47</span>&amp;&amp;s&lt;<span class="number">58</span>;s=GC)v=v*<span class="number">10</span>+s<span class="number">-48</span>;</span><br><span class="line">	<span class="keyword">return</span> v;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function">ll <span class="title">sq</span><span class="params">(ll x)</span></span>&#123;</span><br><span class="line">	ll ret=<span class="built_in">sqrt</span>(x);</span><br><span class="line">	<span class="keyword">while</span>(ret*ret&lt;x)ret++;</span><br><span class="line">	<span class="keyword">while</span>(ret*ret&gt;x)ret--;</span><br><span class="line">	<span class="keyword">return</span> ret;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> N,S;ll A[MAXN];<span class="keyword">bool</span> vis[MAXN];</span><br><span class="line"><span class="keyword">int</span> sz[MAXN],son[MAXN],dep[MAXN],fa[MAXN],anc[MAXN],id[MAXN],idd[MAXN],lab;</span><br><span class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;G[MAXN];</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">node</span>&#123;</span></span><br><span class="line"><span class="keyword">int</span> fa[MAXN],In[MAXN],Out[MAXN],vt;</span><br><span class="line"><span class="keyword">int</span> par[MAXN];</span><br><span class="line">ll C[MAXN];</span><br><span class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;E[MAXN];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">gf</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(par[x]!=x)par[x]=gf(par[x]);</span><br><span class="line">	<span class="keyword">return</span> par[x];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function">ll <span class="title">getsum</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;</span><br><span class="line">	ll ret=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=x;i;i^=(i&amp;-i))ret+=C[i];</span><br><span class="line">	<span class="keyword">return</span> ret;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function">ll <span class="title">query</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y)</span></span>&#123;<span class="keyword">return</span> getsum(In[x])-getsum(In[y]);&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> x,ll d)</span></span>&#123;<span class="keyword">for</span>(<span class="keyword">int</span> i=x;i&lt;=N+<span class="number">1</span>;i+=(i&amp;-i))C[i]+=d;&#125;</span><br><span class="line"><span class="function">ll <span class="title">modify</span><span class="params">(<span class="keyword">int</span> x,ll d)</span></span>&#123;add(In[x],d);add(Out[x]+<span class="number">1</span>,-d);&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> f)</span></span>&#123;</span><br><span class="line">	In[x]=++vt;</span><br><span class="line">	<span class="keyword">int</span> i,y;</span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;E[x].size();i++)&#123;</span><br><span class="line">		y=E[x][i];<span class="keyword">if</span>(y==f)<span class="keyword">continue</span>;</span><br><span class="line">		dfs(y,x);		</span><br><span class="line">	&#125;</span><br><span class="line">	Out[x]=vt;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">init</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> i;</span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">1</span>;i&lt;=N;i++)par[i]=i;</span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">1</span>;i&lt;=N;i++)E[fa[i]].push_back(i);</span><br><span class="line">	dfs(N+<span class="number">1</span>,<span class="number">0</span>);</span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">1</span>;i&lt;=N;i++)modify(i,A[i]);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#125;tree[MAXS];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">getson</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> f)</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> i,y;</span><br><span class="line">	dep[x]=dep[f]+<span class="number">1</span>;fa[x]=f;sz[x]=<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;G[x].size();i++)&#123;</span><br><span class="line">		y=G[x][i];<span class="keyword">if</span>(y==f)<span class="keyword">continue</span>;</span><br><span class="line">		getson(y,x);sz[x]+=sz[y];</span><br><span class="line">		<span class="keyword">if</span>(sz[y]&gt;sz[son[x]])son[x]=y;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">connect</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> a)</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> i,y;</span><br><span class="line">	id[x]=++lab;idd[lab]=x;anc[x]=a;</span><br><span class="line">	<span class="keyword">if</span>(son[x])connect(son[x],a);</span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;G[x].size();i++)&#123;</span><br><span class="line">		y=G[x][i];<span class="keyword">if</span>(y==fa[x]||y==son[x])<span class="keyword">continue</span>;</span><br><span class="line">		connect(y,y);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">LCA</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y)</span></span>&#123;</span><br><span class="line">	<span class="keyword">while</span>(anc[x]!=anc[y])&#123;</span><br><span class="line">		<span class="keyword">if</span>(dep[anc[x]]&lt;dep[anc[y]])swap(x,y);</span><br><span class="line">		x=fa[anc[x]];</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> dep[x]&lt;dep[y]?x:y;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">getdis</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y)</span></span>&#123;</span><br><span class="line">	<span class="keyword">return</span> dep[x]+dep[y]<span class="number">-2</span>*dep[LCA(x,y)];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">jump</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> d)</span></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(dep[x]&lt;=d)<span class="keyword">return</span> N+<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">while</span>(dep[x]-dep[anc[x]]&lt;d)&#123;</span><br><span class="line">		d-=dep[x]-dep[anc[x]]+<span class="number">1</span>;</span><br><span class="line">		x=fa[anc[x]];</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> idd[id[x]-d];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">modify</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(A[x]==<span class="number">1</span>&amp;&amp;vis[x])<span class="keyword">return</span>;</span><br><span class="line">	vis[x]=<span class="literal">true</span>;</span><br><span class="line">	ll d=sq(A[x])-A[x];<span class="keyword">int</span> i;</span><br><span class="line">	A[x]+=d;</span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">1</span>;i&lt;=S;i++)tree[i].modify(x,d);</span><br><span class="line">	<span class="keyword">if</span>(A[x]==<span class="number">1</span>)<span class="keyword">for</span>(i=<span class="number">1</span>;i&lt;=S;i++)tree[i].par[x]=tree[i].fa[x];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Modify</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y,<span class="keyword">int</span> k)</span></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(k&lt;=S)<span class="keyword">while</span>(id[x]&gt;id[y])modify(x),x=tree[k].gf(tree[k].fa[x]);</span><br><span class="line">	<span class="keyword">else</span> <span class="keyword">while</span>(x!=y)modify(x),x=jump(x,k);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function">ll <span class="title">Query</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y,<span class="keyword">int</span> k)</span></span>&#123;</span><br><span class="line">	ll ret=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">if</span>(k&lt;=S)ret=tree[k].query(x,y);</span><br><span class="line">	<span class="keyword">else</span> <span class="keyword">while</span>(x!=y)ret+=A[x],x=jump(x,k);</span><br><span class="line">	<span class="keyword">return</span> ret;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> i,j,x,y;</span><br><span class="line">	<span class="keyword">int</span> Q,op,s,t,k,lca,dis;ll ret;</span><br><span class="line">	</span><br><span class="line">	N=_R();</span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">1</span>;i&lt;=N;i++)A[i]=_LLR();</span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">1</span>;i&lt;N;i++)&#123;</span><br><span class="line">		x=_R();y=_R();</span><br><span class="line">		G[x].push_back(y);</span><br><span class="line">		G[y].push_back(x);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	getson(<span class="number">1</span>,<span class="number">0</span>);connect(<span class="number">1</span>,<span class="number">1</span>);</span><br><span class="line">	S=<span class="number">20</span>;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">for</span>(x=<span class="number">1</span>;x&lt;=N;x++)&#123;</span><br><span class="line">		<span class="keyword">for</span>(i=<span class="number">1</span>,y=x;i&lt;=S;i++)&#123;</span><br><span class="line">			y=fa[y];</span><br><span class="line">			tree[i].fa[x]=y?y:N+<span class="number">1</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">1</span>;i&lt;=S;i++)tree[i].init();</span><br><span class="line">	</span><br><span class="line">	Q=_R();</span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">1</span>;i&lt;=Q;i++)&#123;</span><br><span class="line">		op=_R();s=_R();t=_R();k=_R();</span><br><span class="line">		lca=LCA(s,t);dis=getdis(s,t);</span><br><span class="line">		<span class="keyword">if</span>(op==<span class="number">0</span>)&#123;</span><br><span class="line">			Modify(s,jump(s,(dep[s]-dep[lca]+k)/k*k),k);</span><br><span class="line">			x=jump(t,dis%k);</span><br><span class="line">			Modify(x,jump(x,(dep[x]-dep[lca]+k<span class="number">-1</span>)/k*k),k);</span><br><span class="line">			<span class="keyword">if</span>(dis%k)Modify(t,jump(t,k),k);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span>&#123;</span><br><span class="line">			ret=<span class="number">0</span>;</span><br><span class="line">			ret+=Query(s,jump(s,(dep[s]-dep[lca]+k)/k*k),k);</span><br><span class="line">			x=jump(t,dis%k);</span><br><span class="line">			ret+=Query(x,jump(x,(dep[x]-dep[lca]+k<span class="number">-1</span>)/k*k),k);</span><br><span class="line">			<span class="keyword">if</span>(dis%k)ret+=Query(t,jump(t,k),k);</span><br><span class="line">			<span class="built_in">printf</span>(<span class="string">"%lld\n"</span>,ret);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/分块/" rel="tag"># 分块</a>
+          
+            <a href="/tags/并查集/" rel="tag"># 并查集</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/04/19/「NOI2016」循环之美/" rel="next" title="「NOI2016」循环之美">
+                <i class="fa fa-chevron-left"></i> 「NOI2016」循环之美
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/04/25/求原根算法及原理/" rel="prev" title="求原根算法及原理">
+                求原根算法及原理 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.jpg"
+                alt="rgnoH" />
+            
+              <p class="site-author-name" itemprop="name">rgnoH</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">33</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">27</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/rgnoH" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://starkmal.github.io" title="starkmal" target="_blank">starkmal</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://mogicianevian.github.io" title="OBlack" target="_blank">OBlack</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://jackpoison.github.io" title="Sparrow" target="_blank">Sparrow</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-6"><a class="nav-link" href="#题目描述"><span class="nav-number">1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#输入格式"><span class="nav-number">2.</span> <span class="nav-text">输入格式</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#输出格式"><span class="nav-number">3.</span> <span class="nav-text">输出格式</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#数据范围与提示"><span class="nav-number">4.</span> <span class="nav-text">数据范围与提示</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">rgnoH</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">43.2k</span>
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/canvas_sphere.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
+
+  
+  
+  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
+  
+
+  <script src="/js/src/algolia-search.js?v=5.1.4"></script>
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>
