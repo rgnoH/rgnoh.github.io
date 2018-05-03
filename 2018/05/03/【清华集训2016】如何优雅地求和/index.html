@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="rgnoH&#39;s Blog">
 <meta property="og:description" content="uoj269 【清华集训2016】如何优雅地求和题面：http://uoj.ac/problem/269 设$f(x)=\sum_{k=0}^ma_kx^k$。根据乘法分配律，可以将答案拆成$a_iQ(k^i,n,x)$的和。那么我们现在只需要关心$f(x)=x^0,x^1,x^2,…,x^m$时如何快速求和。 $f(x)=1$时，首先由二项式定理，$Q=1$。 $f(x)=x$时，可以这样化简：">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-05-03T00:42:36.153Z">
+<meta property="og:updated_time" content="2018-05-03T03:28:48.841Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【清华集训2016】如何优雅地求和">
 <meta name="twitter:description" content="uoj269 【清华集训2016】如何优雅地求和题面：http://uoj.ac/problem/269 设$f(x)=\sum_{k=0}^ma_kx^k$。根据乘法分配律，可以将答案拆成$a_iQ(k^i,n,x)$的和。那么我们现在只需要关心$f(x)=x^0,x^1,x^2,…,x^m$时如何快速求和。 $f(x)=1$时，首先由二项式定理，$Q=1$。 $f(x)=x$时，可以这样化简：">
@@ -352,7 +352,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  797字
+                  793字
                 </span>
               
 
@@ -397,7 +397,7 @@
 <p>考虑$f(x)=x$时我们的化简方式：注意到后面的形式极容易想到用二项式定理来做，那么我们就把原来的组合数通过某种方式变成能够用二项式定理的新的组合数。能否这样化简取决于$f(x)$是什么。观察发现有这样的结论：<br>$$<br>当f(x)=x^{\underline{d}}时，Q=n^{\underline{d}}x^d<br>$$<br>化简方式与$f(x)=x$时相似，具体来说：<br>$$<br>Q=\sum_{k=0}^nk^{\underline{d}}\frac{n!}{k!(n-k)!}x^k(1-x)^{n-k}=\sum_{k=0}^nn^{\underline{d}}x^d\frac{(n-d)!}{(k-d)!(n-k)!}x^{k-d}(1-x)^{n-k}=n^{\underline{d}}x^d<br>$$<br>如果我们能把$f(x)$写成下降幂的和的形式，即求出$f(x)=\sum_{k=0}^mb_kx^{\underline{k}}$当中的$b_k$，那么显然扫一遍就能得到答案了。现在考虑如何求$b_k$。</p>
 <p>令$c_k=b_kk!$，那么有：<br>$$<br>f(x)=\sum_{k=0}^mc_k\frac{x^{\underline{k}}}{k!}=\sum_{k=0}^mc_k\Big(^{x}_{k}\Big)<br>$$<br>注意到题目还有一个条件没有用到：题目中给出了$x=0,1,2,…,m$时$f(x)$的值。</p>
 <p>显然，当$x=0$时，$f(x)=c_0$。</p>
-<p>考虑$\triangle f(x)=f(x+1)-f(x)$，注意到$\Big(^{x+1}<em>{k}\Big)-\Big(^{x}</em>{k}\Big)=\Big(^{x}<em>{k-1}\Big)$，有$\triangle f(x)=\sum</em>{k=1}^mc_k\Big(^{x}_{k-1}\Big)$，那么当$x=0$时，$\triangle f(x)=c_1$。</p>
+<p>考虑$\triangle f(x)=f(x+1)-f(x)$，注意到$C_{x+1}^{k}-C_{x}^{k}=C_x^{k-1}$，有$\triangle f(x)=\sum_{k=1}^mc_k\Big(^{x}_{k-1}\Big)$，那么当$x=0$时，$\triangle f(x)=c_1$。</p>
 <p>不难看出，$\triangle^{k} f(0)=c_k$。</p>
 <p>虽然这里的步骤可以用FFT优化，但是由于本题中$m\leq20000$，<del>懒惰的</del>良心的出题人给的std也是$O(m^2)$的算法，所以暴力求即可。</p>
 <hr>
