@@ -1,0 +1,903 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="SAM,线段树,Hash," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="「HAOI2018」字串覆盖题目描述小C对字符串颇有研究，他觉得传统的字符串匹配太无聊了，于是他想到了这样一个问题． 对于两个长度为 $n$ 的串 $A, B$ , 小C每次会给出给出 $4$ 个参数 $s, t, l, r$ . 令 $A$ 从 $s$ 到 $t$ 的子串(从 $1$ 开始标号)为 $T$，令 $B$ 从 $l$ 到 $r$ 的子串为 $P$.然后他会进行下面的操作： 如果 $T">
+<meta name="keywords" content="SAM,线段树,Hash">
+<meta property="og:type" content="article">
+<meta property="og:title" content="「HAOI2018」字串覆盖">
+<meta property="og:url" content="http://yoursite.com/2018/05/07/「HAOI2018」字串覆盖/index.html">
+<meta property="og:site_name" content="rgnoH&#39;s Blog">
+<meta property="og:description" content="「HAOI2018」字串覆盖题目描述小C对字符串颇有研究，他觉得传统的字符串匹配太无聊了，于是他想到了这样一个问题． 对于两个长度为 $n$ 的串 $A, B$ , 小C每次会给出给出 $4$ 个参数 $s, t, l, r$ . 令 $A$ 从 $s$ 到 $t$ 的子串(从 $1$ 开始标号)为 $T$，令 $B$ 从 $l$ 到 $r$ 的子串为 $P$.然后他会进行下面的操作： 如果 $T">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-05-07T14:08:35.643Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="「HAOI2018」字串覆盖">
+<meta name="twitter:description" content="「HAOI2018」字串覆盖题目描述小C对字符串颇有研究，他觉得传统的字符串匹配太无聊了，于是他想到了这样一个问题． 对于两个长度为 $n$ 的串 $A, B$ , 小C每次会给出给出 $4$ 个参数 $s, t, l, r$ . 令 $A$ 从 $s$ 到 $t$ 的子串(从 $1$ 开始标号)为 $T$，令 $B$ 从 $l$ 到 $r$ 的子串为 $P$.然后他会进行下面的操作： 如果 $T">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/05/07/「HAOI2018」字串覆盖/"/>
+
+
+
+
+
+  <title>「HAOI2018」字串覆盖 | rgnoH's Blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">rgnoH's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-schedule">
+          <a href="/schedule/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-calendar"></i> <br />
+            
+            日程表
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  
+  <div class="algolia-popup popup search-popup">
+    <div class="algolia-search">
+      <div class="algolia-search-input-icon">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="algolia-search-input" id="algolia-search-input"></div>
+    </div>
+
+    <div class="algolia-results">
+      <div id="algolia-stats"></div>
+      <div id="algolia-hits"></div>
+      <div id="algolia-pagination" class="algolia-pagination"></div>
+    </div>
+
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+  </div>
+
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/07/「HAOI2018」字串覆盖/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="rgnoH">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="rgnoH's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">「HAOI2018」字串覆盖</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-07T21:40:16+08:00">
+                2018-05-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  2,330字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  12min
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="「HAOI2018」字串覆盖"><a href="#「HAOI2018」字串覆盖" class="headerlink" title="「HAOI2018」字串覆盖"></a>「HAOI2018」字串覆盖</h1><h6 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h6><p>小C对字符串颇有研究，他觉得传统的字符串匹配太无聊了，于是他想到了这样一个问题．</p>
+<p>对于两个长度为 $n$ 的串 $A, B$ , 小C每次会给出给出 $4$ 个参数 $s, t, l, r$ . 令 $A$ 从 $s$ 到 $t$ 的子串(从 $1$ 开始标号)为 $T$，令 $B$ 从 $l$ 到 $r$ 的子串为 $P$.然后他会进行下面的操作：</p>
+<p>如果 $T$ 的某个子串与 $P$ 相同，我们就可以覆盖 $T$ 的这个子串，并获得 $K - i$ 的收益，其中 $i$ 是初始时 $A$ 中(注意不是 $T$ 中)这个子串的起始位置，$K$是给定的参数．一个位置不能被覆盖多次．覆盖操作可以进行任意多次，你需要输出获得收益的最大值．</p>
+<p>注意每次询问都是独立的，即进行一次询问后，覆盖的位置会复原．</p>
+<h6 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h6><p>第一行两个整数 $n, K$ ，表示字符串长度和参数．</p>
+<p>接下来一行一个字符串 $A$.</p>
+<p>接下来一行一个字符串 $B$ .</p>
+<p>接下来一行一个整数 $q$ ，表示询问个数．</p>
+<p>接下来 $q$ 行，每行四个整数 $s, t, l, r$ ，表示一次询问．</p>
+<h6 id="输出格式"><a href="#输出格式" class="headerlink" title="输出格式"></a>输出格式</h6><p>输出 $q$ 行，每行一个整数，表示一个询问的答案．</p>
+<h6 id="数据范围与提示"><a href="#数据范围与提示" class="headerlink" title="数据范围与提示"></a>数据范围与提示</h6><p>对于所有数据，有 $1 \le n, q \le 10^5$ ，$A, B$ 仅由小写英文字母组成，$1 \le s \le t \le n, 1 \le l \le r \le n, n &lt; K \le 10^9$．</p>
+<p>对于 $n = 10^5$ 的测试点，满足 $51 \le r - l \le 2000$ 的询问不超过 $11000$ 个，且 $r - l$ 在该区间内均匀随机．</p>
+<hr>
+<p>貌似有后缀数组的优秀做法，但是蒟蒻只会后缀自动机……</p>
+<p>首先容易想到，要获得最大收益，一定是采取这样的贪心策略：找到当前区间中左端点最小的用来覆盖的子串，再找到与它不交的下一个左端点最小的用来覆盖的子串……直到不能找到为止。</p>
+<p>正确性说明：</p>
+<p>由于$K&gt;n$，所以每次收益一定是正的，那么单次价值显然是越靠前出现的越大。考虑这样一种情况：区间中第二靠左的子串与最左边的子串有交。那么如果要选第二的子串，那么剩下子串的选取方案对于最靠左的子串也是合法的。因此，每次选最靠左的一定是最优的。</p>
+<p>那么现在只需要找到这些不交的出现位置即可，发现由于“不交”的限制很难直接用数据结构维护。那么考虑设置阈值（其实数据范围也有提示）。</p>
+<p>用来覆盖的子串长度大于阈值时，用SAM暴力跳。具体做法是在两个串中间加一个分隔符建立SAM，用线段树合并弄出right集合。每次询问，用倍增找到自动机上$P[l,r]$对应的状态，再不断在它对应的线段树上找一找某个区间里出现的第一个位置就好。</p>
+<p>当这个长度小于阈值的时候，考虑建图：用$id[i][j]$表示$T$中以$i$开头，长度为$j$的字符串代表的状态（这样的字符串需要是某个用来覆盖的串，否则没有意义），每个点向它右边第一个与它完全相同的字符串代表的状态连边，如果是第一次出现就连向0号点。容易看出这样形成了一棵树。对于每次询问，只需要倍增找到对应区间即可。</p>
+<p>连边的处理需要开一个链表。在这里为了知道某个字符串右边第一次出现的位置，可以使用字符串hash+hash表（代码里采用的unordered_map）。</p>
+<p>细节很多，码量很大，写起来很爆炸。考试时遇到这种题，应该先敲暴力，在前两道题都比较稳的情况下再写正解吧……</p>
+<p>但是考场上真的能写对吗……</p>
+<hr>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;unordered_map&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ll unsigned long long</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MAXN 400005</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MAXT 10000005</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MAXM 4000005</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> LIM=<span class="number">50</span>;</span><br><span class="line"><span class="keyword">const</span> ll sd=<span class="number">1234321237</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> N,K,Q;ll Ans[MAXN];<span class="keyword">char</span> A[MAXN];</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> srt,las,tot,mx[MAXN],par[MAXN][<span class="number">20</span>],son[MAXN][<span class="number">27</span>],pos[MAXN];</span><br><span class="line"><span class="keyword">int</span> rt[MAXN],ls[MAXT],rs[MAXT],sz[MAXT],seg_tot,seg_n;</span><br><span class="line"></span><br><span class="line">ll ha[MAXN],hb[MAXN],pw[MAXN];</span><br><span class="line"><span class="keyword">int</span> nex[MAXN][LIM+<span class="number">3</span>],id[MAXN][LIM+<span class="number">3</span>],ori_beg[MAXT],id_tot;</span><br><span class="line"><span class="built_in">unordered_map</span>&lt;ll,<span class="keyword">int</span>&gt;las_pos;</span><br><span class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;save[MAXM];ll sum[MAXN];<span class="keyword">int</span> D[MAXN];</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> En[MAXN],Nex[MAXN],Las[MAXN],Tot;</span><br><span class="line"><span class="keyword">int</span> EN[MAXM],NEX[MAXM],LAS[MAXM],TOT;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y)</span></span>&#123;</span><br><span class="line">	En[++Tot]=y;</span><br><span class="line">	Nex[Tot]=Las[x];</span><br><span class="line">	Las[x]=Tot;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">ADD</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y)</span></span>&#123;</span><br><span class="line">	EN[++TOT]=y;</span><br><span class="line">	NEX[TOT]=LAS[x];</span><br><span class="line">	LAS[x]=TOT;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">node</span>&#123;</span></span><br><span class="line">	<span class="keyword">int</span> s,t,l,r,len,id;</span><br><span class="line">&#125;ask[MAXN];<span class="keyword">int</span> ask_tot;</span><br><span class="line"><span class="keyword">bool</span> <span class="keyword">operator</span>&lt;(node a,node b)&#123;</span><br><span class="line">	<span class="keyword">return</span> a.s&gt;b.s;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">modify</span><span class="params">(<span class="keyword">int</span> &amp;p,<span class="keyword">int</span> l,<span class="keyword">int</span> r,<span class="keyword">int</span> k)</span></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(!p)p=++seg_tot;sz[p]++;</span><br><span class="line">	<span class="keyword">if</span>(l==r)<span class="keyword">return</span>;</span><br><span class="line">	<span class="keyword">int</span> mid=l+r&gt;&gt;<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">if</span>(k&lt;=mid)modify(ls[p],l,mid,k);</span><br><span class="line">	<span class="keyword">else</span> modify(rs[p],mid+<span class="number">1</span>,r,k);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">Merge</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y,<span class="keyword">int</span> l,<span class="keyword">int</span> r)</span></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(!x||!y)<span class="keyword">return</span> x|y;</span><br><span class="line">	<span class="keyword">int</span> p=++seg_tot,mid;</span><br><span class="line">	<span class="keyword">if</span>(l==r)&#123;</span><br><span class="line">		sz[p]=sz[x]+sz[y];</span><br><span class="line">		<span class="keyword">return</span> p;</span><br><span class="line">	&#125;</span><br><span class="line">	mid=l+r&gt;&gt;<span class="number">1</span>;</span><br><span class="line">	ls[p]=Merge(ls[x],ls[y],l,mid);</span><br><span class="line">	rs[p]=Merge(rs[x],rs[y],mid+<span class="number">1</span>,r);</span><br><span class="line">	sz[p]=sz[ls[p]]+sz[rs[p]];</span><br><span class="line">	<span class="keyword">return</span> p;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">findnext</span><span class="params">(<span class="keyword">int</span> p,<span class="keyword">int</span> l,<span class="keyword">int</span> r,<span class="keyword">int</span> k)</span></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(k&gt;N||sz[p]==<span class="number">0</span>)<span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">	<span class="keyword">if</span>(l==r)<span class="keyword">return</span> k&lt;=l?l:<span class="number">-1</span>;</span><br><span class="line">	<span class="keyword">int</span> mid=l+r&gt;&gt;<span class="number">1</span>,ret=<span class="number">-1</span>;</span><br><span class="line">	<span class="keyword">if</span>(l&gt;=k&amp;&amp;sz[ls[p]])<span class="keyword">return</span> findnext(ls[p],l,mid,k);</span><br><span class="line">	<span class="keyword">if</span>(mid&gt;=k)&#123;</span><br><span class="line">		<span class="keyword">if</span>(sz[ls[p]])ret=findnext(ls[p],l,mid,k);</span><br><span class="line">		<span class="keyword">if</span>(~ret)<span class="keyword">return</span> ret;</span><br><span class="line">		<span class="keyword">return</span> findnext(rs[p],mid+<span class="number">1</span>,r,k);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> findnext(rs[p],mid+<span class="number">1</span>,r,k);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">push</span><span class="params">(<span class="keyword">int</span> val)</span></span>&#123;</span><br><span class="line">	mx[++tot]=val;</span><br><span class="line">	<span class="keyword">return</span> tot;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">extend</span><span class="params">(<span class="keyword">int</span> t)</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> p,q,np,nq;</span><br><span class="line">	np=push(mx[las]+<span class="number">1</span>);</span><br><span class="line">	<span class="keyword">for</span>(p=las;p&amp;&amp;!son[p][t];p=par[p][<span class="number">0</span>])son[p][t]=np;</span><br><span class="line">	<span class="keyword">if</span>(!p)par[np][<span class="number">0</span>]=srt;</span><br><span class="line">	<span class="keyword">else</span>&#123;</span><br><span class="line">		q=son[p][t];</span><br><span class="line">		<span class="keyword">if</span>(mx[q]==mx[p]+<span class="number">1</span>)par[np][<span class="number">0</span>]=q;</span><br><span class="line">		<span class="keyword">else</span>&#123;</span><br><span class="line">			nq=push(mx[p]+<span class="number">1</span>);</span><br><span class="line">			<span class="built_in">memcpy</span>(son[nq],son[q],<span class="keyword">sizeof</span>(son[q]));</span><br><span class="line">			par[nq][<span class="number">0</span>]=par[q][<span class="number">0</span>];</span><br><span class="line">			par[q][<span class="number">0</span>]=par[np][<span class="number">0</span>]=nq;</span><br><span class="line">			<span class="keyword">for</span>(;son[p][t]==q;p=par[p][<span class="number">0</span>])son[p][t]=nq;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	las=np;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">jump</span><span class="params">(<span class="keyword">int</span> p,<span class="keyword">int</span> d)</span></span>&#123;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">19</span>;i&gt;=<span class="number">0</span>;i--)<span class="keyword">if</span>(mx[par[p][i]]&gt;=d)p=par[p][i];</span><br><span class="line">	<span class="keyword">return</span> p;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> i,y;</span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">1</span>;i&lt;<span class="number">20</span>;i++)par[x][i]=par[par[x][i<span class="number">-1</span>]][i<span class="number">-1</span>];</span><br><span class="line">	<span class="keyword">for</span>(i=Las[x];i;i=Nex[i])&#123;</span><br><span class="line">		y=En[i];</span><br><span class="line">		dfs(y);</span><br><span class="line">		rt[x]=Merge(rt[x],rt[y],<span class="number">1</span>,seg_n);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">sam_init</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> i;</span><br><span class="line">	seg_n=N;</span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">2</span>;i&lt;=tot;i++)add(par[i][<span class="number">0</span>],i);</span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">1</span>;i&lt;=N;i++)modify(rt[pos[i]],<span class="number">1</span>,seg_n,i);</span><br><span class="line">	dfs(<span class="number">1</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function">ll <span class="title">solve1</span><span class="params">(<span class="keyword">int</span> s,<span class="keyword">int</span> t,<span class="keyword">int</span> l,<span class="keyword">int</span> r)</span></span>&#123;</span><br><span class="line">	ll ret=<span class="number">0</span>;<span class="keyword">int</span> len=r-l+<span class="number">1</span>,cur,p;</span><br><span class="line">	p=jump(pos[N+<span class="number">1</span>+r],len);</span><br><span class="line">	cur=findnext(rt[p],<span class="number">1</span>,seg_n,s+len<span class="number">-1</span>);</span><br><span class="line">	<span class="keyword">while</span>(cur&lt;=t&amp;&amp;cur!=<span class="number">-1</span>)&#123;</span><br><span class="line">		ret+=(ll)K-(cur-len+<span class="number">1</span>);</span><br><span class="line">		cur=findnext(rt[p],<span class="number">1</span>,seg_n,cur+len);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> ret;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//part 1</span></span><br><span class="line"></span><br><span class="line"><span class="function">ll <span class="title">gethash</span><span class="params">(ll h[],<span class="keyword">int</span> l,<span class="keyword">int</span> r)</span></span>&#123;</span><br><span class="line">	<span class="keyword">return</span> h[r]-h[l<span class="number">-1</span>]*pw[r-l+<span class="number">1</span>];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">solve2</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> dep)</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> i,j,d,p,y,r;</span><br><span class="line">	ll ret;</span><br><span class="line">	<span class="keyword">for</span>(j=<span class="number">0</span>;j&lt;save[x].size();j++)&#123;</span><br><span class="line">		p=save[x][j];</span><br><span class="line">		ret=<span class="number">0</span>;d=dep;r=ask[p].t-ask[p].len+<span class="number">1</span>;</span><br><span class="line">		<span class="keyword">for</span>(i=<span class="number">19</span>;i&gt;=<span class="number">0</span>;i--)<span class="keyword">if</span>((d&gt;=(<span class="number">1</span>&lt;&lt;i))&amp;&amp;ori_beg[D[d-(<span class="number">1</span>&lt;&lt;i)]]&lt;=r)&#123;</span><br><span class="line">			ret+=sum[d]-sum[d-(<span class="number">1</span>&lt;&lt;i)];</span><br><span class="line">			d-=(<span class="number">1</span>&lt;&lt;i);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span>(ori_beg[D[d]]&lt;=r&amp;&amp;d)ret+=sum[d]-sum[d<span class="number">-1</span>];</span><br><span class="line">		Ans[ask[p].id]=ret;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">for</span>(i=LAS[x];i;i=NEX[i])&#123;</span><br><span class="line">		y=EN[i];</span><br><span class="line">		sum[dep+<span class="number">1</span>]=sum[dep]+K-ori_beg[y];</span><br><span class="line">		D[dep+<span class="number">1</span>]=y;</span><br><span class="line">		solve2(y,dep+<span class="number">1</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//part 2</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> i,j,k,s,t,l,r,tmp;</span><br><span class="line">	ll hh;</span><br><span class="line">	</span><br><span class="line">	srt=las=push(<span class="number">0</span>);</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;N,&amp;K);</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">1</span>,pw[<span class="number">0</span>]=<span class="number">1</span>;i&lt;=N;i++)pw[i]=pw[i<span class="number">-1</span>]*sd;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%s"</span>,A+<span class="number">1</span>);</span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">1</span>;i&lt;=N;i++)extend(A[i]-<span class="string">'a'</span>),pos[i]=las;</span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">1</span>;i&lt;=N;i++)ha[i]=ha[i<span class="number">-1</span>]*sd+A[i];</span><br><span class="line">	extend(<span class="number">26</span>);</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%s"</span>,A+<span class="number">1</span>);</span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">1</span>;i&lt;=N;i++)extend(A[i]-<span class="string">'a'</span>),pos[i+N+<span class="number">1</span>]=las;</span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">1</span>;i&lt;=N;i++)hb[i]=hb[i<span class="number">-1</span>]*sd+A[i];</span><br><span class="line">	</span><br><span class="line">	sam_init();</span><br><span class="line">	</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;Q);</span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">1</span>;i&lt;=Q;i++)&#123;</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">"%d%d%d%d"</span>,&amp;s,&amp;t,&amp;l,&amp;r);</span><br><span class="line">		<span class="keyword">if</span>(s+(r-l+<span class="number">1</span>)&gt;t)<span class="keyword">continue</span>;</span><br><span class="line">		<span class="keyword">if</span>(r-l+<span class="number">1</span>&lt;=LIM)&#123;</span><br><span class="line">			ask_tot++;</span><br><span class="line">			ask[ask_tot]=(node)&#123;s,t,l,r,r-l+<span class="number">1</span>,i&#125;;</span><br><span class="line">			las_pos[gethash(hb,l,r)]=N+<span class="number">1</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span> Ans[i]=solve1(s,t,l,r);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	sort(ask+<span class="number">1</span>,ask+ask_tot+<span class="number">1</span>);</span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">1</span>;i&lt;=LIM;i++)nex[N+<span class="number">1</span>][i]=N+<span class="number">1</span>;</span><br><span class="line">	j=N+<span class="number">1</span>;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">1</span>;i&lt;=ask_tot;i++)&#123;</span><br><span class="line">		<span class="keyword">while</span>(j&gt;ask[i].s)&#123;</span><br><span class="line">			j--;</span><br><span class="line">			<span class="keyword">for</span>(k=<span class="number">1</span>;k&lt;=min(LIM,N-j+<span class="number">1</span>);k++)&#123;</span><br><span class="line">				hh=gethash(ha,j,j+k<span class="number">-1</span>);</span><br><span class="line">				<span class="keyword">if</span>(!las_pos.count(hh))<span class="keyword">continue</span>;</span><br><span class="line">				id[j][k]=++id_tot;ori_beg[id_tot]=j;</span><br><span class="line">				</span><br><span class="line">				tmp=las_pos[hh];</span><br><span class="line">				nex[j][k]=tmp;</span><br><span class="line">				<span class="keyword">while</span>(tmp&lt;=j+k<span class="number">-1</span>)tmp=nex[tmp][k];</span><br><span class="line">				ADD(id[tmp][k],id[j][k]);</span><br><span class="line">				las_pos[hh]=j;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		hh=gethash(hb,ask[i].l,ask[i].r);</span><br><span class="line">		s=las_pos[hh];</span><br><span class="line">		<span class="keyword">if</span>(s+ask[i].len<span class="number">-1</span>&gt;ask[i].t)<span class="keyword">continue</span>;</span><br><span class="line">		save[id[s][ask[i].len]].push_back(i);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	ori_beg[<span class="number">0</span>]=N+<span class="number">1</span>;</span><br><span class="line">	solve2(<span class="number">0</span>,<span class="number">0</span>);</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">1</span>;i&lt;=Q;i++)<span class="built_in">printf</span>(<span class="string">"%llu\n"</span>,Ans[i]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/SAM/" rel="tag"># SAM</a>
+          
+            <a href="/tags/线段树/" rel="tag"># 线段树</a>
+          
+            <a href="/tags/Hash/" rel="tag"># Hash</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/05/03/【清华集训2016】如何优雅地求和/" rel="next" title="【清华集训2016】如何优雅地求和">
+                <i class="fa fa-chevron-left"></i> 【清华集训2016】如何优雅地求和
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.jpg"
+                alt="rgnoH" />
+            
+              <p class="site-author-name" itemprop="name">rgnoH</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">35</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">27</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/rgnoH" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://starkmal.github.io" title="starkmal" target="_blank">starkmal</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://mogicianevian.github.io" title="OBlack" target="_blank">OBlack</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://jackpoison.github.io" title="Sparrow" target="_blank">Sparrow</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#「HAOI2018」字串覆盖"><span class="nav-number">1.</span> <span class="nav-text">「HAOI2018」字串覆盖</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#题目描述"><span class="nav-number">1.0.0.0.0.1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#输入格式"><span class="nav-number">1.0.0.0.0.2.</span> <span class="nav-text">输入格式</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#输出格式"><span class="nav-number">1.0.0.0.0.3.</span> <span class="nav-text">输出格式</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#数据范围与提示"><span class="nav-number">1.0.0.0.0.4.</span> <span class="nav-text">数据范围与提示</span></a></li></ol></li></ol></li></ol></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">rgnoH</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">46.3k</span>
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/canvas_sphere.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
+
+  
+  
+  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
+  
+
+  <script src="/js/src/algolia-search.js?v=5.1.4"></script>
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>
