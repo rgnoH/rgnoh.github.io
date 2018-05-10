@@ -396,7 +396,12 @@
 <p>接下来 $n$ 行，每行表示一个区间，包含用空格隔开的两个整数 $l_i$ 和 $r_i$ 为该区间的左右端点。</p>
 <h6 id="输出格式"><a href="#输出格式" class="headerlink" title="输出格式"></a>输出格式</h6><p>只有一行，包含一个正整数，即最小花费。</p>
 <h6 id="数据范围与提示"><a href="#数据范围与提示" class="headerlink" title="数据范围与提示"></a>数据范围与提示</h6><p>所有测试数据的范围和特点如下表所示：</p>
-<table class="ui center aligned table"><thead><tr><th>测试点编号</th><br><th> $ n $ </th><br><th> $ m $ </th><br><th> $ l_i,r_i $ </th><br></tr></thead><tbody><tr><td>1</td><td rowspan="2"> $ 20 $ </td><td> $ 9 $ </td><td rowspan="2"> $ 0 \le l_i \le r_i \le 100 $ </td></tr><tr><td>2</td><td> $ 10 $ </td><br></tr><tr><td>3</td><td> $ 199 $ </td><td rowspan="2"> $ 3 $ </td><td rowspan="4"> $ 0 \le l_i \le r_i \le 100000 $ </td></tr><tr><td>4</td><td> $ 200 $ </td></tr><tr><td>5</td><td> $ 1000 $ </td><td rowspan="2"> $ 2 $ </td></tr><tr><td>6</td><td> $ 2000 $ </td></tr><tr><td>7</td><td> $ 199 $ </td><td> $ 60 $ </td><td rowspan="2"> $ 0 \le l_i \le r_i \le 5000 $ </td></tr><tr><td>8</td><td rowspan="2"> $ 200 $ </td><td rowspan="2"> $ 50 $ </td></tr><tr><td>9</td><td> $ 0 \le l_i \le r_i \le 10^9 $ </td></tr><tr><td>10</td><td> $ 1999 $ </td><td> $ 500 $ </td><td rowspan="2"> $ 0 \le l_i \le r_i \le 5000 $ </td></tr><tr><td>11</td><td rowspan="2"> $ 2000 $ </td><td> $ 400 $ </td></tr><tr><td>12</td><td> $ 500 $ </td><td> $ 0 \le l_i \le r_i \le 10^9 $ </td></tr><tr><td>13</td><td> $ 30000 $ </td><td> $ 2000 $ </td><td rowspan="4"> $ 0 \le l_i \le r_i \le 100000 $ </td></tr><tr><td>14</td><td> $ 40000 $ </td><td> $ 1000 $ </td></tr><tr><td>15</td><td> $ 50000 $ </td><td> $ 15000 $ </td></tr><tr><td>16</td><td> $ 100000 $ </td><td rowspan="2"> $ 20000 $ </td></tr><tr><td>17</td><td> $ 200000 $ </td><td rowspan="4"> $ 0 \le l_i \le r_i \le 10^9 $ </td></tr><tr><td>18</td><td> $ 300000 $ </td><td> $ 50000 $ </td></tr><tr><td>19</td><td> $ 400000 $ </td><td> $ 90000 $ </td></tr><tr><td>20</td><td> $ 500000 $ </td><td> $ 200000 $ </td></tr></tbody></table>
+<table class="ui center aligned table"><thead><tr><th>测试点编号</th>
+<th> $ n $ </th>
+<th> $ m $ </th>
+<th> $ l_i,r_i $ </th>
+</tr></thead><tbody><tr><td>1</td><td rowspan="2"> $ 20 $ </td><td> $ 9 $ </td><td rowspan="2"> $ 0 \le l_i \le r_i \le 100 $ </td></tr><tr><td>2</td><td> $ 10 $ </td>
+</tr><tr><td>3</td><td> $ 199 $ </td><td rowspan="2"> $ 3 $ </td><td rowspan="4"> $ 0 \le l_i \le r_i \le 100000 $ </td></tr><tr><td>4</td><td> $ 200 $ </td></tr><tr><td>5</td><td> $ 1000 $ </td><td rowspan="2"> $ 2 $ </td></tr><tr><td>6</td><td> $ 2000 $ </td></tr><tr><td>7</td><td> $ 199 $ </td><td> $ 60 $ </td><td rowspan="2"> $ 0 \le l_i \le r_i \le 5000 $ </td></tr><tr><td>8</td><td rowspan="2"> $ 200 $ </td><td rowspan="2"> $ 50 $ </td></tr><tr><td>9</td><td> $ 0 \le l_i \le r_i \le 10^9 $ </td></tr><tr><td>10</td><td> $ 1999 $ </td><td> $ 500 $ </td><td rowspan="2"> $ 0 \le l_i \le r_i \le 5000 $ </td></tr><tr><td>11</td><td rowspan="2"> $ 2000 $ </td><td> $ 400 $ </td></tr><tr><td>12</td><td> $ 500 $ </td><td> $ 0 \le l_i \le r_i \le 10^9 $ </td></tr><tr><td>13</td><td> $ 30000 $ </td><td> $ 2000 $ </td><td rowspan="4"> $ 0 \le l_i \le r_i \le 100000 $ </td></tr><tr><td>14</td><td> $ 40000 $ </td><td> $ 1000 $ </td></tr><tr><td>15</td><td> $ 50000 $ </td><td> $ 15000 $ </td></tr><tr><td>16</td><td> $ 100000 $ </td><td rowspan="2"> $ 20000 $ </td></tr><tr><td>17</td><td> $ 200000 $ </td><td rowspan="4"> $ 0 \le l_i \le r_i \le 10^9 $ </td></tr><tr><td>18</td><td> $ 300000 $ </td><td> $ 50000 $ </td></tr><tr><td>19</td><td> $ 400000 $ </td><td> $ 90000 $ </td></tr><tr><td>20</td><td> $ 500000 $ </td><td> $ 200000 $ </td></tr></tbody></table>
 
 
 
@@ -529,7 +534,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">36</span>
+                  <span class="site-state-item-count">37</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -641,7 +646,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">48.6k</span>
+    <span title="Site words total count">49.0k</span>
   
 </div>
 

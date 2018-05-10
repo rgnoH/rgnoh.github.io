@@ -354,7 +354,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  839字
+                  544字
                 </span>
               
 
@@ -370,7 +370,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  4min
+                  2min
                 </span>
               
             </div>
@@ -399,16 +399,32 @@
 <h6 id="数据规模"><a href="#数据规模" class="headerlink" title="数据规模"></a>数据规模</h6><p>  1&lt;=N, M&lt;=50000    1&lt;=T&lt;=50000</p>
 <hr>
 <p>首先有一个结论：$d(ij)=\sum_{x|i}\sum_{y|j}[(x,y)=1]$，证明：<a href="https://www.cnblogs.com/GXZlegend/p/6999146.html" target="_blank" rel="noopener">https://www.cnblogs.com/GXZlegend/p/6999146.html</a></p>
-<p>接下来就开始暴躁地推式子了：<br>$$<br>Ans=\sum_{i=1}^n\sum_{j=1}^md(ij)=\sum_{i=1}^n\sum_{j=1}^m\sum_{x|i}\sum_{y|j}[(x,y)=1]<br>$$<br>变更枚举的顺序，先枚举$x,y$，再枚举$x,y$的倍数$i,j$。设$i=ax,j=by$，更换枚举的变量，枚举$x,y,a,b$,有：<br>$$<br>Ans=\sum_{x=1}^n\sum_{y=1}^m\sum_{a=1}^{\lfloor\frac{n}{x} \rfloor}\sum_{b=1}^{\lfloor\frac{m}{y} \rfloor}[(x,y)=1]=\sum_{x=1}^n\sum_{y=1}^m\lfloor \frac{n}{x} \rfloor\lfloor \frac{m}{y} \rfloor[(x,y)=1]<br>$$<br>注意到$[(x,y)=1]$就是$e(gcd(x,y))$，根据$I\bigotimes \mu=e$，进一步推式子：<br>$$<br>Ans=\sum_{x=1}^n\sum_{y=1}^m\lfloor \frac{n}{x} \rfloor\lfloor \frac{m}{y} \rfloor\sum_{d|x,d|y}\mu(d)<br>$$<br>再次变更枚举的顺序，先枚举$d$，再枚举$d$的倍数$x,y$。下面设$N=min(n,m)$。<br>$$<br>Ans=\sum_{d=1}^N\mu(d)\sum_{i=1}^{\lfloor \frac{n}{d} \rfloor}\sum_{j=1}^{\lfloor \frac{m}{d} \rfloor}\lfloor \frac{n}{id} \rfloor\lfloor \frac{m}{jd} \rfloor=\sum_{d=1}^N\mu(d)\sum_{i=1}^{\lfloor \frac{n}{d} \rfloor}\lfloor \frac{n}{id} \rfloor\sum_{j=1}^{\lfloor \frac{m}{d} \rfloor}\lfloor \frac{m}{jd} \rfloor<br>$$<br>设$sum(n)=\sum_{i=1}^n\lfloor \frac{n}{i} \rfloor$，那么原式就变成了可以接受的形式：<br>$$<br>Ans=\sum_{d=1}^{N}\mu(d)sum(\lfloor \frac{n}{d} \rfloor)sum(\lfloor \frac{m}{d} \rfloor)<br>$$<br>只要预处理出所有$sum$和$\mu$的前缀和，就可以$O(\sqrt N)$求解单次询问了。</p>
+<p>接下来就开始暴躁地推式子了：</p>
+<script type="math/tex; mode=display">
+Ans=\sum_{i=1}^n\sum_{j=1}^md(ij)=\sum_{i=1}^n\sum_{j=1}^m\sum_{x|i}\sum_{y|j}[(x,y)=1]</script><p>变更枚举的顺序，先枚举$x,y$，再枚举$x,y$的倍数$i,j$。设$i=ax,j=by$，更换枚举的变量，枚举$x,y,a,b$,有：</p>
+<script type="math/tex; mode=display">
+Ans=\sum_{x=1}^n\sum_{y=1}^m\sum_{a=1}^{\lfloor\frac{n}{x} \rfloor}\sum_{b=1}^{\lfloor\frac{m}{y} \rfloor}[(x,y)=1]=\sum_{x=1}^n\sum_{y=1}^m\lfloor \frac{n}{x} \rfloor\lfloor \frac{m}{y} \rfloor[(x,y)=1]</script><p>注意到$[(x,y)=1]$就是$e(gcd(x,y))$，根据$I\bigotimes \mu=e$，进一步推式子：</p>
+<script type="math/tex; mode=display">
+Ans=\sum_{x=1}^n\sum_{y=1}^m\lfloor \frac{n}{x} \rfloor\lfloor \frac{m}{y} \rfloor\sum_{d|x,d|y}\mu(d)</script><p>再次变更枚举的顺序，先枚举$d$，再枚举$d$的倍数$x,y$。下面设$N=min(n,m)$。</p>
+<script type="math/tex; mode=display">
+Ans=\sum_{d=1}^N\mu(d)\sum_{i=1}^{\lfloor \frac{n}{d} \rfloor}\sum_{j=1}^{\lfloor \frac{m}{d} \rfloor}\lfloor \frac{n}{id} \rfloor\lfloor \frac{m}{jd} \rfloor=\sum_{d=1}^N\mu(d)\sum_{i=1}^{\lfloor \frac{n}{d} \rfloor}\lfloor \frac{n}{id} \rfloor\sum_{j=1}^{\lfloor \frac{m}{d} \rfloor}\lfloor \frac{m}{jd} \rfloor</script><p>设$sum(n)=\sum_{i=1}^n\lfloor \frac{n}{i} \rfloor$，那么原式就变成了可以接受的形式：</p>
+<script type="math/tex; mode=display">
+Ans=\sum_{d=1}^{N}\mu(d)sum(\lfloor \frac{n}{d} \rfloor)sum(\lfloor \frac{m}{d} \rfloor)</script><p>只要预处理出所有$sum$和$\mu$的前缀和，就可以$O(\sqrt N)$求解单次询问了。</p>
 <p>对于$sum$的预处理有两种：</p>
 <p>一种是对于每个$n$暴力$O(\sqrt n)$求，总时间复杂度是$O(n\sqrt n)$，可以接受，但不够优秀。</p>
 <p>另一种可以做到$O(n)$，这是看出来了$sum(n)=\sum_{i=1}^nd(i)$，下面给出这个的两种证明：</p>
-<p>第一种：<br>$$<br>sum(n)=\lfloor \frac{n}{1} \rfloor+ \lfloor \frac{n}{2} \rfloor+…+\lfloor \frac{n}{n-1} \rfloor+\lfloor \frac{n}{n} \rfloor<br>$$</p>
-<p>$$<br>sum(n-1)=\lfloor \frac{n-1}{1} \rfloor+ \lfloor \frac{n-1}{2} \rfloor+…+\lfloor \frac{n-1}{n-1} \rfloor<br>$$</p>
-<p>可以看到，$sum(n)$对于$sum(n-1)$,除了多了一项$\lfloor\frac{n}{n}\rfloor=1$，其他分母相等的项，上面不是与下面相等，就是比下面多1.容易发现上面比下面对应项多1当且仅当分子是$n$的约数。所以有：<br>$$<br>sum(n)=sum(n-1)+\sum_{d|n,d&lt;n}1+1=sum(n-1)+\sum_{d|n}1=sum(n-1)+d(n)<br>$$<br>所以$sum$就是$d$的前缀和。</p>
+<p>第一种：</p>
+<script type="math/tex; mode=display">
+sum(n)=\lfloor \frac{n}{1} \rfloor+ \lfloor \frac{n}{2} \rfloor+...+\lfloor \frac{n}{n-1} \rfloor+\lfloor \frac{n}{n} \rfloor</script><script type="math/tex; mode=display">
+sum(n-1)=\lfloor \frac{n-1}{1} \rfloor+ \lfloor \frac{n-1}{2} \rfloor+...+\lfloor \frac{n-1}{n-1} \rfloor</script><p>可以看到，$sum(n)$对于$sum(n-1)$,除了多了一项$\lfloor\frac{n}{n}\rfloor=1$，其他分母相等的项，上面不是与下面相等，就是比下面多1.容易发现上面比下面对应项多1当且仅当分子是$n$的约数。所以有：</p>
+<script type="math/tex; mode=display">
+sum(n)=sum(n-1)+\sum_{d|n,d<n}1+1=sum(n-1)+\sum_{d|n}1=sum(n-1)+d(n)</script><p>所以$sum$就是$d$的前缀和。</p>
 <p>第二种：</p>
-<p>直接猜想$sum$是$d$的前缀和，对$d$的前缀和进行变形。<br>$$<br>\sum_{i=1}^nd(i)=\sum_{i=1}^n\sum_{d|i}1<br>$$<br>这里的$i$一定满足$i=kd,k\in \mathbb{N^*}$，那么采用与杜教筛里类似的方法，枚举这个$k$.<br>$$<br>\sum_{i=1}^nd(i)=\sum_{k=1}^n\sum_{d=1}^{\lfloor \frac{n}{k} \rfloor}1=\sum_{k=1}^n\lfloor\frac{n}{k}\rfloor<br>$$</p>
-<hr>
+<p>直接猜想$sum$是$d$的前缀和，对$d$的前缀和进行变形。</p>
+<script type="math/tex; mode=display">
+\sum_{i=1}^nd(i)=\sum_{i=1}^n\sum_{d|i}1</script><p>这里的$i$一定满足$i=kd,k\in \mathbb{N^*}$，那么采用与杜教筛里类似的方法，枚举这个$k$.</p>
+<script type="math/tex; mode=display">
+\sum_{i=1}^nd(i)=\sum_{k=1}^n\sum_{d=1}^{\lfloor \frac{n}{k} \rfloor}1=\sum_{k=1}^n\lfloor\frac{n}{k}\rfloor</script><hr>
 <p>代码等试题解封之后再放吧</p>
 
       
@@ -533,7 +549,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">36</span>
+                  <span class="site-state-item-count">37</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -645,7 +661,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">48.6k</span>
+    <span title="Site words total count">49.0k</span>
   
 </div>
 

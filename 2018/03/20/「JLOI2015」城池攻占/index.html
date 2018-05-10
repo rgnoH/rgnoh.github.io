@@ -352,7 +352,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1,536字
+                  1,509字
                 </span>
               
 
@@ -396,7 +396,7 @@
 <p>现在的问题是，对于每个城池，输出有多少个骑士在这里牺牲；对于每个骑士，输出他攻占的城池数量。</p>
 <h6 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h6><p>第一行包含两个正整数 $n, m$，表示城池的数量和骑士的数量。<br>第二行包含 $n$ 个整数，其中第 $i$ 个数为 $h_i$，表示城池 $i$ 的防御值。<br>第三到第 $n+1$ 行，每行包含三个整数。其中第 $i +1$ 行的三个数为 $f_i, a_i, v_i$，分别表示管辖这座城池的城池编号和两个战斗力变化参数。<br>第 $n +2$ 到 $n + m +1$ 行，每行包含两个整数。其中第 $n + i$ 行的两个数为 $s_i,c_i$，分别表示初始战斗力和第一个攻击的城池。</p>
 <h6 id="输出格式"><a href="#输出格式" class="headerlink" title="输出格式"></a>输出格式</h6><p>输出 $n + m$ 行，每行包含一个非负整数。其中前 $n$ 行分别表示在城池 $1$ 到 $n$ 牺牲的骑士数量，后 $m$ 行分别表示骑士 $1$ 到 $m$ 攻占的城池数量。</p>
-<h6 id="数据范围与提示"><a href="#数据范围与提示" class="headerlink" title="数据范围与提示"></a>数据范围与提示</h6><p>对于 $100 \%$ 的数据，$1 \leq n,m \leq 300000, \  1 \leq f_i&lt;i, \ 1 \leq c_i \leq n, \ -10^{18} \leq h_i,v_i,s_i \leq 10^{18}$；$a_i$ 等于 $0$ 或者 $1$；当 $a_i =1$ 时，$v_i &gt; 0$；保证任何时候骑士战斗力值的绝对值不超过 $10^{18}$。</p>
+<h6 id="数据范围与提示"><a href="#数据范围与提示" class="headerlink" title="数据范围与提示"></a>数据范围与提示</h6><p>对于 $100 \%$ 的数据，$1 \leq n,m \leq 300000, \  1 \leq f_i<i, 1="" \="" \leq="" c_i="" n,="" -10^{18}="" h_i,v_i,s_i="" 10^{18}$；$a_i$="" 等于="" $0$="" 或者="" $1$；当="" $a_i="1$" 时，$v_i=""> 0$；保证任何时候骑士战斗力值的绝对值不超过 $10^{18}$。</i,></p>
 <hr>
 <p>自然的想法是模拟每一个骑士的行走路径，遇到防御值比战斗力更高的就停下。下面考虑如何优化。</p>
 <p>由于$a=1$时乘上的数为正，那么从同一个节点向上走的骑士的战斗力大小关系是不会发生改变的，这就很容易想到了用可并堆处理。对于每一个节点开一个小根堆，在DFS处理i到它时就把儿子节点的堆和自己的合并，在处理弹出堆顶时同时统计答案。之后就是可并堆上带lazy的修改操作。</p>
@@ -526,7 +526,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">36</span>
+                  <span class="site-state-item-count">37</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -638,7 +638,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">48.6k</span>
+    <span title="Site words total count">49.0k</span>
   
 </div>
 

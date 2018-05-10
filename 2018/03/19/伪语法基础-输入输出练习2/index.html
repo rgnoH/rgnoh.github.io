@@ -352,7 +352,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  581字
+                  572字
                 </span>
               
 
@@ -400,7 +400,8 @@
 <p>考虑把所有数写成二进制形式，统计每一位上的1的个数$cnt$。由题意得：所有$cnt$要么是3的倍数，要么是$3k+1$的形式。最后要得到答案就只需要把$cnt$是$3k+1$形式的位拿出来。</p>
 <p>然而暴力维护$cnt$是过不了的。不仅时间复杂度有点过不去，而且这道题太卡空间了，只给了2M左右。虽然这样做不行，但是为正解提供了思路。</p>
 <p>发现我们最终并不关心$cnt$具体是几，只需要关心$cnt$在模3意义下的值即可。所以我们类似状压地开三个变量$a_0,a_1,a_2$，$a_0$的二进制第$i$位为1表示$cnt[i]\%3=0$,否则表示不满足这个关系，以此类推。根据当前的数$x$，就不难递推了，以$a_0$举例，其余同理。</p>
-<p>$$<br>a_0=(a_0\ xor\ (a_0\ and\ x))|(a_2\ and\ x)<br>$$<br>前半部分表示，当前$x$某些位上没有1，那么这些位置的$cnt$就不会改变；后半部分表示，原来某些位上的$cnt$模3同余2，现在$x$的二进制相同位置上有1，那么就变成了被3整除。</p>
+<script type="math/tex; mode=display">
+a_0=(a_0\ xor\ (a_0\ and\ x))|(a_2\ and\ x)</script><p>前半部分表示，当前$x$某些位上没有1，那么这些位置的$cnt$就不会改变；后半部分表示，原来某些位上的$cnt$模3同余2，现在$x$的二进制相同位置上有1，那么就变成了被3整除。</p>
 <p>最后的答案就是$a_1$。</p>
 <hr>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> n,i;</span><br><span class="line">	<span class="keyword">long</span> <span class="keyword">long</span> x,a0=(<span class="number">1l</span>l&lt;&lt;<span class="number">62</span>)<span class="number">-1</span>,a1=<span class="number">0</span>,a2=<span class="number">0</span>,t0,t1,t2;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;n);</span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">1</span>;i&lt;=n;i++)&#123;</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">"%lld"</span>,&amp;x);</span><br><span class="line">		t0=(a0^(a0&amp;x))|(a2&amp;x);</span><br><span class="line">		t1=(a1^(a1&amp;x))|(a0&amp;x);</span><br><span class="line">		t2=(a2^(a2&amp;x))|(a1&amp;x);</span><br><span class="line">		a0=t0;a1=t1;a2=t2;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"%lld\n"</span>,a1);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -526,7 +527,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">36</span>
+                  <span class="site-state-item-count">37</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -638,7 +639,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">48.6k</span>
+    <span title="Site words total count">49.0k</span>
   
 </div>
 

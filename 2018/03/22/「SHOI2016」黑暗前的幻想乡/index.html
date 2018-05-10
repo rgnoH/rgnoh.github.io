@@ -396,7 +396,8 @@
 <p>幽香现在想要知道一共有多少种可能的方案呢？两个方案不同当且仅当它们要么修的边的集合不同，要么边的分配方式不同。</p>
 <h6 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h6><p>第一行包含一个整数 $n$，表示城市个数。<br>接下来 $n - 1$ 行，第 $i$ 行表示 第 $i$ 个建筑公司可以修建的路的列表：以一个非负数 $m_i$ 开头，表示其可以修建 $m_i$ 条路；接下来有 $m_i$ 对数，每对数表示一条边的两个端点。其中不会出现重复的边，也不会出现自环。</p>
 <h6 id="输出格式"><a href="#输出格式" class="headerlink" title="输出格式"></a>输出格式</h6><p>输出一行一个整数，表示所有可能的方案数对 $10^9 + 7$ 取模的结果。</p>
-<h6 id="数据范围与提示"><a href="#数据范围与提示" class="headerlink" title="数据范围与提示"></a>数据范围与提示</h6><table>
+<h6 id="数据范围与提示"><a href="#数据范围与提示" class="headerlink" title="数据范围与提示"></a>数据范围与提示</h6><div class="table-container">
+<table>
 <thead>
 <tr>
 <th style="text-align:center">Case</th>
@@ -422,6 +423,7 @@
 </tr>
 </tbody>
 </table>
+</div>
 <hr>
 <p>如果不管题目限制，添加所有边直接跑矩阵树定理会怎样？显然会算多有些公司没有负责边的情况。结合$n$的范围，容易想到容斥。答案就是至少0个公司没有负责边的情况-至少1个公司没有负责边的情况+至少2个公司没有负责边的情况……枚举哪些公司的边一定不选即可，时间复杂度$O(2^{n-1}(n-1)^3)$，事实上这是可以过的，高斯消元复杂度并不是满的$O(n^3)$，而且在不连通的情况下，消到某一个主对角线为0的时候就可以停了。</p>
 <hr>
@@ -551,7 +553,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">36</span>
+                  <span class="site-state-item-count">37</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -663,7 +665,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">48.6k</span>
+    <span title="Site words total count">49.0k</span>
   
 </div>
 

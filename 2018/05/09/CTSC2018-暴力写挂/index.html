@@ -352,7 +352,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  2,296字
+                  2,284字
                 </span>
               
 
@@ -390,11 +390,11 @@
 
       
         <h1 id="「CTSC2018」暴力写挂"><a href="#「CTSC2018」暴力写挂" class="headerlink" title="「CTSC2018」暴力写挂"></a>「CTSC2018」暴力写挂</h1><h6 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h6><p>  temporaryDO 是一个很菜的 OIer 。在 4 月，他在省队选拔赛的考场上见到了《林克卡特树》一题，其中 $k = 0$ 的部分分是求树 $T$ 上的最长链。可怜的   temporaryDO 并不会做这道题，他在考场上抓猫耳挠猫腮都想不出一点思路。<br>这时，善良的板板出现在了空中，他的身上发出璀璨却柔和的光芒，荡漾在考场上。‘‘题目并不难。’’ 板板说。那充满磁性的声音，让 temporaryDO 全身充满了力量。<br>他决定：写一个枚举点对求 LCA 算距离的 $k = 0$ 的 $O(n^2\ log\ n)$ 的部分分程序！于是， temporaryDO 选择以 $1$ 为根，建立了求 LCA 的树链剖分结构，然后写了二重 for 循环枚举点对。<br>然而，菜菜的 temporaryDO 不小心开小了数组，于是数组越界到了一片神秘的内存区域。但恰好的是，那片内存区域存储的区域恰好是另一棵树 $T′$ 。这样一来，程序并没有 RE ，但他求 $x$ 和 $y$ 的距离的时候，计算的是</p>
-<p>$$depth(x) + depth(y) - (depth(LCA(x , y)) + depth′ (LCA′ (x, y)))$$</p>
-<p>最后程序会输出每一对点对 $i, j (i \le j)$ 的如上定义的‘‘距离’’ 的最大值。<br> temporaryDO 的程序在评测时光荣地爆零了。但他并不服气，他决定花好几天把自己的程序跑出来。请你根据 $T$ 和 $T′$ 帮帮可怜的 temporaryDO 求出他程序的输出。</p>
+<script type="math/tex; mode=display">depth(x) + depth(y) - (depth(LCA(x , y)) + depth′ (LCA′ (x, y)))</script><p>最后程序会输出每一对点对 $i, j (i \le j)$ 的如上定义的‘‘距离’’ 的最大值。<br> temporaryDO 的程序在评测时光荣地爆零了。但他并不服气，他决定花好几天把自己的程序跑出来。请你根据 $T$ 和 $T′$ 帮帮可怜的 temporaryDO 求出他程序的输出。</p>
 <h6 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h6><p>第一行包含一个整数 $n$ ，表示树上的节点个数；<br>第 $2$ 到第 $n$ 行，每行三个整数 $x , y , v$ ，表示 $T$ 中存在一条从 $x$ 到 $y$ 的边，其长度为 $v$ ；<br>第 $n + 1$ 到第 $2n - 1 行$ ，每行三个整数 $x , y , v$ ，表示 $T′$ 中存在一条从 $x$ 到 $y$ 的边，其长度为 $v$ 。</p>
 <h6 id="输出格式"><a href="#输出格式" class="headerlink" title="输出格式"></a>输出格式</h6><p>输出一行一个整数，表示 temporaryDO 的程序的输出。</p>
 <h6 id="数据范围与提示"><a href="#数据范围与提示" class="headerlink" title="数据范围与提示"></a>数据范围与提示</h6><p>对于所有数据， $n \le 366666 , |v| \le 2017011328$ 。<br>详细数据范围见下表，表格中的‘‘无’’ 表示无特殊限制。</p>
+<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -520,6 +520,7 @@
 </tr>
 </tbody>
 </table>
+</div>
 <p> $depth(p)$ 和 $depth′(p)$ 分别表示树 $T$ 、 $T′$ 中点 $1$ 到点 $p$ 的距离，这里规定，距离指的是经过的<strong>边</strong>的边权总和，其中 $depth(1) = 0$ 。<br> $LCA(x, y)$ 和 $LCA′(x, y)$ 分别表示树 $T$ 、 $T′$ 中点 $x$ 与点 $y$ 的最近公共祖先，即在从 $x$ 到 $y$ 的最短路径上的距离根<strong>经过边数最少</strong>的点。</p>
 <hr>
 <p>据出题人说点分治比较难写，而且复杂度不太对……但是并不知道点分治怎么搞。</p>
@@ -572,6 +573,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/05/10/「2017-山东二轮集训-Day1」第三题/" rel="prev" title="「2017 山东二轮集训 Day1」第三题">
+                「2017 山东二轮集训 Day1」第三题 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -652,7 +657,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">36</span>
+                  <span class="site-state-item-count">37</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -764,7 +769,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">48.6k</span>
+    <span title="Site words total count">49.0k</span>
   
 </div>
 

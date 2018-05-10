@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="「JLOI2015」有意义的字符串题目描述B 君有两个好朋友，他们叫宁宁和冉冉。有一天，冉冉遇到了一个有趣的题目：输入 $b, d, n$，求 $$\bigg [ \Big ( \frac{b+ \sqrt{d}}{2} \Big )^n \bigg ]\mod 7528443412579576937$$ 输入格式一行三个整数 $b,d,n$ 输出格式一行一个数表示模 $7528443412579">
+<meta name="description" content="「JLOI2015」有意义的字符串题目描述B 君有两个好朋友，他们叫宁宁和冉冉。有一天，冉冉遇到了一个有趣的题目：输入 $b, d, n$，求 \bigg [ \Big ( \frac{b+ \sqrt{d}}{2} \Big )^n \bigg ]\mod 7528443412579576937输入格式一行三个整数 $b,d,n$ 输出格式一行一个数表示模 $752844341257957693">
 <meta name="keywords" content="数学,矩阵乘法">
 <meta property="og:type" content="article">
 <meta property="og:title" content="「JLOI2015」有意义的字符串">
 <meta property="og:url" content="http://yoursite.com/2018/03/20/「JLOI2015」有意义的字符串/index.html">
 <meta property="og:site_name" content="rgnoH&#39;s Blog">
-<meta property="og:description" content="「JLOI2015」有意义的字符串题目描述B 君有两个好朋友，他们叫宁宁和冉冉。有一天，冉冉遇到了一个有趣的题目：输入 $b, d, n$，求 $$\bigg [ \Big ( \frac{b+ \sqrt{d}}{2} \Big )^n \bigg ]\mod 7528443412579576937$$ 输入格式一行三个整数 $b,d,n$ 输出格式一行一个数表示模 $7528443412579">
+<meta property="og:description" content="「JLOI2015」有意义的字符串题目描述B 君有两个好朋友，他们叫宁宁和冉冉。有一天，冉冉遇到了一个有趣的题目：输入 $b, d, n$，求 \bigg [ \Big ( \frac{b+ \sqrt{d}}{2} \Big )^n \bigg ]\mod 7528443412579576937输入格式一行三个整数 $b,d,n$ 输出格式一行一个数表示模 $752844341257957693">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2018-03-27T23:59:50.736Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="「JLOI2015」有意义的字符串">
-<meta name="twitter:description" content="「JLOI2015」有意义的字符串题目描述B 君有两个好朋友，他们叫宁宁和冉冉。有一天，冉冉遇到了一个有趣的题目：输入 $b, d, n$，求 $$\bigg [ \Big ( \frac{b+ \sqrt{d}}{2} \Big )^n \bigg ]\mod 7528443412579576937$$ 输入格式一行三个整数 $b,d,n$ 输出格式一行一个数表示模 $7528443412579">
+<meta name="twitter:description" content="「JLOI2015」有意义的字符串题目描述B 君有两个好朋友，他们叫宁宁和冉冉。有一天，冉冉遇到了一个有趣的题目：输入 $b, d, n$，求 \bigg [ \Big ( \frac{b+ \sqrt{d}}{2} \Big )^n \bigg ]\mod 7528443412579576937输入格式一行三个整数 $b,d,n$ 输出格式一行一个数表示模 $752844341257957693">
 
 
 
@@ -352,7 +352,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1,230字
+                  1,193字
                 </span>
               
 
@@ -390,8 +390,7 @@
 
       
         <h1 id="「JLOI2015」有意义的字符串"><a href="#「JLOI2015」有意义的字符串" class="headerlink" title="「JLOI2015」有意义的字符串"></a>「JLOI2015」有意义的字符串</h1><h6 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h6><p>B 君有两个好朋友，他们叫宁宁和冉冉。有一天，冉冉遇到了一个有趣的题目：输入 $b, d, n$，求</p>
-<p>$$\bigg [ \Big ( \frac{b+ \sqrt{d}}{2} \Big )^n \bigg ]\mod 7528443412579576937$$</p>
-<h6 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h6><p>一行三个整数 $b,d,n$</p>
+<script type="math/tex; mode=display">\bigg [ \Big ( \frac{b+ \sqrt{d}}{2} \Big )^n \bigg ]\mod 7528443412579576937</script><h6 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h6><p>一行三个整数 $b,d,n$</p>
 <h6 id="输出格式"><a href="#输出格式" class="headerlink" title="输出格式"></a>输出格式</h6><p>一行一个数表示模 $7528443412579576937$ 之后的结果。</p>
 <h6 id="数据范围与提示"><a href="#数据范围与提示" class="headerlink" title="数据范围与提示"></a>数据范围与提示</h6><p>其中 $0&lt;b^2 \leq d &lt;(b+1)^2 \leq 10^{18}, \ n \leq 10^{18}$，并且 $b \mod 2=1, \ d \mod 4=1$</p>
 <hr>
@@ -401,7 +400,11 @@
 <p>///以下是有问题的证明</p>
 <p>那么$\Big( \frac{b+ \sqrt{d}}{2}\Big )^n + \Big( \frac{b- \sqrt{d}}{2}\Big )^n $是否也是整数呢？由刚才的分析，分子部分是$2\sum_{i=0,i\ is \ even}^n\Big( ^n_i \Big) (\sqrt d)^i b^{n-i}$。现在考虑题目中对$b,d$的限制，在模2意义下考虑，则上述和式中组合数前的系数都是1。容易发现$\sum_{i=0,i\ is \ even}^n\Big( ^n_i \Big)$就是$2^{n-1}$，这个可以把杨辉三角画出来验证。此时再乘上和式前的系数2,恰好能将分子上的$2^n$约去。因此这个式子的结果是个整数，要得到它只需要用刚才矩阵乘法求出的值乘上2的逆元的n-1次方即可。(2的逆元就是把题目中的那个数加1之后除以2)</p>
 <p>///以下是正确的证明：</p>
-<p>先注意没有这样的事，这是上面证明的问题所在：<br>$$<br>a\equiv1(mod\  4),b\equiv1(mod\  4) \rightarrow ab\equiv 1(mod\ 16)<br>$$<br>比如$a=b=5$就不满足上面的关系。但是有特例：<br>$$<br>a\equiv1(mod\  2) \rightarrow a^2\equiv 1(mod \ 4)<br>$$<br>将$a$设为$2k+1$的形式后不难证明。</p>
+<p>先注意没有这样的事，这是上面证明的问题所在：</p>
+<script type="math/tex; mode=display">
+a\equiv1(mod\  4),b\equiv1(mod\  4) \rightarrow ab\equiv 1(mod\ 16)</script><p>比如$a=b=5$就不满足上面的关系。但是有特例：</p>
+<script type="math/tex; mode=display">
+a\equiv1(mod\  2) \rightarrow a^2\equiv 1(mod \ 4)</script><p>将$a$设为$2k+1$的形式后不难证明。</p>
 <p>下面考虑使用数学归纳法证明$\Big( \frac{b+ \sqrt{d}}{2}\Big )^n + \Big( \frac{b- \sqrt{d}}{2}\Big )^n (n\in \mathbb N^*,b \mod 2=1, \ d \mod 4=1)$是整数。</p>
 <p>首先当$n=1,2$时显然成立。</p>
 <p>假设结论对$1$~$n(n&gt;2)$都成立，下面证明它对$n+1$也成立：</p>
@@ -536,7 +539,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">36</span>
+                  <span class="site-state-item-count">37</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -648,7 +651,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">48.6k</span>
+    <span title="Site words total count">49.0k</span>
   
 </div>
 

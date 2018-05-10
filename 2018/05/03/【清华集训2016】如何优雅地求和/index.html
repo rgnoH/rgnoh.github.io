@@ -352,7 +352,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  793字
+                  661字
                 </span>
               
 
@@ -368,7 +368,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  4min
+                  3min
                 </span>
               
             </div>
@@ -392,10 +392,17 @@
         <h1 id="uoj269-【清华集训2016】如何优雅地求和"><a href="#uoj269-【清华集训2016】如何优雅地求和" class="headerlink" title="uoj269 【清华集训2016】如何优雅地求和"></a>uoj269 【清华集训2016】如何优雅地求和</h1><p>题面：<a href="http://uoj.ac/problem/269" target="_blank" rel="noopener">http://uoj.ac/problem/269</a></p>
 <p>设$f(x)=\sum_{k=0}^ma_kx^k$。根据乘法分配律，可以将答案拆成$a_iQ(k^i,n,x)$的和。那么我们现在只需要关心$f(x)=x^0,x^1,x^2,…,x^m$时如何快速求和。</p>
 <p>$f(x)=1$时，首先由二项式定理，$Q=1$。</p>
-<p>$f(x)=x$时，可以这样化简：<br>$$<br>Q=\sum_{k=0}^nk\frac{n!}{k!(n-k)!}x^k(1-x)^{n-k}=\sum_{k=0}^nnx\frac{(n-1)!}{(k-1)!(n-k)!}x^{k-1}(1-x)^{n-k}=nx\sum_{k=0}^n\Big(^{n-1}_{k-1}\Big)x^{k-1}(1-x)^{n-k}=nx<br>$$</p>
-<p>然后发现当$f(x)=x^2$时就似乎无法化简了。</p>
-<p>考虑$f(x)=x$时我们的化简方式：注意到后面的形式极容易想到用二项式定理来做，那么我们就把原来的组合数通过某种方式变成能够用二项式定理的新的组合数。能否这样化简取决于$f(x)$是什么。观察发现有这样的结论：<br>$$<br>当f(x)=x^{\underline{d}}时，Q=n^{\underline{d}}x^d<br>$$<br>化简方式与$f(x)=x$时相似，具体来说：<br>$$<br>Q=\sum_{k=0}^nk^{\underline{d}}\frac{n!}{k!(n-k)!}x^k(1-x)^{n-k}=\sum_{k=0}^nn^{\underline{d}}x^d\frac{(n-d)!}{(k-d)!(n-k)!}x^{k-d}(1-x)^{n-k}=n^{\underline{d}}x^d<br>$$<br>如果我们能把$f(x)$写成下降幂的和的形式，即求出$f(x)=\sum_{k=0}^mb_kx^{\underline{k}}$当中的$b_k$，那么显然扫一遍就能得到答案了。现在考虑如何求$b_k$。</p>
-<p>令$c_k=b_kk!$，那么有：<br>$$<br>f(x)=\sum_{k=0}^mc_k\frac{x^{\underline{k}}}{k!}=\sum_{k=0}^mc_k\Big(^{x}_{k}\Big)<br>$$<br>注意到题目还有一个条件没有用到：题目中给出了$x=0,1,2,…,m$时$f(x)$的值。</p>
+<p>$f(x)=x$时，可以这样化简：</p>
+<script type="math/tex; mode=display">
+Q=\sum_{k=0}^nk\frac{n!}{k!(n-k)!}x^k(1-x)^{n-k}=\sum_{k=0}^nnx\frac{(n-1)!}{(k-1)!(n-k)!}x^{k-1}(1-x)^{n-k}=nx\sum_{k=0}^n\Big(^{n-1}_{k-1}\Big)x^{k-1}(1-x)^{n-k}=nx</script><p>然后发现当$f(x)=x^2$时就似乎无法化简了。</p>
+<p>考虑$f(x)=x$时我们的化简方式：注意到后面的形式极容易想到用二项式定理来做，那么我们就把原来的组合数通过某种方式变成能够用二项式定理的新的组合数。能否这样化简取决于$f(x)$是什么。观察发现有这样的结论：</p>
+<script type="math/tex; mode=display">
+当f(x)=x^{\underline{d}}时，Q=n^{\underline{d}}x^d</script><p>化简方式与$f(x)=x$时相似，具体来说：</p>
+<script type="math/tex; mode=display">
+Q=\sum_{k=0}^nk^{\underline{d}}\frac{n!}{k!(n-k)!}x^k(1-x)^{n-k}=\sum_{k=0}^nn^{\underline{d}}x^d\frac{(n-d)!}{(k-d)!(n-k)!}x^{k-d}(1-x)^{n-k}=n^{\underline{d}}x^d</script><p>如果我们能把$f(x)$写成下降幂的和的形式，即求出$f(x)=\sum_{k=0}^mb_kx^{\underline{k}}$当中的$b_k$，那么显然扫一遍就能得到答案了。现在考虑如何求$b_k$。</p>
+<p>令$c_k=b_kk!$，那么有：</p>
+<script type="math/tex; mode=display">
+f(x)=\sum_{k=0}^mc_k\frac{x^{\underline{k}}}{k!}=\sum_{k=0}^mc_k\Big(^{x}_{k}\Big)</script><p>注意到题目还有一个条件没有用到：题目中给出了$x=0,1,2,…,m$时$f(x)$的值。</p>
 <p>显然，当$x=0$时，$f(x)=c_0$。</p>
 <p>考虑$\triangle f(x)=f(x+1)-f(x)$，注意到$C_{x+1}^{k}-C_{x}^{k}=C_x^{k-1}$，有$\triangle f(x)=\sum_{k=1}^mc_k\Big(^{x}_{k-1}\Big)$，那么当$x=0$时，$\triangle f(x)=c_1$。</p>
 <p>不难看出，$\triangle^{k} f(0)=c_k$。</p>
@@ -525,7 +532,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">36</span>
+                  <span class="site-state-item-count">37</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -637,7 +644,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">48.6k</span>
+    <span title="Site words total count">49.0k</span>
   
 </div>
 

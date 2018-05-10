@@ -1,0 +1,1017 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="数学," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="「2017 山东二轮集训 Day1」第三题题目描述火车沉迷垃圾手游不能自拔，他不光自己在玩碧蓝航线，还决定把你拉入坑。 你已经忍无可忍了！你决定出个难题把他按在地上摩擦！正巧你研究了斐波那契数列，也就是 $ f(0) = 0, f(1) = 1 $，否则 $ f(i) = f(i - 1) + f(i - 2) $ 的那个数列，于是你问小火车「我给你 $ n $ 个数 $ k_i $，你知道 $">
+<meta name="keywords" content="数学">
+<meta property="og:type" content="article">
+<meta property="og:title" content="「2017 山东二轮集训 Day1」第三题">
+<meta property="og:url" content="http://yoursite.com/2018/05/10/「2017-山东二轮集训-Day1」第三题/index.html">
+<meta property="og:site_name" content="rgnoH&#39;s Blog">
+<meta property="og:description" content="「2017 山东二轮集训 Day1」第三题题目描述火车沉迷垃圾手游不能自拔，他不光自己在玩碧蓝航线，还决定把你拉入坑。 你已经忍无可忍了！你决定出个难题把他按在地上摩擦！正巧你研究了斐波那契数列，也就是 $ f(0) = 0, f(1) = 1 $，否则 $ f(i) = f(i - 1) + f(i - 2) $ 的那个数列，于是你问小火车「我给你 $ n $ 个数 $ k_i $，你知道 $">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-05-10T12:37:33.897Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="「2017 山东二轮集训 Day1」第三题">
+<meta name="twitter:description" content="「2017 山东二轮集训 Day1」第三题题目描述火车沉迷垃圾手游不能自拔，他不光自己在玩碧蓝航线，还决定把你拉入坑。 你已经忍无可忍了！你决定出个难题把他按在地上摩擦！正巧你研究了斐波那契数列，也就是 $ f(0) = 0, f(1) = 1 $，否则 $ f(i) = f(i - 1) + f(i - 2) $ 的那个数列，于是你问小火车「我给你 $ n $ 个数 $ k_i $，你知道 $">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/05/10/「2017-山东二轮集训-Day1」第三题/"/>
+
+
+
+
+
+  <title>「2017 山东二轮集训 Day1」第三题 | rgnoH's Blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">rgnoH's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-schedule">
+          <a href="/schedule/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-calendar"></i> <br />
+            
+            日程表
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  
+  <div class="algolia-popup popup search-popup">
+    <div class="algolia-search">
+      <div class="algolia-search-input-icon">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="algolia-search-input" id="algolia-search-input"></div>
+    </div>
+
+    <div class="algolia-results">
+      <div id="algolia-stats"></div>
+      <div id="algolia-hits"></div>
+      <div id="algolia-pagination" class="algolia-pagination"></div>
+    </div>
+
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+  </div>
+
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/10/「2017-山东二轮集训-Day1」第三题/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="rgnoH">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="rgnoH's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">「2017 山东二轮集训 Day1」第三题</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-10T12:07:34+08:00">
+                2018-05-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1,311字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  6min
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="「2017-山东二轮集训-Day1」第三题"><a href="#「2017-山东二轮集训-Day1」第三题" class="headerlink" title="「2017 山东二轮集训 Day1」第三题"></a>「2017 山东二轮集训 Day1」第三题</h1><h6 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h6><p>火车沉迷垃圾手游不能自拔，他不光自己在玩碧蓝航线，还决定把你拉入坑。</p>
+<p>你已经忍无可忍了！你决定出个难题把他按在地上摩擦！正巧你研究了斐波那契数列，也就是 $ f(0) = 0, f(1) = 1 $，否则 $ f(i) = f(i - 1) + f(i - 2) $ 的那个数列，于是你问小火车「我给你 $ n $ 个数 $ k_i $，你知道 $ f(k_i) $ 的最小公倍数吗？」让你惊讶不已的是，小火车竟然一边肝着手游一边报出了巨大的数字！你怀疑他是瞎猜的，所以想知道他回答的到底对不对，不过这个时候你就只需要知道答案对 $ 1000000007 $ 取模的结果啦！</p>
+<h6 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h6><p>第一行一个整数 $ n $。<br>第二行 $ n $ 个整数表示 $ k_i $。</p>
+<h6 id="输出格式"><a href="#输出格式" class="headerlink" title="输出格式"></a>输出格式</h6><p>一行一个整数表示答案。</p>
+<h6 id="数据范围与提示"><a href="#数据范围与提示" class="headerlink" title="数据范围与提示"></a>数据范围与提示</h6><p>对于 $ 20\% $ 的数据，$ k_i \leq 50 $；<br>对于 $ 50\% $ 的数据，$ k_i \leq 5000 $；<br>对于 $ 100\% $ 的数据，$ n \leq 50000, k_i \leq 1000000 $。</p>
+<hr>
+<p>不看题解完全做不来型……</p>
+<p>据说是出过很多次的原题……</p>
+<hr>
+<p>首先有一个预备知识：</p>
+<p>最大最小值容斥：</p>
+<p>对于整数集合$S$，有下面的关系成立：</p>
+<script type="math/tex; mode=display">
+max\{S\}=\sum_{T\subset S,T\ne \emptyset}(-1)^{|T|+1}min\{T\}</script><p>不太严谨的证明：</p>
+<p>为了方便，下面均省去$T\ne \emptyset$这一限制。</p>
+<p>首先我们把所有的数同时加上一个数$d$，使得数列中所有元素都大于$0$。这样做元素间的大小关系不会变，最后只需要减去$d$就能得到最终答案。</p>
+<p>（其实就是一个偏移的操作）</p>
+<p>那么上式可以改写为:</p>
+<script type="math/tex; mode=display">
+max\{S\}=\sum_{T\subset S}\sum_{i=1}^{min\{T\}}(-1)^{|T|+1}</script><p>考虑更改枚举顺序，得到：</p>
+<script type="math/tex; mode=display">
+\sum_{T\subset S}\sum_{i=1}^{min\{T\}}(-1)^{|T|+1}=\sum_{i=1}^{\infty}\sum_{k=1}^{cnt[i]}C_{cnt[i]}^{k}(-1)^{k+1}</script><p>其中$cnt[i]$表示集合$S$中不小于$i$的元素个数。为了凑出二项式定理的形式，把后面变一下形:</p>
+<script type="math/tex; mode=display">
+\sum_{T\subset S}\sum_{i=1}^{min\{T\}}(-1)^{|T|+1}=
+    \sum_{i=1}^{\infty}
+        ((-1)
+            \sum_{k=0}^{cnt[i]}
+                C_{cnt[i]}^k(-1)^k+1)=\sum_{i=1}^{\infty}((-1)[cnt[i]=0]+1)</script><p>那么当$cnt[i]\ge 0$时后面的贡献都是$1$，当$cnt[i]=0$时后面的贡献是$0$，而$cnt[i]=0$当且仅当$i&gt;max\{S\}$，所以等式成立。</p>
+<hr>
+<p>下面进入正题：</p>
+<p>首先由于$f(n)=f(n-1)+f(n-2)$，有$gcd(f(n),f(n-1))=1$。证明是辗转相除：</p>
+<script type="math/tex; mode=display">
+gcd(f(n),f(n-1))=gcd(f(n)-f(n-1),f(n-1))=gcd(f(n-2),f(n-1))=...=gcd(f(1),f(2))=1</script><p>然后有一个结论：$f(n+m)=f(n-1)f(m)+f(n)f(m+1)$，证明的话考虑矩阵乘法：</p>
+<script type="math/tex; mode=display">
+\left[
+\begin{matrix}
+f(n)&f(n-1)\\
+f(n-1)&f(n-2)
+\end{matrix}
+\right] 
+\times
+\left[
+\begin{matrix}
+1&1\\
+1&0
+\end{matrix}
+\right]^m=
+\left[
+\begin{matrix}
+f(n+m)&f(n+m-1)\\
+f(n+m-1)&f(n+m-2)
+\end{matrix}
+\right]</script><p>注意到转移矩阵实际上是</p>
+<script type="math/tex; mode=display">
+\left[
+\begin{matrix}
+f(2)&f(1)\\
+f(1)&f(0)
+\end{matrix}
+\right]</script><p>所以上式等于</p>
+<script type="math/tex; mode=display">
+\left[
+\begin{matrix}
+f(n)&f(n-1)\\
+f(n-1)&f(n-2)
+\end{matrix}
+\right] 
+\times
+\left[
+\begin{matrix}
+f(m+1)&f(m)\\
+f(m)&f(m-1)
+\end{matrix}
+\right]=
+\left[
+\begin{matrix}
+f(n+m)&f(n+m-1)\\
+f(n+m-1)&f(n+m-2)
+\end{matrix}
+\right]</script><p>那么就证明了$f(n+m)=f(n-1)f(m)+f(n)f(m+1)$。</p>
+<p>然后得到结论：</p>
+<script type="math/tex; mode=display">
+gcd(f(a),f(b))=f(gcd(a,b))</script><p>不妨设$a&gt;b$，把$b$换成上面的$m$,设$a=n+m$,那么化简左边：</p>
+<script type="math/tex; mode=display">
+gcd(f(n+m),f(m))=gcd(f(n-1)f(m)+f(n)f(m+1),f(m))=gcd(f(n)f(m+1),f(m))</script><p>由于$gcd(f(m),f(m+1))=1$，所以有</p>
+<script type="math/tex; mode=display">
+gcd(f(n+m),f(m))=gcd(f(n),f(m))</script><p>发现这和辗转相除是一样的形式，所以得到$gcd(f(a),f(b))=f(gcd(a,b))$。</p>
+<p>由于$gcd$实际上是把多个数标准分解之后求指数的$min$，而$lcm$则是取$max$，所以在这里考虑最大最小值容斥。</p>
+<script type="math/tex; mode=display">
+lcm\{f_s\}=\prod_i p_i^{max\{k_s\}}=
+\prod_i p_i^
+{
+\sum
+_{T\subset S,T\ne \emptyset}
+(-1)^{|T|+1}min\{T\}
+}
+= \prod_{T \subset S,T\ne \emptyset} \prod_ip_i^{(-1)^{|T|+1}min\{T\}}</script><p>注意到</p>
+<script type="math/tex; mode=display">
+\prod_ip_i^{min\{T\}}=gcd\{f_T\}</script><p>所以上式化简为：</p>
+<script type="math/tex; mode=display">
+lcm\{f_s\}=\prod_{T\subset S,T\ne \emptyset}gcd\{f_T\}^{(-1)^{|T|+1}}</script><p>使用$gcd(f(a),f(b))=f(gcd(a,b))$这个结论，得到</p>
+<script type="math/tex; mode=display">
+lcm\{f_s\}=\prod_{T\subset S,T\ne \emptyset}f_{gcd\{T\}} ^{(-1)^{|T|+1}}</script><p>下面有个很神的操作：构造$\{g_n \}$,使得$f_n=\prod_{d|n}g_d$。</p>
+<p>于是可以对上面的式子进一步化简：</p>
+<script type="math/tex; mode=display">
+lcm\{f_s\}=\prod_{T\subset S,T\ne \emptyset}
+\Big(
+\prod_{d|gcd\{T\}}g_d
+\Big)
+^{(-1)^{|T|+1}}</script><p>接下来又按照变换枚举顺序的套路，得到</p>
+<script type="math/tex; mode=display">
+lcm\{f_s\}=\prod_{d=1}^ng_d
+^{\sum
+_{T\subset S,T\ne \emptyset,d|gcd\{T\}}
+(-1)
+^{|T|+1}
+}</script><p>关注$g_d$的指数，设它为$h_d$,即：</p>
+<script type="math/tex; mode=display">
+h_d=
+\sum_{T\subset S,T\ne \emptyset,d|gcd\{T\}}
+(-1)^{|T|+1}</script><p>可以看出这里的$T$中所有的元素都必须是$d$的倍数。记$S$中$d$的倍数有$cnt$个，那么有：</p>
+<script type="math/tex; mode=display">
+h_d=
+\sum_{i=1}^{cnt}
+C_{cnt}^i(-1)^{i+1}
+=\sum_{i=0}^{cnt}
+C_{cnt}^i(-1)^{i+1}+1
+=(-1)\sum_{i=0}^{cnt}C_{cnt}^i(-1)^i
+=(-1)[cnt=0]+1</script><p>也就是说，只有当$S$中不存在$d$的倍数的时候，$h_d=0$，否则$h_d=1$。</p>
+<p>这样就得到了最终的答案式：</p>
+<script type="math/tex; mode=display">
+lcm\{f_s\}
+=\prod_{d,\exists a\in s,d|a}^ng_d</script><p>现在唯一的问题就是计算$g_d​$了。根据定义$f_n=\prod_{d|n}g_d​$，得到：</p>
+<script type="math/tex; mode=display">
+g_n=f_n\prod_{d|n,d\ne n}(g_d)^{-1}</script><hr>
+<p>之前提到过，这是一道出过很多次的原题，那么上面的推论对哪些数列是对的呢？</p>
+<p>注意到关键在于$gcd(f(a),f(b))=f(gcd(a,b))$这个结论。回顾我们得到它的过程，这个数列如果是$f(n)=af(n-1)+bf(n-2)$，那么要满足下面的条件：</p>
+<p>1.$f(0)=0,f(1)=b,f(2)=a$</p>
+<p>2.$gcd(a,b)=1$</p>
+<p><del>上面的结论如果有错概不负责</del></p>
+<hr>
+<p>代码：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MAXN 1000005</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ll long long</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> mod=<span class="number">1000000007</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b)</span></span>&#123;a+=b;a-=a&lt;mod?<span class="number">0</span>:mod;<span class="keyword">return</span> a;&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">sub</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b)</span></span>&#123;a-=b;a+=a&lt;<span class="number">0</span>?mod:<span class="number">0</span>;<span class="keyword">return</span> a;&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">mul</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b)</span></span>&#123;<span class="keyword">return</span> (ll)a*b%mod;&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">ksm</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b)</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> ans=<span class="number">1</span>;a%=mod;</span><br><span class="line">	<span class="keyword">while</span>(b)&#123;</span><br><span class="line">		<span class="keyword">if</span>(b&amp;<span class="number">1</span>)ans=mul(ans,a);</span><br><span class="line">		b&gt;&gt;=<span class="number">1</span>;a=mul(a,a);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> N,f[MAXN],g[MAXN],invg[MAXN],Ans;</span><br><span class="line"><span class="keyword">bool</span> mark[MAXN],app[MAXN];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> i,j,x,mx=<span class="number">0</span>;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;N);</span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">1</span>;i&lt;=N;i++)&#123;</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;x);</span><br><span class="line">		mx=max(mx,x);</span><br><span class="line">		mark[x]=<span class="literal">true</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">2</span>,f[<span class="number">1</span>]=<span class="number">1</span>,g[<span class="number">1</span>]=<span class="number">1</span>;i&lt;=mx;i++)f[i]=add(f[i<span class="number">-1</span>],f[i<span class="number">-2</span>]),g[i]=f[i];</span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">1</span>;i&lt;=mx;i++)&#123;</span><br><span class="line">		invg[i]=ksm(g[i],mod<span class="number">-2</span>);</span><br><span class="line">		<span class="keyword">for</span>(j=i+i;j&lt;=mx;j+=i)g[j]=mul(g[j],invg[i]);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">1</span>;i&lt;=mx;i++)</span><br><span class="line">	<span class="keyword">for</span>(j=i;j&lt;=mx;j+=i)&#123;</span><br><span class="line">		app[i]|=mark[j];</span><br><span class="line">		<span class="keyword">if</span>(app[i])<span class="keyword">break</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	Ans=<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">1</span>;i&lt;=mx;i++)<span class="keyword">if</span>(app[i])Ans=mul(Ans,g[i]);</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"%d\n"</span>,Ans);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/数学/" rel="tag"># 数学</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/05/09/CTSC2018-暴力写挂/" rel="next" title="CTSC2018 暴力写挂">
+                <i class="fa fa-chevron-left"></i> CTSC2018 暴力写挂
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.jpg"
+                alt="rgnoH" />
+            
+              <p class="site-author-name" itemprop="name">rgnoH</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">37</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">29</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/rgnoH" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://starkmal.github.io" title="starkmal" target="_blank">starkmal</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://mogicianevian.github.io" title="OBlack" target="_blank">OBlack</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://jackpoison.github.io" title="Sparrow" target="_blank">Sparrow</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#「2017-山东二轮集训-Day1」第三题"><span class="nav-number">1.</span> <span class="nav-text">「2017 山东二轮集训 Day1」第三题</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#题目描述"><span class="nav-number">1.0.0.0.0.1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#输入格式"><span class="nav-number">1.0.0.0.0.2.</span> <span class="nav-text">输入格式</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#输出格式"><span class="nav-number">1.0.0.0.0.3.</span> <span class="nav-text">输出格式</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#数据范围与提示"><span class="nav-number">1.0.0.0.0.4.</span> <span class="nav-text">数据范围与提示</span></a></li></ol></li></ol></li></ol></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">rgnoH</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">49.0k</span>
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/canvas_sphere.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
+
+  
+  
+  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
+  
+
+  <script src="/js/src/algolia-search.js?v=5.1.4"></script>
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>
