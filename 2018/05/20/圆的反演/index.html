@@ -1,0 +1,942 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="计算几何," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="圆的反演老板让搞的很偏的知识。这应该是MO的考点吧……OI里面似乎没有出现过这样的题，ACM里倒是出过几道。 讲几何竟然不画图 自己去找个软件画啊，GeoGebra滋瓷在线是坠吼的  首先肯定要讲反演是什么：  给定圆$C$，圆心为$O$，半径为$r$。如果$P$和$P’$在过圆心$O$的直线上，且$|OP||OP’|=r^2 $，那么称$P$与$P’$互为反演。  一般认为$OP$与$OP’$同">
+<meta name="keywords" content="计算几何">
+<meta property="og:type" content="article">
+<meta property="og:title" content="圆的反演">
+<meta property="og:url" content="http://yoursite.com/2018/05/20/圆的反演/index.html">
+<meta property="og:site_name" content="rgnoH&#39;s Blog">
+<meta property="og:description" content="圆的反演老板让搞的很偏的知识。这应该是MO的考点吧……OI里面似乎没有出现过这样的题，ACM里倒是出过几道。 讲几何竟然不画图 自己去找个软件画啊，GeoGebra滋瓷在线是坠吼的  首先肯定要讲反演是什么：  给定圆$C$，圆心为$O$，半径为$r$。如果$P$和$P’$在过圆心$O$的直线上，且$|OP||OP’|=r^2 $，那么称$P$与$P’$互为反演。  一般认为$OP$与$OP’$同">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://acm.hdu.edu.cn/data/images/C779-1009-1.png">
+<meta property="og:updated_time" content="2018-05-20T00:51:54.509Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="圆的反演">
+<meta name="twitter:description" content="圆的反演老板让搞的很偏的知识。这应该是MO的考点吧……OI里面似乎没有出现过这样的题，ACM里倒是出过几道。 讲几何竟然不画图 自己去找个软件画啊，GeoGebra滋瓷在线是坠吼的  首先肯定要讲反演是什么：  给定圆$C$，圆心为$O$，半径为$r$。如果$P$和$P’$在过圆心$O$的直线上，且$|OP||OP’|=r^2 $，那么称$P$与$P’$互为反演。  一般认为$OP$与$OP’$同">
+<meta name="twitter:image" content="http://acm.hdu.edu.cn/data/images/C779-1009-1.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/05/20/圆的反演/"/>
+
+
+
+
+
+  <title>圆的反演 | rgnoH's Blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">rgnoH's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-schedule">
+          <a href="/schedule/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-calendar"></i> <br />
+            
+            日程表
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  
+  <div class="algolia-popup popup search-popup">
+    <div class="algolia-search">
+      <div class="algolia-search-input-icon">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="algolia-search-input" id="algolia-search-input"></div>
+    </div>
+
+    <div class="algolia-results">
+      <div id="algolia-stats"></div>
+      <div id="algolia-hits"></div>
+      <div id="algolia-pagination" class="algolia-pagination"></div>
+    </div>
+
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+  </div>
+
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/20/圆的反演/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="rgnoH">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="rgnoH's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">圆的反演</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-20T08:51:00+08:00">
+                2018-05-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  2,895字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  14min
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="圆的反演"><a href="#圆的反演" class="headerlink" title="圆的反演"></a>圆的反演</h1><p>老板让搞的很偏的知识。这应该是MO的考点吧……OI里面似乎没有出现过这样的题，ACM里倒是出过几道。</p>
+<p><del>讲几何竟然不画图</del></p>
+<p><del>自己去找个软件画啊，GeoGebra滋瓷在线是坠吼的</del></p>
+<hr>
+<p>首先肯定要讲反演是什么：</p>
+<blockquote>
+<p>给定圆$C$，圆心为$O$，半径为$r$。如果$P$和$P’$在过圆心$O$的直线上，且$|OP||OP’|=r^2 $，那么称$P$与$P’$互为反演。</p>
+</blockquote>
+<p>一般认为$OP$与$OP’$同向。注意到圆$C$的半径只起到一个度量的作用，所以一般也可以不画出反演圆，而是给出反演中心和反演半径。</p>
+<p>注意到这里有乘积的形式，一般可以通过移项之后转为相似三角形问题，这在结论的证明中有体现。</p>
+<p>称一个图形反演后得到的图形是它的反形。</p>
+<p>有以下很显然的小结论：</p>
+<blockquote>
+<p>1.反演关系是对称的，即关于反演圆$C$，如果$P$是$P’$的反演点，那么$P’$也是$P$的反演点。</p>
+<p>2.反演圆上的点反演后保持在原处；圆外的点反演后变换为圆内的点；圆内的点反演后变换为圆外的点。</p>
+</blockquote>
+<p>下面的结论比较重要：</p>
+<blockquote>
+<p>1.一条不过反演中心的直线，反形是一个过反演中心的圆；（由反演的对称性）一个过反演中心的圆，反形是一条不过反演中心的直线。</p>
+</blockquote>
+<p>把圆变为直线可能会大大降低题目难度。</p>
+<blockquote>
+<p>2.一个不过反演中心的圆，反形也是一个不过反演中心的圆。反演中心是它们的位似中心，任一对反演点互为逆对应点</p>
+<p>3.两个图形存在相切关系，那么反演后仍然满足相切关系。（特别地，如果以两圆切点作为反演中心，那么反演后的两条直线平行）</p>
+<p>（这个结论存在更一般的形式）</p>
+</blockquote>
+<p>上面两条结论分别也称作反演的保圆性、保角性。</p>
+<p>以上结论的证明看这里：</p>
+<p><a href="https://wenku.baidu.com/view/70dbe99404a1b0717fd5dda7.html" target="_blank" rel="noopener">https://wenku.baidu.com/view/70dbe99404a1b0717fd5dda7.html</a></p>
+<p>那么反演有什么用呢？下面以三道题为例讲解。</p>
+<hr>
+<h2 id="hdu-6097-Mindis"><a href="#hdu-6097-Mindis" class="headerlink" title="hdu 6097 Mindis"></a>hdu 6097 Mindis</h2><p>题目大意：</p>
+<p>给定一个圆心在原点处的圆$C$，给定不在圆外的两点$P,Q$，使得$OP=OQ$。求$C$上一点$D$，使得$DP+DQ$最小。</p>
+<p>共有$500000$组询问，$P,Q$横纵坐标绝对值不超过$100$，$C$的半径不超过$100$。</p>
+<p><del>询问有点多，不知道模拟退火能不能过</del></p>
+<p>首先特判掉两种情况：</p>
+<p>1.两个点都在圆$C$上：$D$只要与$P$或$Q$重合就好了，直接输出$|PQ|$。</p>
+<p>2.两个点与圆心重合，这个时候怎么取答案都会是$2r$。</p>
+<p>考虑一般的情况。作出$P,Q$关于圆$C$的反演点$P’,Q’$。任取圆上且不在$OP‘$上的一点$D$，发现有$\triangle OPD\sim \triangle ODP’$，那么有$\frac{DP}{OP}=\frac{DP’}{OD}$，得到$DP’=\frac{r}{OP}DP$，同理可得$DQ’=\frac{r}{OQ}DQ$，所以最小化$DP+DQ$可以转换为最小化$DP’+DQ’$，而$P’$和$Q’$的中垂线是过$O$的。</p>
+<p>因此，当$P’Q’$与圆$C$有交时，直接输出$|PQ|$。</p>
+<p>否则，最优的$D$是$P’Q’$中垂线与圆$C$靠近直线的交点。这个怎么证明？</p>
+<p><del>由对称性显然</del></p>
+<p>把$P’Q’$中点看成椭圆的中心，$P’,Q’$分别是椭圆的两个焦点，$P’Q’=2c$，而$DP’+DQ’$就是$2a$。由于$c$是定值，$a^2=b^2+c^2$，要使$2a$最小，那么$b$也要最小，显然$b$在$D$为$P’Q’$中垂线与圆$C$靠近直线的交点时取到最小值。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> db double</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> eps 1e-9</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Point</span>&#123;</span></span><br><span class="line">    db x,y;</span><br><span class="line">&#125;P,Q,O,_P,_Q,M;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Circle</span>&#123;</span></span><br><span class="line">    Point O;db r;</span><br><span class="line">&#125;C;</span><br><span class="line"></span><br><span class="line">Point <span class="keyword">operator</span>-(Point a,Point b)&#123;a.x-=b.x;a.y-=b.y;<span class="keyword">return</span> a;&#125;</span><br><span class="line">Point <span class="keyword">operator</span>+(Point a,Point b)&#123;a.x+=b.x;a.y+=b.y;<span class="keyword">return</span> a;&#125;</span><br><span class="line">Point <span class="keyword">operator</span>*(db k,Point a)&#123;a.x*=k;a.y*=k;<span class="keyword">return</span> a;&#125;</span><br><span class="line">db <span class="keyword">operator</span>*(Point a,Point b)&#123;<span class="keyword">return</span> a.x*b.y-a.y*b.x;&#125;</span><br><span class="line">db <span class="keyword">operator</span>&amp;(Point a,Point b)&#123;<span class="keyword">return</span> a.x*b.x+a.y*b.y;&#125;</span><br><span class="line"></span><br><span class="line"><span class="function">db <span class="title">getdis</span><span class="params">(Point a,Point b)</span></span>&#123;<span class="keyword">return</span> <span class="built_in">sqrt</span>(a-b&amp;a-b);&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">solve</span><span class="params">()</span></span>&#123;</span><br><span class="line">    C.O=O;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%lf"</span>,&amp;C.r);</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%lf%lf"</span>,&amp;P.x,&amp;P.y);</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%lf%lf"</span>,&amp;Q.x,&amp;Q.y);</span><br><span class="line">    <span class="keyword">if</span>(<span class="built_in">fabs</span>(getdis(P,O)-C.r)&lt;=eps)&#123;<span class="built_in">printf</span>(<span class="string">"%.7lf\n"</span>,getdis(P,Q));<span class="keyword">return</span>;&#125;</span><br><span class="line">    <span class="keyword">if</span>(<span class="built_in">fabs</span>(getdis(P,O))&lt;=eps)&#123;<span class="built_in">printf</span>(<span class="string">"%.7lf\n"</span>,<span class="number">2.0</span>*C.r);<span class="keyword">return</span>;&#125;</span><br><span class="line">    db ret,k=C.r*C.r/getdis(O,P)/getdis(O,P),pr=getdis(O,P)/C.r;</span><br><span class="line">    _P=k*P;_Q=k*Q;</span><br><span class="line">    M=<span class="number">0.5</span>*(_P+_Q);</span><br><span class="line">    db d=getdis(O,M);</span><br><span class="line">    <span class="keyword">if</span>(-eps&lt;=C.r-d)&#123;<span class="built_in">printf</span>(<span class="string">"%.7lf\n"</span>,getdis(_P,_Q)*pr);<span class="keyword">return</span>;&#125;</span><br><span class="line">    ret=((_P-M)&amp;(_P-M))+(d-C.r)*(d-C.r);</span><br><span class="line">    ret=<span class="built_in">sqrt</span>(ret)*<span class="number">2.0</span>*pr;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%.7lf\n"</span>,ret);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> T;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;T);</span><br><span class="line">    O=(Point)&#123;<span class="number">0</span>,<span class="number">0</span>&#125;;</span><br><span class="line">    <span class="keyword">while</span>(T--)solve();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="hdu-6158-The-Designer"><a href="#hdu-6158-The-Designer" class="headerlink" title="hdu 6158 The Designer"></a>hdu 6158 The Designer</h2><p>题目大意：</p>
+<p>给出两个内切的圆的半径，在两圆之间的部分放小圆，具体关系见下图。求前$N$个圆的总面积。有$t\leq 1200$组测试数据，每组数据$N\leq 10^7$，大圆半径$R\leq100$</p>
+<p><img src="http://acm.hdu.edu.cn/data/images/C779-1009-1.png" alt="img"></p>
+<p>将整个图形以两个大圆的切点为反演中心，任意长为半径反演，那么两个大圆就变成了两条平行直线，小圆就变成了若干个大小相等的、与两条直线相切、相邻两个相切的圆。把图划出来之后就可以利用反演的比例关系很简单地计算出小圆的半径，进而计算出面积了。</p>
+<p>注意到这里的$N$非常大，但是$R$比较小，当$N$大到一定程度时，小圆的面积将会非常小，对答案的贡献可以忽略不计，这时结束讨论即可。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> eps 1e-13</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> db double</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">const</span> db Pi=<span class="built_in">atan</span>(<span class="number">1.0</span>)*<span class="number">4.0</span>;</span><br><span class="line"></span><br><span class="line"><span class="function">db <span class="title">calc</span><span class="params">(db r)</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> r*r*Pi;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> N;</span><br><span class="line">db r1,r2,r3,r,d,Ans;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">solve</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> i,t;</span><br><span class="line">    db s,a,b,c,rr;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%lf%lf%d"</span>,&amp;r1,&amp;r2,&amp;N);</span><br><span class="line">    <span class="keyword">if</span>(r1&lt;r2)swap(r1,r2);</span><br><span class="line">    r3=r1-r2;</span><br><span class="line">    Ans=calc(r3);</span><br><span class="line">    r=<span class="number">10000.0</span>/r2<span class="number">-10000.0</span>/r1;r*=<span class="number">0.5</span>;</span><br><span class="line">    d=<span class="number">10000.0</span>/r2-r;</span><br><span class="line">    N--;</span><br><span class="line">    <span class="keyword">for</span>(i=<span class="number">1</span>;i&lt;=N;i++)&#123;</span><br><span class="line">        t=i+<span class="number">1</span>&gt;&gt;<span class="number">1</span>;rr=<span class="number">2.0</span>*r*t;</span><br><span class="line">        c=<span class="built_in">sqrt</span>(d*d+rr*rr);</span><br><span class="line">        a=c+r;b=c-r;</span><br><span class="line">        s=calc(<span class="number">10000.0</span>/b<span class="number">-10000.0</span>/a);</span><br><span class="line">        <span class="keyword">if</span>(s&lt;=eps)<span class="keyword">break</span>;</span><br><span class="line">        Ans+=s;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%.5lf\n"</span>,Ans);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line"><span class="keyword">int</span> T;<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;T);</span><br><span class="line"><span class="keyword">while</span>(T--)solve();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="hdu-4773-Problem-of-Apollonius"><a href="#hdu-4773-Problem-of-Apollonius" class="headerlink" title="hdu 4773 Problem of Apollonius"></a>hdu 4773 Problem of Apollonius</h2><p>题目大意：</p>
+<p>给定两个相离的圆$C_1,C_2$，给定一个点$P$,求出所有满足下面条件的圆$C$：$C$过点$P$，且与$C_1,C_2$都外切。</p>
+<p>共有$T\leq 200$组测试数据，坐标都是正整数，大小不超过$100$。</p>
+<p>首先容易想到设出$C$的圆心和半径暴力解方程。但是立即发现这个方程不好解。</p>
+<p>考虑反演，假设我们已经拿到了最后的答案，以$P$为反演中心，任意长为反演半径反演之后，$C_1,C_2$仍然是两个圆，而$C$就变换为了一条直线，而这条直线将与$C_1,C_2$都相切，也就是$C_1,C_2$的公切线。</p>
+<p>所以大体思路是：将$C_1,C_2$反演后，求出$C_1,C_2$的公切线，再将公切线反演成圆即可。</p>
+<p>然而这样做有一个很大的问题：并没有满足圆与$C_1,C_2$外切。这时候有两种想法：</p>
+<p>1.把所有公切线求出来之后再检验。但是求两圆的所有公切线略显繁琐，判断虽然简单，但是可能会出现较大的精度差（反演了两次，外加求公切线调用三角函数）。不知道能不能过。</p>
+<p>2.观察性质，发现当且仅当$C_1,C_2$反演后的圆心、反演中心$P$在公切线同侧时，$C$与$C_1,C_2$都外切。这样就只需要考虑两圆同侧的公切线，再检验一下就行了。</p>
+<p>但是为什么呢？</p>
+<p>假设$C_1$与$C$内切，记$C$反演后得到的直线为$l$。显然有这样的结论：$C$内部的点在反演后一定与$C$在$l$的异侧（那么与$P$也是在异侧）。由于$C_1$与$C_2$是相离的，要使$C$与$C_1,C_2$都相切，那么这时$C_1$一定被$C$所包含。那么$C_1$的圆心在$C$的内部，反演后一定与$P$在$l$的异侧，证毕。</p>
+<p>求圆和直线的反演画画图，利用反演的关系就很好做了，具体可以参考这篇博客：<a href="https://blog.csdn.net/acdreamers/article/details/16966369" target="_blank" rel="noopener">https://blog.csdn.net/acdreamers/article/details/16966369</a></p>
+<p>代码写得极丑。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> db double</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">const</span> db Pi=<span class="built_in">atan</span>(<span class="number">1.0</span>)*<span class="number">4.0</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Point</span>&#123;</span></span><br><span class="line">    db x,y;</span><br><span class="line">&#125;P;</span><br><span class="line"><span class="keyword">typedef</span> Point Vector;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Circle</span>&#123;</span></span><br><span class="line">    Point O;db r;</span><br><span class="line">&#125;C1,C2,_C1,_C2,InvC,Ans[<span class="number">3</span>];</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Line</span>&#123;</span></span><br><span class="line">    Vector v;Point p;</span><br><span class="line">&#125;T[<span class="number">3</span>];</span><br><span class="line"></span><br><span class="line">Point <span class="keyword">operator</span>+(Point a,Point b)&#123;a.x+=b.x;a.y+=b.y;<span class="keyword">return</span> a;&#125;</span><br><span class="line">Point <span class="keyword">operator</span>-(Point a,Point b)&#123;a.x-=b.x;a.y-=b.y;<span class="keyword">return</span> a;&#125;</span><br><span class="line">Point <span class="keyword">operator</span>*(db k,Point a)&#123;a.x*=k;a.y*=k;<span class="keyword">return</span> a;&#125;</span><br><span class="line">Point <span class="keyword">operator</span>*(Point a,db k)&#123;a.x*=k;a.y*=k;<span class="keyword">return</span> a;&#125;</span><br><span class="line">db <span class="keyword">operator</span>*(Point a,Point b)&#123;<span class="keyword">return</span> a.x*b.y-a.y*b.x;&#125;</span><br><span class="line">db <span class="keyword">operator</span>&amp;(Point a,Point b)&#123;<span class="keyword">return</span> a.x*b.x+a.y*b.y;&#125;</span><br><span class="line"></span><br><span class="line"><span class="function">Point <span class="title">node</span><span class="params">(Circle C,db ang)</span></span>&#123;</span><br><span class="line">    Point A=C.O;</span><br><span class="line">    A.x+=C.r*<span class="built_in">cos</span>(ang);A.y+=C.r*<span class="built_in">sin</span>(ang);</span><br><span class="line">    <span class="keyword">return</span> A;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function">db <span class="title">getdis</span><span class="params">(Point a,Point b)</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">sqrt</span>(a-b&amp;a-b);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function">db <span class="title">getdis</span><span class="params">(Point a,Line b)</span></span>&#123;</span><br><span class="line">    Point A,B;</span><br><span class="line">    A=b.p;B=b.v+b.p;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">fabs</span>((A-a)*(B-a)/getdis(A,B));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function">Circle <span class="title">inv</span><span class="params">(Circle C,Circle C1)</span></span>&#123;</span><br><span class="line">    Circle C2;</span><br><span class="line">    Point O=C.O;</span><br><span class="line">    db d,r,OA,OB,OC1,OC2;</span><br><span class="line">    </span><br><span class="line">    d=getdis(O,C1.O);</span><br><span class="line">    OB=d-C1.r;OA=d+C1.r;</span><br><span class="line">    C2.r=r=C.r*C.r*<span class="number">0.5</span>*(<span class="number">1.0</span>/OB<span class="number">-1.0</span>/OA);</span><br><span class="line">    </span><br><span class="line">    OC1=d;</span><br><span class="line">    OC2=r+C.r*C.r/OA;</span><br><span class="line">    C2.O.x=O.x+OC2/OC1*(C1.O.x-O.x);</span><br><span class="line">    C2.O.y=O.y+OC2/OC1*(C1.O.y-O.y);</span><br><span class="line">    <span class="keyword">return</span> C2;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function">Circle <span class="title">inv</span><span class="params">(Circle C,Line L)</span></span>&#123;</span><br><span class="line">    Circle C2;</span><br><span class="line">    Point V=L.v;</span><br><span class="line">    db OC;</span><br><span class="line"></span><br><span class="line">    OC=getdis(C.O,L);</span><br><span class="line">    C2.r=C.r*C.r/OC*<span class="number">0.5</span>;</span><br><span class="line">    swap(V.x,V.y);V.x=-V.x;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span>(getdis(C.O+V,L)&gt;getdis(C.O-V,L))V.x=-V.x,V.y=-V.y;</span><br><span class="line">    C2.O=C.O+C2.r/(<span class="built_in">sqrt</span>(V&amp;V))*V;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> C2;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Tangent</span><span class="params">(Circle A,Circle B,Line ret[])</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(A.r&lt;B.r)swap(A,B);</span><br><span class="line">    db d=getdis(A.O,B.O),base=<span class="built_in">atan2</span>((B.O-A.O).y,(B.O-A.O).x),ang=<span class="built_in">acos</span>((A.r-B.r)/d);</span><br><span class="line">    Point a,b;</span><br><span class="line">    a=node(A,base+ang);b=node(B,base+ang);</span><br><span class="line">    ret[<span class="number">1</span>]=(Line)&#123;b-a,a&#125;;</span><br><span class="line">    a=node(A,base-ang);b=node(B,base-ang);</span><br><span class="line">    ret[<span class="number">2</span>]=(Line)&#123;b-a,a&#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">check</span><span class="params">(Line A,Point a,Point b)</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> ((a-A.p)*A.v)*((b-A.p)*(A.v))&gt;=<span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">solve</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%lf%lf%lf"</span>,&amp;C1.O.x,&amp;C1.O.y,&amp;C1.r);</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%lf%lf%lf"</span>,&amp;C2.O.x,&amp;C2.O.y,&amp;C2.r);</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%lf%lf"</span>,&amp;P.x,&amp;P.y);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span> tot=<span class="number">0</span>;</span><br><span class="line">    InvC=(Circle)&#123;P,<span class="number">10.0</span>&#125;;</span><br><span class="line">    _C1=inv(InvC,C1);</span><br><span class="line">    _C2=inv(InvC,C2);</span><br><span class="line">    </span><br><span class="line">    Tangent(_C1,_C2,T);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span>(check(T[<span class="number">1</span>],_C1.O,P))Ans[++tot]=inv(InvC,T[<span class="number">1</span>]);</span><br><span class="line">    <span class="keyword">if</span>(check(T[<span class="number">2</span>],_C1.O,P))Ans[++tot]=inv(InvC,T[<span class="number">2</span>]);</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%d\n"</span>,tot);</span><br><span class="line">    <span class="keyword">while</span>(tot)<span class="built_in">printf</span>(<span class="string">"%.8lf %.8lf %.8lf\n"</span>,Ans[tot].O.x,Ans[tot].O.y,Ans[tot].r),tot--;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> T;<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;T);</span><br><span class="line">    <span class="keyword">while</span>(T--)solve();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/计算几何/" rel="tag"># 计算几何</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/05/13/CTSC2018-青蕈领主/" rel="next" title="CTSC2018 青蕈领主">
+                <i class="fa fa-chevron-left"></i> CTSC2018 青蕈领主
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.jpg"
+                alt="rgnoH" />
+            
+              <p class="site-author-name" itemprop="name">rgnoH</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">40</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">32</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/rgnoH" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://starkmal.github.io" title="starkmal" target="_blank">starkmal</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://mogicianevian.github.io" title="OBlack" target="_blank">OBlack</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://jackpoison.github.io" title="Sparrow" target="_blank">Sparrow</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#圆的反演"><span class="nav-number">1.</span> <span class="nav-text">圆的反演</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#hdu-6097-Mindis"><span class="nav-number">1.1.</span> <span class="nav-text">hdu 6097 Mindis</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#hdu-6158-The-Designer"><span class="nav-number">1.2.</span> <span class="nav-text">hdu 6158 The Designer</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#hdu-4773-Problem-of-Apollonius"><span class="nav-number">1.3.</span> <span class="nav-text">hdu 4773 Problem of Apollonius</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">rgnoH</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">55.6k</span>
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/canvas_sphere.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
+
+  
+  
+  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
+  
+
+  <script src="/js/src/algolia-search.js?v=5.1.4"></script>
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>
